@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
     rel="stylesheet"
   >
   <style>
@@ -39,7 +39,7 @@
       --radius: 24px;
       --radius-sm: 14px;
       --container: 1180px;
-      --font-body: "Outfit", sans-serif;
+      --font-body: "Inter", sans-serif;
       --font-display: "Playfair Display", serif;
     }
 
@@ -60,7 +60,11 @@
         var(--cream);
       color: var(--ink);
       font-family: var(--font-body);
-      line-height: 1.6;
+      font-size: 16.5px;
+      line-height: 1.68;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
     }
 
@@ -198,6 +202,9 @@
     }
 
     .lang-switch button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
       padding: 0.45rem 0.85rem;
       border-radius: 999px;
       color: rgba(255, 250, 244, 0.72);
@@ -208,6 +215,89 @@
     .lang-switch button.is-active {
       background: var(--gold-500);
       color: var(--jade-900);
+    }
+
+    .lang-cluster {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.38rem;
+    }
+
+    .lang-code {
+      letter-spacing: 0.06em;
+    }
+
+    .flag-pair {
+      display: inline-flex;
+      align-items: center;
+      margin-left: 0.05rem;
+    }
+
+    .flag {
+      position: relative;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      box-shadow:
+        0 0 0 1px rgba(23, 50, 41, 0.12),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.18);
+    }
+
+    .flag + .flag {
+      margin-left: -4px;
+    }
+
+    .flag::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.28), transparent 45%, rgba(0, 0, 0, 0.12));
+      pointer-events: none;
+    }
+
+    .flag-mx {
+      background: linear-gradient(90deg, #0f6b41 0 33.33%, #f7f2ea 33.33% 66.66%, #c73b33 66.66% 100%);
+    }
+
+    .flag-es {
+      background: linear-gradient(180deg, #b51e26 0 25%, #f2c432 25% 75%, #b51e26 75% 100%);
+    }
+
+    .flag-us {
+      background:
+        linear-gradient(90deg, #22408c 0 46%, transparent 46%),
+        repeating-linear-gradient(180deg, #b22234 0 7.69%, #f7f2ea 7.69% 15.38%);
+    }
+
+    .flag-us::before {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, rgba(255,255,255,0.95) 0 1px, transparent 1.2px);
+      background-size: 3px 3px;
+      background-position: 0 0;
+    }
+
+    .flag-ca {
+      background: linear-gradient(90deg, #c52f2f 0 27%, #f7f2ea 27% 73%, #c52f2f 73% 100%);
+    }
+
+    .flag-ca::before {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 5px;
+      width: 6px;
+      height: 9px;
+      background: #c52f2f;
+      clip-path: polygon(50% 0, 60% 24%, 88% 14%, 72% 42%, 100% 50%, 70% 58%, 78% 92%, 50% 72%, 22% 92%, 30% 58%, 0 50%, 28% 42%, 12% 14%, 40% 24%);
     }
 
     .header-cta,
@@ -325,11 +415,19 @@
       align-items: center;
       gap: 0.6rem;
       margin-bottom: 1rem;
-      color: var(--gold-300);
+      color: var(--terracotta-700);
       text-transform: uppercase;
       letter-spacing: 0.18em;
       font-size: 0.76rem;
       font-weight: 700;
+    }
+
+    .hero .eyebrow {
+      color: var(--gold-300);
+    }
+
+    .section-alt .eyebrow {
+      color: var(--jade-900);
     }
 
     .eyebrow::before {
@@ -348,7 +446,7 @@
 
     .hero-copy p {
       max-width: 36rem;
-      font-size: 1.04rem;
+      font-size: 1.08rem;
       color: rgba(255, 250, 244, 0.86);
     }
 
@@ -437,7 +535,7 @@
 
     .section-heading h2 {
       font-size: clamp(2rem, 5vw, 3.4rem);
-      line-height: 1.02;
+      line-height: 1.08;
     }
 
     .section-heading p {
@@ -538,6 +636,7 @@
     .booking-panel h3 {
       font-size: 1.45rem;
       margin-bottom: 0.45rem;
+      line-height: 1.15;
     }
 
     .menu-card p,
@@ -779,9 +878,9 @@
       width: 62px;
       height: 62px;
       border-radius: 50%;
-      background: linear-gradient(145deg, var(--jade-700), var(--jade-500));
+      background: linear-gradient(145deg, #25d366, #128c4a);
       color: #fff;
-      box-shadow: 0 18px 36px rgba(23, 50, 41, 0.28);
+      box-shadow: 0 18px 36px rgba(18, 140, 74, 0.28);
     }
 
     .wa-fab svg {
@@ -876,8 +975,24 @@
 
       <div class="header-actions">
         <div class="lang-switch" aria-label="Selector de idioma">
-          <button class="lang-btn is-active" type="button" data-lang="es">ES</button>
-          <button class="lang-btn" type="button" data-lang="en">EN</button>
+          <button class="lang-btn is-active" type="button" data-lang="es" aria-label="Español, relevante para Mexico y Espana">
+            <span class="lang-cluster">
+              <span class="lang-code">ES</span>
+              <span class="flag-pair" aria-hidden="true">
+                <span class="flag flag-mx"></span>
+                <span class="flag flag-es"></span>
+              </span>
+            </span>
+          </button>
+          <button class="lang-btn" type="button" data-lang="en" aria-label="English, relevant for the United States and Canada">
+            <span class="lang-cluster">
+              <span class="lang-code">EN</span>
+              <span class="flag-pair" aria-hidden="true">
+                <span class="flag flag-us"></span>
+                <span class="flag flag-ca"></span>
+              </span>
+            </span>
+          </button>
         </div>
         <a
           class="header-cta"
@@ -919,7 +1034,7 @@
       <div class="container hero-grid">
         <div class="hero-content">
           <div class="hero-copy reveal">
-            <span class="eyebrow" data-i18n-es="Cafe, cocina y cultura" data-i18n-en="Coffee, cuisine, and culture">Cafe, cocina y cultura</span>
+          <span class="eyebrow" data-i18n-es="Café, cocina y cultura" data-i18n-en="Coffee, cuisine, and culture">Café, cocina y cultura</span>
             <h1 data-i18n-es="Cafe Jade Palenque" data-i18n-en="Cafe Jade Palenque">Cafe Jade Palenque</h1>
             <p
               data-i18n-es="Una experiencia gastronomica que va mas alla de lo ordinario: cafe, cocina y encuentros culturales en el corazon de Palenque."
@@ -1182,10 +1297,10 @@
         <div class="section-heading reveal">
           <span class="eyebrow" data-i18n-es="Eventos y experiencias" data-i18n-en="Events and experiences">Eventos y experiencias</span>
           <h2
-            data-i18n-es="Musica en vivo, veladas y celebraciones privadas"
+            data-i18n-es="Música en vivo, veladas y celebraciones privadas"
             data-i18n-en="Live music, evening gatherings, and private celebrations"
           >
-            Musica en vivo, veladas y celebraciones privadas
+            Música en vivo, veladas y celebraciones privadas
           </h2>
           <p
             data-i18n-es="Selecciona un evento si quieres que se agregue automaticamente a tu mensaje de reservacion."
@@ -1212,18 +1327,18 @@
             </div>
           </article>
 
-          <article class="event-card reveal" data-event-es="Noche acustica bajo la selva" data-event-en="Acoustic night under the jungle sky" tabindex="0" role="button" aria-pressed="false">
+          <article class="event-card reveal" data-event-es="Noche acústica bajo la selva" data-event-en="Acoustic night under the jungle sky" tabindex="0" role="button" aria-pressed="false">
             <figure>
-              <img loading="lazy" src="assets/images/events/cafe-jade-musica-local-fachada.png" alt="Musica en vivo en Cafe Jade">
+              <img loading="lazy" src="assets/images/events/acoustic-night-gpt-image.png" alt="Música en vivo en Cafe Jade durante una noche acústica">
             </figure>
             <div class="event-copy">
               <div class="event-date" data-i18n-es="Consulta cartelera" data-i18n-en="Check lineup">Consulta cartelera</div>
-              <h3 data-i18n-es="Noche acustica bajo la selva" data-i18n-en="Acoustic night under the jungle sky">Noche acustica bajo la selva</h3>
+              <h3 data-i18n-es="Noche acústica bajo la selva" data-i18n-en="Acoustic night under the jungle sky">Noche acústica bajo la selva</h3>
               <p
-                data-i18n-es="Una velada intima para cenar, brindar y escuchar musica en vivo."
+                data-i18n-es="Una velada íntima para cenar, brindar y escuchar música en vivo."
                 data-i18n-en="An intimate evening to dine, toast, and enjoy live music."
               >
-                Una velada intima para cenar, brindar y escuchar musica en vivo.
+                Una velada íntima para cenar, brindar y escuchar música en vivo.
               </p>
             </div>
           </article>
@@ -1403,6 +1518,7 @@
     target="_blank"
     rel="noopener noreferrer"
     aria-label="Abrir WhatsApp"
+    title="WhatsApp"
   >
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path d="M.057 24l1.687-6.163C.703 16.033.156 13.988.157 11.891.16 5.348 5.397.11 12.008.11c3.202 0 6.212 1.246 8.477 3.514 2.266 2.267 3.507 5.279 3.505 8.483-.004 6.658-5.34 11.998-11.953 11.998-1.999-.001-3.968-.502-5.721-1.455L.057 24zm6.597-4.827c1.676.995 3.276 1.591 5.392 1.593 5.448 0 9.886-4.438 9.889-9.889a9.82 9.82 0 0 0-2.89-6.996A9.825 9.825 0 0 0 12.05 1C6.59 1 2.15 5.44 2.148 10.89c0 1.91.52 3.776 1.507 5.399l-.999 3.648 3.998-1.048z"></path>
