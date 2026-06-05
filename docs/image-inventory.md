@@ -79,9 +79,20 @@ Nombres sugeridos:
 
 ## Estado actual
 
-- No hay imagenes reales cargadas aun.
-- `index.html` sigue usando placeholders externos.
-- El sitio en produccion `https://produccion.cafejademexico.com/` si muestra fotografias originales del local y clientes.
+- Ya hay imagenes reales cargadas desde el sitio en produccion.
+- `index.html` usa archivos locales desde `assets/images/`.
+- El sitio en produccion `https://produccion.cafejademexico.com/` sigue siendo la referencia visual primaria para fotografia propia.
+
+## Imagenes locales actuales
+
+- `assets/images/hero/cafe-jade-collage-local-comida-fachada.png`
+- `assets/images/events/cafe-jade-musica-local-fachada.png`
+- `assets/images/menu/rollos-frescos-cafe-jade.png`
+- `assets/images/menu/ceviche-mango-cafe-jade.png`
+- `assets/images/menu/bebida-especiada-cafe-jade.png`
+- `assets/images/menu/postre-chocolate-cafe-jade.png`
+- `assets/images/menu/tostada-salsa-cafe-jade.png`
+- `assets/images/menu/tostada-atun-cafe-jade.png`
 
 ## Criterio de reemplazo
 

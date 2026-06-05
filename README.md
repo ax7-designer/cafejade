@@ -15,7 +15,7 @@ Prototipo web estatico para Cafe Jade Palenque: cafeteria, restaurante y centro 
 - `docs/demo-handoff.md`: estado actual del prototipo y pendientes antes de version final.
 - `docs/prototype-readiness.md`: evidencia rapida de lo cumplido, lo pendiente y el estado del prototipo.
 
-Todavia no hay imagenes locales del negocio dentro del proyecto. Para el prototipo final conviene crear `assets/images/` y colocar ahi fotos reales del lugar, platillos, bebidas, eventos y fachada.
+El prototipo ya incluye imagenes locales tomadas del sitio en produccion dentro de `assets/images/`. Para version final conviene revisar si se sustituyen por archivos de mayor resolucion o por nuevas fotos aprobadas.
 
 ## Direccion del sitio
 

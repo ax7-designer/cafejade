@@ -9,9 +9,9 @@ node_modules/
 dist/
 build/
 .cache/
+.playwright-cli/
 
 # OS/editor noise
 .DS_Store
 Thumbs.db
 *.log
-

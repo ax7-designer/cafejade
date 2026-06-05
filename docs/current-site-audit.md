@@ -22,7 +22,7 @@ La brecha principal no es tecnica, sino de arquitectura, contenido e identidad: 
 
 ### Navegacion
 
-Estado actual:
+Estado inicial auditado:
 
 - Inicio.
 - Tienda.
@@ -101,8 +101,8 @@ Accion requerida:
 
 Estado actual:
 
-- Todas las imagenes principales vienen de Unsplash.
-- No hay fotos locales del negocio en `assets/images`.
+- Todas las imagenes principales venian de Unsplash.
+- No habia fotos locales del negocio en `assets/images`.
 
 Objetivo:
 
@@ -115,7 +115,12 @@ Accion requerida:
 - Crear inventario de fotos reales.
 - Copiarlas a `assets/images`.
 - Sustituir URLs externas por archivos locales.
-- Mantener Unsplash solo como placeholder temporal.
+- Usar banco de imagenes solo como respaldo temporal cuando no exista foto real.
+
+Estado actualizado:
+
+- Las fotografias del sitio en produccion ya fueron descargadas a `assets/images/`.
+- `index.html` ya usa archivos locales y no URLs de Unsplash.
 
 ### Interacciones
 
@@ -151,4 +156,3 @@ Accion requerida:
 ## Dictamen
 
 El proyecto esta en buen punto para convertirse en prototipo presentable, pero `index.html` todavia no cumple la historia de 5 secciones. La siguiente intervencion debe ser una reestructura de contenido y navegacion, manteniendo la base estatica y las interacciones utiles ya existentes.
-

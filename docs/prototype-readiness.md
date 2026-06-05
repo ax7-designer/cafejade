@@ -20,6 +20,8 @@ Estado de avance del prototipo de Cafe Jade basado en el objetivo del proyecto.
 - Flujo de pedido por WhatsApp.
 - Flujo de evento privado por WhatsApp.
 - Proyecto inicializado con Git.
+- Repositorio conectado y publicado en `ax7-designer/cafejade`.
+- Imagenes reales del sitio en produccion integradas en `assets/images/`.
 - Base documental para Hostinger, contenido e imagenes.
 
 ## Listo para mostrar como prototipo
@@ -34,15 +36,13 @@ Si. El prototipo ya comunica:
 
 ## Pendiente antes de version final
 
-- Reemplazar placeholders de Unsplash por imagenes reales del negocio.
+- Revisar si las imagenes reales actuales requieren retoque o reemplazo por archivos de mayor resolucion.
 - Confirmar horario oficial.
 - Confirmar si telefono y WhatsApp son numeros distintos.
 - Confirmar redes sociales reales.
 - Hacer revision visual en navegador real, movil y escritorio.
-- Crear primer commit con autor Git configurado.
-- Conectar remoto y hacer push cuando el repositorio destino exista.
+- Conectar Hostinger al repositorio de GitHub para despliegue por Git.
 
 ## Nota tecnica
 
-En esta carpeta todavia no hay identidad local de Git configurada (`user.name` y `user.email`), por eso el primer commit no se ha creado aun.
-
+El primer commit ya fue creado y publicado en GitHub. La rama local `main` sigue a `origin/main`.
