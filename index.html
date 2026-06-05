@@ -315,6 +315,11 @@
       align-items: end;
     }
 
+    .hero-content {
+      display: grid;
+      gap: 1.2rem;
+    }
+
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -387,6 +392,33 @@
       margin-bottom: 0.18rem;
     }
 
+    .hero-highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.85rem;
+    }
+
+    .hero-highlights article {
+      padding: 0.95rem 1rem;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 250, 244, 0.1);
+      border: 1px solid rgba(255, 250, 244, 0.14);
+    }
+
+    .hero-highlights strong {
+      display: block;
+      margin-bottom: 0.22rem;
+      color: var(--gold-300);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .hero-highlights span {
+      color: rgba(255, 250, 244, 0.84);
+      font-size: 0.92rem;
+    }
+
     .section {
       padding: 4.75rem 0;
     }
@@ -439,6 +471,12 @@
       overflow: hidden;
       cursor: pointer;
       transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .menu-card:focus-visible,
+    .event-card:focus-visible {
+      outline: 2px solid var(--terracotta-500);
+      outline-offset: 3px;
     }
 
     .menu-card.is-selected {
@@ -520,6 +558,15 @@
       color: var(--jade-900);
     }
 
+    .menu-note strong {
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .selection-actions {
+      margin-top: 1.3rem;
+    }
+
     .story-layout {
       display: grid;
       gap: 1.4rem;
@@ -531,6 +578,12 @@
 
     .story-card figure {
       aspect-ratio: 5 / 4;
+    }
+
+    .story-copy {
+      display: grid;
+      align-content: center;
+      gap: 1rem;
     }
 
     .detail-list,
@@ -617,6 +670,32 @@
 
     .booking-panel {
       margin-top: 1.2rem;
+    }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0.55rem 0.95rem;
+      border-radius: 999px;
+      border: 1px solid rgba(23, 50, 41, 0.14);
+      background: rgba(63, 115, 93, 0.08);
+      color: var(--jade-700);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .social-link:hover {
+      color: var(--terracotta-700);
+      border-color: rgba(162, 77, 44, 0.24);
     }
 
     .booking-grid {
@@ -838,25 +917,42 @@
   <main>
     <section class="hero" id="inicio">
       <div class="container hero-grid">
-        <div class="hero-copy reveal">
-          <span class="eyebrow" data-i18n-es="Cafe, cocina y cultura" data-i18n-en="Coffee, cuisine, and culture">Cafe, cocina y cultura</span>
-          <h1 data-i18n-es="Cafe Jade Palenque" data-i18n-en="Cafe Jade Palenque">Cafe Jade Palenque</h1>
-          <p
-            data-i18n-es="Una experiencia gastronomica que va mas alla de lo ordinario: cafe, cocina y encuentros culturales en el corazon de Palenque."
-            data-i18n-en="A dining experience beyond the ordinary: coffee, cuisine, and cultural gatherings in the heart of Palenque."
-          >
-            Una experiencia gastronomica que va mas alla de lo ordinario: cafe, cocina y encuentros culturales en el corazon de Palenque.
-          </p>
-          <div class="hero-actions">
-            <a class="button" href="#menu" data-i18n-es="Ver menu" data-i18n-en="View menu">Ver menu</a>
-            <a
-              class="button-secondary"
-              href="https://wa.me/529166880081?text=Hola%20Cafe%20Jade,%20me%20gustaria%20hacer%20un%20pedido."
-              target="_blank"
-              rel="noopener noreferrer"
-              data-i18n-es="Pedir por WhatsApp"
-              data-i18n-en="Order on WhatsApp"
-            >Pedir por WhatsApp</a>
+        <div class="hero-content">
+          <div class="hero-copy reveal">
+            <span class="eyebrow" data-i18n-es="Cafe, cocina y cultura" data-i18n-en="Coffee, cuisine, and culture">Cafe, cocina y cultura</span>
+            <h1 data-i18n-es="Cafe Jade Palenque" data-i18n-en="Cafe Jade Palenque">Cafe Jade Palenque</h1>
+            <p
+              data-i18n-es="Una experiencia gastronomica que va mas alla de lo ordinario: cafe, cocina y encuentros culturales en el corazon de Palenque."
+              data-i18n-en="A dining experience beyond the ordinary: coffee, cuisine, and cultural gatherings in the heart of Palenque."
+            >
+              Una experiencia gastronomica que va mas alla de lo ordinario: cafe, cocina y encuentros culturales en el corazon de Palenque.
+            </p>
+            <div class="hero-actions">
+              <a class="button" href="#menu" data-i18n-es="Ver menu" data-i18n-en="View menu">Ver menu</a>
+              <a
+                class="button-secondary"
+                href="https://wa.me/529166880081?text=Hola%20Cafe%20Jade,%20me%20gustaria%20hacer%20un%20pedido."
+                target="_blank"
+                rel="noopener noreferrer"
+                data-i18n-es="Pedir por WhatsApp"
+                data-i18n-en="Order on WhatsApp"
+              >Pedir por WhatsApp</a>
+            </div>
+          </div>
+
+          <div class="hero-highlights reveal">
+            <article>
+              <strong data-i18n-es="Ubicacion" data-i18n-en="Location">Ubicacion</strong>
+              <span data-i18n-es="La Canada, Palenque" data-i18n-en="La Canada, Palenque">La Canada, Palenque</span>
+            </article>
+            <article>
+              <strong data-i18n-es="Experiencia" data-i18n-en="Experience">Experiencia</strong>
+              <span data-i18n-es="Cafe, cocina y noches con musica" data-i18n-en="Coffee, cuisine, and live music nights">Cafe, cocina y noches con musica</span>
+            </article>
+            <article>
+              <strong data-i18n-es="Reservas" data-i18n-en="Reservations">Reservas</strong>
+              <span data-i18n-es="Mesas, grupos y eventos privados" data-i18n-en="Tables, groups, and private events">Mesas, grupos y eventos privados</span>
+            </article>
           </div>
         </div>
 
@@ -895,15 +991,15 @@
           <span class="eyebrow" data-i18n-es="Sabores para quedarse" data-i18n-en="Flavors worth staying for">Sabores para quedarse</span>
           <h2 data-i18n-es="Menu visual, tactil y facil de pedir" data-i18n-en="A visual, tactile menu that is easy to order from">Menu visual, tactil y facil de pedir</h2>
           <p
-            data-i18n-es="Selecciona cualquier platillo o bebida para preparar tu consulta por WhatsApp. Esta base se puede sustituir despues por fotografias reales y precios finales."
-            data-i18n-en="Select any dish or drink to prepare your WhatsApp inquiry. This base can later be replaced with real photography and final prices."
+            data-i18n-es="Selecciona cualquier platillo o bebida para preparar tu consulta por WhatsApp. La base ya utiliza fotografias reales del espacio y puede crecer despues con mas categorias y precios finales."
+            data-i18n-en="Select any dish or drink to prepare your WhatsApp inquiry. This base already uses real venue photography and can later grow with more categories and final pricing."
           >
-            Selecciona cualquier platillo o bebida para preparar tu consulta por WhatsApp. Esta base se puede sustituir despues por fotografias reales y precios finales.
+            Selecciona cualquier platillo o bebida para preparar tu consulta por WhatsApp. La base ya utiliza fotografias reales del espacio y puede crecer despues con mas categorias y precios finales.
           </p>
         </div>
 
         <div class="menu-grid">
-          <article class="menu-card reveal" data-item-es="Rollos frescos Jade" data-item-en="Fresh Jade rolls">
+          <article class="menu-card reveal" data-item-es="Rollos frescos Jade" data-item-en="Fresh Jade rolls" tabindex="0" role="button" aria-pressed="false">
             <figure>
               <img loading="lazy" src="assets/images/menu/rollos-frescos-cafe-jade.png" alt="Rollos frescos servidos en Cafe Jade">
             </figure>
@@ -922,7 +1018,7 @@
             </div>
           </article>
 
-          <article class="menu-card reveal" data-item-es="Ceviche con mango" data-item-en="Mango ceviche">
+          <article class="menu-card reveal" data-item-es="Ceviche con mango" data-item-en="Mango ceviche" tabindex="0" role="button" aria-pressed="false">
             <figure>
               <img loading="lazy" src="assets/images/menu/ceviche-mango-cafe-jade.png" alt="Ceviche con mango servido en Cafe Jade">
             </figure>
@@ -941,7 +1037,7 @@
             </div>
           </article>
 
-          <article class="menu-card reveal" data-item-es="Bebida especiada" data-item-en="Spiced drink">
+          <article class="menu-card reveal" data-item-es="Bebida especiada" data-item-en="Spiced drink" tabindex="0" role="button" aria-pressed="false">
             <figure>
               <img loading="lazy" src="assets/images/menu/bebida-especiada-cafe-jade.png" alt="Bebida especiada de Cafe Jade">
             </figure>
@@ -960,7 +1056,7 @@
             </div>
           </article>
 
-          <article class="menu-card reveal" data-item-es="Postre de la casa" data-item-en="House dessert">
+          <article class="menu-card reveal" data-item-es="Postre de la casa" data-item-en="House dessert" tabindex="0" role="button" aria-pressed="false">
             <figure>
               <img loading="lazy" src="assets/images/menu/postre-chocolate-cafe-jade.png" alt="Postre de chocolate de Cafe Jade">
             </figure>
@@ -978,6 +1074,44 @@
               </p>
             </div>
           </article>
+
+          <article class="menu-card reveal" data-item-es="Tostada con salsa de la casa" data-item-en="Tostada with house salsa" tabindex="0" role="button" aria-pressed="false">
+            <figure>
+              <img loading="lazy" src="assets/images/menu/tostada-salsa-cafe-jade.png" alt="Tostada servida con salsa en Cafe Jade">
+            </figure>
+            <div class="menu-body">
+              <div class="menu-meta">
+                <span class="tag" data-i18n-es="Especiales" data-i18n-en="Specials">Especiales</span>
+                <span class="price">$160</span>
+              </div>
+              <h3 data-i18n-es="Tostada con salsa de la casa" data-i18n-en="Tostada with house salsa">Tostada con salsa de la casa</h3>
+              <p
+                data-i18n-es="Textura, color y un perfil fresco que acompana bien una comida larga."
+                data-i18n-en="Texture, color, and a fresh profile that suits a lingering meal."
+              >
+                Textura, color y un perfil fresco que acompana bien una comida larga.
+              </p>
+            </div>
+          </article>
+
+          <article class="menu-card reveal" data-item-es="Tostada de atun" data-item-en="Tuna tostada" tabindex="0" role="button" aria-pressed="false">
+            <figure>
+              <img loading="lazy" src="assets/images/menu/tostada-atun-cafe-jade.png" alt="Tostada de atun servida en Cafe Jade">
+            </figure>
+            <div class="menu-body">
+              <div class="menu-meta">
+                <span class="tag" data-i18n-es="Cocina" data-i18n-en="Cuisine">Cocina</span>
+                <span class="price">$190</span>
+              </div>
+              <h3 data-i18n-es="Tostada de atun" data-i18n-en="Tuna tostada">Tostada de atun</h3>
+              <p
+                data-i18n-es="Una opcion luminosa y cuidada para quien busca algo fresco y con caracter."
+                data-i18n-en="A bright, carefully plated option for anyone craving something fresh with character."
+              >
+                Una opcion luminosa y cuidada para quien busca algo fresco y con caracter.
+              </p>
+            </div>
+          </article>
         </div>
 
         <div class="menu-note reveal" id="menuSelectionNote" aria-live="polite">
@@ -989,7 +1123,7 @@
           >Aun no has elegido productos.</span>
         </div>
 
-        <div class="hero-actions" style="margin-top: 1.3rem;">
+        <div class="hero-actions selection-actions">
           <a
             class="button"
             href="https://wa.me/529166880081?text=Hola%20Cafe%20Jade,%20me%20gustaria%20hacer%20un%20pedido."
@@ -1062,7 +1196,7 @@
         </div>
 
         <div class="event-grid">
-          <article class="event-card reveal" data-event-es="Mesa de degustacion Jade" data-event-en="Jade tasting table">
+          <article class="event-card reveal" data-event-es="Mesa de degustacion Jade" data-event-en="Jade tasting table" tabindex="0" role="button" aria-pressed="false">
             <figure>
               <img loading="lazy" src="assets/images/menu/tostada-salsa-cafe-jade.png" alt="Platillo servido con salsa en Cafe Jade">
             </figure>
@@ -1078,12 +1212,12 @@
             </div>
           </article>
 
-          <article class="event-card reveal" data-event-es="Noche acustica bajo la selva" data-event-en="Acoustic night under the jungle sky">
+          <article class="event-card reveal" data-event-es="Noche acustica bajo la selva" data-event-en="Acoustic night under the jungle sky" tabindex="0" role="button" aria-pressed="false">
             <figure>
               <img loading="lazy" src="assets/images/events/cafe-jade-musica-local-fachada.png" alt="Musica en vivo en Cafe Jade">
             </figure>
             <div class="event-copy">
-              <div class="event-date" data-i18n-es="04 junio" data-i18n-en="June 04">04 junio</div>
+              <div class="event-date" data-i18n-es="Consulta cartelera" data-i18n-en="Check lineup">Consulta cartelera</div>
               <h3 data-i18n-es="Noche acustica bajo la selva" data-i18n-en="Acoustic night under the jungle sky">Noche acustica bajo la selva</h3>
               <p
                 data-i18n-es="Una velada intima para cenar, brindar y escuchar musica en vivo."
@@ -1094,7 +1228,7 @@
             </div>
           </article>
 
-          <article class="event-card reveal" data-event-es="Evento privado en Cafe Jade" data-event-en="Private event at Cafe Jade">
+          <article class="event-card reveal" data-event-es="Evento privado en Cafe Jade" data-event-en="Private event at Cafe Jade" tabindex="0" role="button" aria-pressed="false">
             <figure>
               <img loading="lazy" src="assets/images/hero/cafe-jade-collage-local-comida-fachada.png" alt="Clientes, platillo y fachada de Cafe Jade">
             </figure>
@@ -1162,9 +1296,13 @@
                 </li>
                 <li>
                   <strong data-i18n-es="Horario:" data-i18n-en="Hours:">Horario:</strong>
-                  <span data-i18n-es="Horario en actualizacion para la version final." data-i18n-en="Opening hours are being updated for the final version.">Horario en actualizacion para la version final.</span>
+                  <span data-i18n-es="Consulta el horario del dia por WhatsApp o redes sociales." data-i18n-en="Check the current opening hours on WhatsApp or social media.">Consulta el horario del dia por WhatsApp o redes sociales.</span>
                 </li>
               </ul>
+              <div class="social-links">
+                <a class="social-link" href="https://www.instagram.com/cafejadechiapas/?hl=es-la" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a class="social-link" href="https://www.facebook.com/cafejadechiapas/?ref=page_internal" target="_blank" rel="noopener noreferrer">Facebook</a>
+              </div>
             </div>
 
             <div class="booking-panel">
@@ -1224,7 +1362,7 @@
                 title="Mapa Cafe Jade Palenque"
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps?q=Palenque%20Chiapas%20La%20Canada&z=15&output=embed"
+                src="https://www.google.com/maps?q=Prolongacion%20Av.%20Hidalgo%20Esq.%205ta%20Poniente%20Norte%201%20Zona%20Turistica%20La%20Canada%20Palenque%20Chiapas&z=16&output=embed"
               ></iframe>
             </div>
           </div>
@@ -1287,6 +1425,7 @@
     const eventWhatsAppLink = document.getElementById("eventWhatsAppLink");
     const bookingForm = document.getElementById("bookingForm");
     const bookingNote = document.getElementById("bookingNote");
+    const bookingDate = document.getElementById("bookingDate");
     const mobileToggle = document.getElementById("mobileToggle");
     const mobilePanel = document.getElementById("mobilePanel");
     const navLinks = document.querySelectorAll(".nav-link");
@@ -1315,10 +1454,18 @@
       state.selectedMenuItems = Array.from(document.querySelectorAll(".menu-card.is-selected"))
         .map((card) => state.lang === "es" ? card.dataset.itemEs : card.dataset.itemEn);
 
+      menuCards.forEach((card) => {
+        card.setAttribute("aria-pressed", card.classList.contains("is-selected") ? "true" : "false");
+      });
+
       const activeEvent = document.querySelector(".event-card.is-selected");
       state.selectedEvent = activeEvent
         ? (state.lang === "es" ? activeEvent.dataset.eventEs : activeEvent.dataset.eventEn)
         : "";
+
+      eventCards.forEach((card) => {
+        card.setAttribute("aria-pressed", card.classList.contains("is-selected") ? "true" : "false");
+      });
 
       if (activeEvent) {
         bookingNote.value = state.lang === "es"
@@ -1362,8 +1509,7 @@
       eventWhatsAppLink.href = "https://wa.me/529166880081?text=" + encodeURIComponent(eventBase + eventExtra);
     }
 
-    menuCards.forEach((card) => {
-      card.addEventListener("click", () => {
+    function toggleMenuCard(card) {
         const item = state.lang === "es" ? card.dataset.itemEs : card.dataset.itemEn;
         card.classList.toggle("is-selected");
 
@@ -1378,11 +1524,19 @@
         syncSelectionsFromUI();
         updateMenuSelectionText();
         updateWhatsAppLinks();
+    }
+
+    menuCards.forEach((card) => {
+      card.addEventListener("click", () => toggleMenuCard(card));
+      card.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          toggleMenuCard(card);
+        }
       });
     });
 
-    eventCards.forEach((card) => {
-      card.addEventListener("click", () => {
+    function activateEventCard(card) {
         eventCards.forEach((entry) => entry.classList.remove("is-selected"));
         card.classList.add("is-selected");
         state.selectedEvent = state.lang === "es" ? card.dataset.eventEs : card.dataset.eventEn;
@@ -1391,6 +1545,15 @@
           : "Interested in: " + state.selectedEvent;
         syncSelectionsFromUI();
         updateWhatsAppLinks();
+    }
+
+    eventCards.forEach((card) => {
+      card.addEventListener("click", () => activateEventCard(card));
+      card.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          activateEventCard(card);
+        }
       });
     });
 
@@ -1456,20 +1619,24 @@
     document.querySelectorAll(".reveal").forEach((node) => revealObserver.observe(node));
 
     const sectionTargets = Array.from(document.querySelectorAll("main section[id]"));
-    window.addEventListener("scroll", () => {
-      let current = "inicio";
-
-      sectionTargets.forEach((section) => {
-        if (window.scrollY >= section.offsetTop - 140) {
-          current = section.id;
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
         }
-      });
 
-      navLinks.forEach((link) => {
-        link.classList.toggle("active", link.getAttribute("href") === "#" + current);
+        navLinks.forEach((link) => {
+          link.classList.toggle("active", link.getAttribute("href") === "#" + entry.target.id);
+        });
       });
+    }, {
+      rootMargin: "-35% 0px -45% 0px",
+      threshold: 0.1
     });
 
+    sectionTargets.forEach((section) => sectionObserver.observe(section));
+
+    bookingDate.min = new Date().toISOString().split("T")[0];
     applyLanguage("es");
   </script>
 </body>

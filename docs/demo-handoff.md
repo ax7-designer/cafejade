@@ -13,6 +13,8 @@ Estado actual del prototipo listo para mostrar.
 - Seleccion de menu y eventos conectada a mensajes de WhatsApp.
 - Boton fijo de WhatsApp.
 - Fotografias reales del sitio en produccion integradas localmente.
+- Enlaces reales de Instagram y Facebook integrados en contacto.
+- Menu ampliado con mas platillos reales del material actual.
 - Estructura preparada para Git y despliegue en Hostinger.
 
 ## Pendiente antes de version final
@@ -20,7 +22,6 @@ Estado actual del prototipo listo para mostrar.
 - Revisar si las fotos actuales necesitan mejora o sustitucion por archivos de mayor resolucion.
 - Confirmar horario oficial.
 - Confirmar si el telefono y el WhatsApp deben ser numeros distintos.
-- Agregar redes sociales reales si se van a mostrar.
 - Revisar el prototipo en navegador real, movil y escritorio.
 
 ## Nota para presentacion
