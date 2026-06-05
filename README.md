@@ -2,6 +2,12 @@
 
 Prototipo web estatico para Cafe Jade Palenque: cafeteria, restaurante y centro cultural de eventos.
 
+## URL de produccion (Netlify)
+
+https://luxury-syrniki-73ec68.netlify.app/
+
+Repositorio GitHub: https://github.com/ax7-designer/cafejade
+
 ## Estado actual
 
 - `index.html`: prototipo principal de una sola pagina.
