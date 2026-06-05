@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Café Jade · Sitio Web Nuevo</title>
+  <meta name="description" content="Cuestionario breve para definir el nuevo sitio web de Café Jade Palenque.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #080808;
+      --s1:       #101010;
+      --s2:       #181818;
+      --border:   #222;
+      --green:    #3a7057;
+      --green-lt: #52a37e;
+      --gold:     #b89650;
+      --text:     #ebebeb;
+      --muted:    #777;
+      --r:        14px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* HEADER */
+    header {
+      padding: 52px 24px 44px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(170deg, #0b1510 0%, var(--bg) 70%);
+    }
+    .eyebrow {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--green-lt);
+      margin-bottom: 18px;
+    }
+    header h1 {
+      font-size: clamp(26px, 7vw, 44px);
+      font-weight: 900;
+      letter-spacing: -.025em;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    header h1 em { font-style: normal; color: var(--gold); }
+    header p {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 380px;
+      margin: 0 auto 26px;
+      line-height: 1.65;
+    }
+    .time-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--s2);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 7px 15px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--gold);
+    }
+
+    /* CONTAINER */
+    .wrap {
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 0 16px 72px;
+    }
+
+    /* DIVIDER */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 36px 0 0;
+    }
+    .divider span {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--green-lt);
+      white-space: nowrap;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* CARD */
+    .card {
+      background: var(--s1);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 24px 20px;
+      margin-top: 16px;
+    }
+    .card h2 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .card .hint {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 18px;
+      line-height: 1.6;
+    }
+
+    /* SECTION ROWS (diagnosis) */
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      gap: 10px;
+    }
+    .row:last-child { border: none; }
+    .row-label { font-size: 13px; color: #ccc; flex: 1; }
+    .tag {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 99px;
+      white-space: nowrap;
+    }
+    .tag-keep   { background: rgba(58,112,87,.2);  color: #6fcfa3; border: 1px solid rgba(58,112,87,.35); }
+    .tag-swap   { background: rgba(184,150,80,.15); color: var(--gold); border: 1px solid rgba(184,150,80,.3); }
+    .tag-remove { background: rgba(180,60,60,.15);  color: #e07070; border: 1px solid rgba(180,60,60,.3); }
+
+    /* SITEMAP */
+    .flow {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .flow-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--s2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+    .flow-n {
+      width: 30px; height: 30px;
+      border-radius: 8px;
+      background: rgba(58,112,87,.18);
+      border: 1px solid rgba(58,112,87,.3);
+      color: var(--green-lt);
+      font-weight: 700; font-size: 13px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .flow-text strong { font-size: 13px; font-weight: 600; display: block; }
+    .flow-text span   { font-size: 11px; color: var(--muted); }
+
+    /* CHOICE BUTTONS */
+    .choices { display: flex; flex-direction: column; gap: 9px; margin-top: 14px; }
+    .choice {
+      display: flex; align-items: flex-start; gap: 12px;
+      background: var(--s2);
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      padding: 13px 14px;
+      cursor: pointer;
+      transition: border-color .15s, background .15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .choice:hover, .choice.on {
+      border-color: var(--green);
+      background: rgba(58,112,87,.07);
+    }
+    .choice-key {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      background: var(--s1);
+      border: 1px solid var(--border);
+      color: var(--gold);
+      font-weight: 800; font-size: 14px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: all .15s;
+    }
+    .choice.on .choice-key {
+      background: var(--green);
+      border-color: var(--green);
+      color: #fff;
+    }
+    .choice-body strong { font-size: 13px; font-weight: 600; display: block; margin-bottom: 2px; }
+    .choice-body small  { font-size: 11px; color: var(--muted); font-style: italic; line-height: 1.5; }
+
+    /* YES / NO */
+    .yn-list { display: flex; flex-direction: column; gap: 8px; margin-top: 14px; }
+    .yn-row {
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 10px;
+      background: var(--s2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+    .yn-row .lbl { font-size: 13px; font-weight: 500; flex: 1; }
+    .yn-row .lbl small { display: block; font-size: 11px; color: var(--muted); font-weight: 400; margin-top: 1px; }
+    .yn-btns { display: flex; gap: 6px; flex-shrink: 0; }
+    .yn-btn {
+      font-size: 11px; font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 7px;
+      border: 1.5px solid var(--border);
+      background: transparent; color: var(--muted);
+      cursor: pointer; transition: all .14s;
+      font-family: 'Outfit', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .yn-btn.s:hover, .yn-btn.s.on { background: rgba(58,112,87,.2);  border-color: var(--green-lt); color: var(--green-lt); }
+    .yn-btn.n:hover, .yn-btn.n.on { background: rgba(180,60,60,.15); border-color: #e07070;         color: #e07070; }
+
+    /* RESULT */
+    #result-wrap { display: none; margin-top: 28px; }
+    .result-box {
+      background: var(--s1);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 22px 18px;
+      margin-bottom: 14px;
+    }
+    .result-box h3 { font-size: 13px; color: var(--gold); margin-bottom: 12px; font-weight: 600; }
+    .result-box pre {
+      font-family: 'Outfit', monospace;
+      font-size: 12px;
+      line-height: 1.9;
+      color: #bbb;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .btn {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px; font-weight: 700;
+      padding: 15px 24px;
+      border-radius: 11px;
+      border: none; cursor: pointer;
+      text-decoration: none;
+      transition: all .18s;
+      width: 100%; margin-bottom: 10px;
+    }
+    .btn-gen  { background: var(--s2); border: 1.5px solid var(--border); color: var(--text); }
+    .btn-gen:hover { border-color: #444; }
+    .btn-wa   { background: #22c55e; color: #fff; }
+    .btn-wa:hover { background: #16a34a; }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Café Jade Palenque · Proyecto Web 2026</div>
+  <h1>Tu nuevo sitio web.<br><em>Decidamos juntos.</em></h1>
+  <p>Sin tecnicismos. Selecciona lo que más te convenza — tu primera reacción suele ser la correcta.</p>
+  <div class="time-pill">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    Menos de 3 minutos
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- DIAGNÓSTICO -->
+  <div class="divider"><span>Diagnóstico del sitio actual</span></div>
+  <div class="card">
+    <h2>¿Qué conservamos de cafejademexico.com?</h2>
+    <p class="hint">Revisamos tu sitio actual. Nuestra recomendación es la siguiente — puedes ajustarla en las preguntas de abajo.</p>
+    <div class="row"><span class="row-label">Inicio / página principal</span><span class="tag tag-keep">Conservar</span></div>
+    <div class="row"><span class="row-label">Menú de platillos y bebidas</span><span class="tag tag-keep">Conservar</span></div>
+    <div class="row"><span class="row-label">Eventos y música en vivo</span><span class="tag tag-keep">Conservar</span></div>
+    <div class="row"><span class="row-label">Contacto y ubicación</span><span class="tag tag-keep">Conservar</span></div>
+    <div class="row"><span class="row-label">Tienda / pedidos en línea</span><span class="tag tag-swap">Convertir en botón de acción</span></div>
+    <div class="row"><span class="row-label">Bolsa de trabajo + login interno</span><span class="tag tag-remove">Quitar</span></div>
+  </div>
+
+  <!-- ESTRUCTURA PROPUESTA -->
+  <div class="divider"><span>Estructura propuesta</span></div>
+  <div class="card">
+    <h2>5 secciones, una historia clara</h2>
+    <p class="hint">Así fluiría el recorrido de quien visita tu sitio:</p>
+    <div class="flow">
+      <div class="flow-item"><div class="flow-n">1</div><div class="flow-text"><strong>Inicio</strong><span>Primera impresión · foto principal · llamada a la acción</span></div></div>
+      <div class="flow-item"><div class="flow-n">2</div><div class="flow-text"><strong>Menú</strong><span>Galería de platillos, cafés y bebidas · táctil y visual</span></div></div>
+      <div class="flow-item"><div class="flow-n">3</div><div class="flow-text"><strong>Nuestra Historia</strong><span>Quiénes son · el ambiente · los valores del café</span></div></div>
+      <div class="flow-item"><div class="flow-n">4</div><div class="flow-text"><strong>Eventos</strong><span>Música en vivo · reservaciones · eventos privados</span></div></div>
+      <div class="flow-item"><div class="flow-n">5</div><div class="flow-text"><strong>Contacto</strong><span>Mapa · WhatsApp · horario · redes sociales</span></div></div>
+    </div>
+  </div>
+
+  <!-- P1 ESTILO -->
+  <div class="divider"><span>Pregunta 1 — Apariencia</span></div>
+  <div class="card">
+    <h2>¿Cómo quieres que se vea el sitio?</h2>
+    <p class="hint">Elige la dirección visual que más te represente. No es definitivo — es una guía para empezar.</p>
+    <div class="choices" id="q1">
+      <div class="choice" onclick="pick(this,'q1','A')">
+        <div class="choice-key">A</div>
+        <div class="choice-body">
+          <strong>Oscuro y elegante</strong>
+          <small>Fondos negros, iluminación cálida. Sofisticado, como una experiencia nocturna en La Cañada.</small>
+        </div>
+      </div>
+      <div class="choice" onclick="pick(this,'q1','B')">
+        <div class="choice-key">B</div>
+        <div class="choice-body">
+          <strong>Natural y fresco</strong>
+          <small>Verdes, blancos y luz natural. Acogedor, tropical, lleno de vida.</small>
+        </div>
+      </div>
+      <div class="choice" onclick="pick(this,'q1','C')">
+        <div class="choice-key">C</div>
+        <div class="choice-body">
+          <strong>Colorido y mexicano</strong>
+          <small>Verde jade, terracota, dorado. Con personalidad chiapaneca y carácter propio.</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- P2 TONO -->
+  <div class="divider"><span>Pregunta 2 — Voz del café</span></div>
+  <div class="card">
+    <h2>¿Cómo habla Café Jade?</h2>
+    <p class="hint">El texto del sitio debe sonar como el café mismo. ¿Cuál de estas frases se siente más tuya?</p>
+    <div class="choices" id="q2">
+      <div class="choice" onclick="pick(this,'q2','A')">
+        <div class="choice-key">A</div>
+        <div class="choice-body">
+          <strong>Cálido y cercano</strong>
+          <small>"Ven a descubrir sabores que te harán sentir en casa."</small>
+        </div>
+      </div>
+      <div class="choice" onclick="pick(this,'q2','B')">
+        <div class="choice-key">B</div>
+        <div class="choice-body">
+          <strong>Sofisticado y cuidado</strong>
+          <small>"Una experiencia gastronómica que va más allá de lo ordinario."</small>
+        </div>
+      </div>
+      <div class="choice" onclick="pick(this,'q2','C')">
+        <div class="choice-key">C</div>
+        <div class="choice-body">
+          <strong>Directo y sin rodeos</strong>
+          <small>"Desayunos, comidas y cenas en Palenque. Reserva tu mesa hoy."</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- P3 FOTOS -->
+  <div class="divider"><span>Pregunta 3 — Fotografías</span></div>
+  <div class="card">
+    <h2>¿Tienes fotos del café listas para usar?</h2>
+    <p class="hint">El contenido fotográfico define cuándo podemos arrancar con el diseño visual.</p>
+    <div class="choices" id="q3">
+      <div class="choice" onclick="pick(this,'q3','A')">
+        <div class="choice-key">A</div>
+        <div class="choice-body">
+          <strong>Sí, tengo varias y de buena calidad</strong>
+          <small>Fotos del ambiente, platillos y equipo — listas para usarse.</small>
+        </div>
+      </div>
+      <div class="choice" onclick="pick(this,'q3','B')">
+        <div class="choice-key">B</div>
+        <div class="choice-body">
+          <strong>Tengo algunas, no sé si son suficientes</strong>
+          <small>Las comparto y las revisamos juntos antes de continuar.</small>
+        </div>
+      </div>
+      <div class="choice" onclick="pick(this,'q3','C')">
+        <div class="choice-key">C</div>
+        <div class="choice-body">
+          <strong>Todavía no tenemos</strong>
+          <small>Arrancamos con imágenes de referencia y las sustituimos después.</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- P4 EXTRAS -->
+  <div class="divider"><span>Pregunta 4 — Funciones adicionales</span></div>
+  <div class="card">
+    <h2>¿Qué más necesita el sitio?</h2>
+    <p class="hint">Marca las opciones que apliquen — sin comprometerte a nada todavía.</p>
+    <div class="yn-list">
+      <div class="yn-row" id="e1">
+        <div class="lbl">Botón de WhatsApp fijo en pantalla<small>Para que los clientes te escriban sin buscar el número</small></div>
+        <div class="yn-btns"><button class="yn-btn s" onclick="tog('e1','s')">Sí</button><button class="yn-btn n" onclick="tog('e1','n')">No</button></div>
+      </div>
+      <div class="yn-row" id="e2">
+        <div class="lbl">Versión en inglés<small>Para turistas internacionales que visitan Palenque</small></div>
+        <div class="yn-btns"><button class="yn-btn s" onclick="tog('e2','s')">Sí</button><button class="yn-btn n" onclick="tog('e2','n')">No</button></div>
+      </div>
+      <div class="yn-row" id="e3">
+        <div class="lbl">Pedidos en línea integrados<small>Sistema de órdenes directamente desde el sitio</small></div>
+        <div class="yn-btns"><button class="yn-btn s" onclick="tog('e3','s')">Sí</button><button class="yn-btn n" onclick="tog('e3','n')">No</button></div>
+      </div>
+      <div class="yn-row" id="e4">
+        <div class="lbl">Calendario de reservaciones<small>Para eventos privados, mesas o experiencias especiales</small></div>
+        <div class="yn-btns"><button class="yn-btn s" onclick="tog('e4','s')">Sí</button><button class="yn-btn n" onclick="tog('e4','n')">No</button></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GENERAR RESULTADO -->
+  <div style="margin-top:28px;">
+    <div id="result-wrap">
+      <div class="result-box">
+        <h3>Tu resumen — copia y envía por WhatsApp:</h3>
+        <pre id="result-text"></pre>
+      </div>
+      <a id="wa-btn" class="btn btn-wa" href="#" target="_blank">
+        ↗ Enviar resumen por WhatsApp
+      </a>
+    </div>
+    <button class="btn btn-gen" onclick="generate()">Generar mi resumen</button>
+  </div>
+
+</div>
+
+<footer>Café Jade Palenque · Cuestionario de Proyecto · Mayo 2026</footer>
+
+<script>
+  const ans = { q1:null, q2:null, q3:null, e1:null, e2:null, e3:null, e4:null };
+
+  function pick(el, grp, val) {
+    document.querySelectorAll('#'+grp+' .choice').forEach(c => c.classList.remove('on'));
+    el.classList.add('on');
+    ans[grp] = val;
+  }
+
+  function tog(id, val) {
+    const row = document.getElementById(id);
+    row.querySelectorAll('.yn-btn').forEach(b => b.classList.remove('on'));
+    row.querySelector('.yn-btn.'+val).classList.add('on');
+    ans[id] = val === 's' ? 'Sí' : 'No';
+  }
+
+  const q1l = { A:'Oscuro y elegante', B:'Natural y fresco', C:'Colorido y mexicano' };
+  const q2l = { A:'Cálido y cercano',  B:'Sofisticado',       C:'Directo y sin rodeos' };
+  const q3l = { A:'Sí, listos',        B:'Algunos, revisar',  C:'No tenemos aún' };
+
+  function generate() {
+    const text = [
+      'Café Jade · Respuestas del Brief',
+      '─────────────────────',
+      '1. Apariencia:      ' + (q1l[ans.q1] || 'Sin respuesta'),
+      '2. Tono de voz:     ' + (q2l[ans.q2] || 'Sin respuesta'),
+      '3. Fotografías:     ' + (q3l[ans.q3] || 'Sin respuesta'),
+      '',
+      'Funciones adicionales:',
+      '  WhatsApp fijo:     ' + (ans.e1 || '—'),
+      '  Versión inglés:    ' + (ans.e2 || '—'),
+      '  Pedidos en línea:  ' + (ans.e3 || '—'),
+      '  Reservaciones:     ' + (ans.e4 || '—'),
+      '',
+      'Estructura aprobada: Inicio → Menú → Historia → Eventos → Contacto',
+    ].join('\n');
+
+    document.getElementById('result-text').textContent = text;
+    document.getElementById('result-wrap').style.display = 'block';
+    document.getElementById('result-wrap').scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('wa-btn').href = 'https://wa.me/?text=' + encodeURIComponent(text);
+    try { navigator.clipboard.writeText(text); } catch(e) {}
+  }
+</script>
+</body>
+</html>

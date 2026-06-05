@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "locofy": {
+      "command": "npx",
+      "args": ["-y", "@locofy/mcp@latest"],
+      "env": {
+        "PERSONAL_ACCESS_TOKEN": "SET_LOCOFY_PERSONAL_ACCESS_TOKEN_LOCALLY",
+        "PROJECT_ID": "SET_LOCOFY_PROJECT_ID_LOCALLY",
+        "IDE_SOURCE": "gemini_cli"
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+.gemini/settings.json
+
+# Dependencies and generated output
+node_modules/
+dist/
+build/
+.cache/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+*.log
+
