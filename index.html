@@ -41,6 +41,20 @@
       --container: 1180px;
       --font-body: "Inter", sans-serif;
       --font-display: "Playfair Display", Georgia, serif;
+
+      /* Editor adjustable variables */
+      --hero-bg-pos-x: 50%;
+      --hero-bg-pos-y: 50%;
+      --story-bg-pos-x: 50%;
+      --story-bg-pos-y: 50%;
+      --font-letter-spacing-display: -0.015em;
+      --font-letter-spacing-eyebrow: 0.12em;
+      --glass-bg-opacity: 0.9;
+      --glass-blur: 16px;
+      --card-padding: 1.35rem;
+      --section-padding: 3.5rem;
+      --hero-bg-image: url("assets/images/hero/cafe-jade-portada.jpg");
+      --story-bg-image: url("assets/images/events/cafe-jade-ambiance.jpg");
     }
 
     * {
@@ -102,8 +116,8 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      backdrop-filter: blur(16px);
-      background: rgba(23, 50, 41, 0.9);
+      backdrop-filter: blur(var(--glass-blur));
+      background: rgba(23, 50, 41, var(--glass-bg-opacity));
       border-bottom: 1px solid rgba(255, 250, 244, 0.12);
       color: #fff;
     }
@@ -147,7 +161,7 @@
     .booking-panel h3 {
       font-family: var(--font-display);
       font-weight: 600;
-      letter-spacing: -0.015em;
+      letter-spacing: var(--font-letter-spacing-display);
     }
 
     .brand-copy {
@@ -406,7 +420,7 @@
       color: #fff;
       background:
         linear-gradient(115deg, rgba(15, 27, 23, 0.88) 10%, rgba(15, 27, 23, 0.56) 58%, rgba(15, 27, 23, 0.26) 100%),
-        url("assets/images/hero/cafe-jade-portada.jpg") center/cover;
+        var(--hero-bg-image) var(--hero-bg-pos-x) var(--hero-bg-pos-y)/cover;
     }
 
     .hero-grid {
@@ -427,7 +441,7 @@
       margin-bottom: 1rem;
       color: var(--terracotta-700);
       text-transform: uppercase;
-      letter-spacing: 0.12em;
+      letter-spacing: var(--font-letter-spacing-eyebrow);
       font-size: 0.72rem;
       font-weight: 700;
     }
@@ -533,13 +547,13 @@
     }
 
     .section {
-      padding: 3.5rem 0;
+      padding: var(--section-padding) 0;
     }
 
     .section-alt {
       background:
         linear-gradient(180deg, rgba(255, 250, 244, 0.75), rgba(255, 250, 244, 0.95)),
-        url("assets/images/events/cafe-jade-ambiance.jpg") center/cover fixed;
+        var(--story-bg-image) var(--story-bg-pos-x) var(--story-bg-pos-y)/cover fixed;
     }
 
     .section-heading {
@@ -574,7 +588,8 @@
     .contact-card,
     .story-card,
     .booking-panel {
-      background: var(--paper);
+      background: rgba(255, 250, 244, var(--glass-bg-opacity));
+      backdrop-filter: blur(var(--glass-blur));
       border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
@@ -618,7 +633,7 @@
     .contact-card,
     .story-copy,
     .booking-panel {
-      padding: 1.35rem;
+      padding: var(--card-padding);
     }
 
     .menu-meta {
@@ -1096,6 +1111,290 @@
         font-size: 5.9rem;
       }
     }
+
+    /* Visual Editor Panel CSS (Dev Environment only) */
+    #cjed-panel {
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      width: 400px;
+      max-height: calc(100vh - 120px);
+      background: rgba(11, 19, 16, 0.96);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border: 1px solid rgba(234, 214, 166, 0.15);
+      border-radius: 12px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 80px rgba(63, 115, 93, 0.2);
+      color: #f8f2e8;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      z-index: 99999;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+      transform: translateX(450px);
+      opacity: 0;
+    }
+    #cjed-panel.is-open {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    .cjed-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid rgba(234, 214, 166, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(23, 50, 41, 0.3);
+    }
+    .cjed-header h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 18px;
+      color: #ead6a6;
+      margin: 0;
+      letter-spacing: normal;
+    }
+    .cjed-close {
+      background: none;
+      border: none;
+      color: #ead6a6;
+      font-size: 24px;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .cjed-close:hover {
+      opacity: 1;
+    }
+    .cjed-tabs {
+      display: flex;
+      background: rgba(0, 0, 0, 0.2);
+      border-bottom: 1px solid rgba(234, 214, 166, 0.1);
+    }
+    .cjed-tab-btn {
+      flex: 1;
+      padding: 12px 8px;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: #ead6a6;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      opacity: 0.6;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    .cjed-tab-btn:hover {
+      opacity: 0.9;
+    }
+    .cjed-tab-btn.active {
+      opacity: 1;
+      border-bottom-color: #d0a65d;
+      background: rgba(234, 214, 166, 0.05);
+    }
+    .cjed-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+    }
+    .cjed-content::-webkit-scrollbar {
+      width: 6px;
+    }
+    .cjed-content::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.1);
+    }
+    .cjed-content::-webkit-scrollbar-thumb {
+      background: rgba(234, 214, 166, 0.2);
+      border-radius: 3px;
+    }
+    .cjed-content::-webkit-scrollbar-thumb:hover {
+      background: rgba(234, 214, 166, 0.4);
+    }
+    .cjed-tab-pane {
+      display: none;
+    }
+    .cjed-tab-pane.active {
+      display: block;
+    }
+    .cjed-group {
+      margin-bottom: 24px;
+    }
+    .cjed-group h4 {
+      font-family: 'Playfair Display', Georgia, serif;
+      color: #ead6a6;
+      font-size: 15px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid rgba(234, 214, 166, 0.05);
+      padding-bottom: 6px;
+      letter-spacing: normal;
+    }
+    .cjed-field {
+      margin-bottom: 16px;
+    }
+    .cjed-field label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 500;
+      color: #f8f2e8;
+    }
+    .cjed-field label span {
+      font-size: 11px;
+      color: rgba(234, 214, 166, 0.6);
+      font-family: monospace;
+    }
+    .cjed-slider-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .cjed-slider-container input[type="range"] {
+      flex: 1;
+      accent-color: #d0a65d;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      outline: none;
+      cursor: pointer;
+    }
+    .cjed-value {
+      min-width: 60px;
+      text-align: right;
+      font-family: monospace;
+      color: #ead6a6;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+    .cjed-images-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .cjed-image-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    }
+    .cjed-image-row label {
+      font-weight: 500;
+      color: #f8f2e8;
+      font-size: 13px;
+    }
+    .cjed-image-row-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .cjed-image-select {
+      flex: 1;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(234, 214, 166, 0.2);
+      border-radius: 6px;
+      color: #f8f2e8;
+      padding: 8px 10px;
+      font-size: 13px;
+      outline: none;
+      cursor: pointer;
+    }
+    .cjed-image-select:focus {
+      border-color: #d0a65d;
+    }
+    .cjed-image-preview {
+      width: 44px;
+      height: 44px;
+      border-radius: 6px;
+      background-size: cover;
+      background-position: center;
+      border: 1px solid rgba(234, 214, 166, 0.3);
+      background-color: rgba(0,0,0,0.5);
+      flex-shrink: 0;
+    }
+    .cjed-footer {
+      padding: 16px 20px;
+      border-top: 1px solid rgba(234, 214, 166, 0.1);
+      background: rgba(23, 50, 41, 0.3);
+      display: flex;
+      gap: 12px;
+    }
+    .cjed-save-btn {
+      flex: 1;
+      background: #d0a65d;
+      color: #173229;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s, transform 0.1s;
+      text-align: center;
+    }
+    .cjed-save-btn:hover {
+      background: #ead6a6;
+    }
+    .cjed-save-btn:active {
+      transform: scale(0.98);
+    }
+    .cjed-save-btn.saving {
+      background: rgba(234, 214, 166, 0.3);
+      color: rgba(255, 255, 255, 0.5);
+      cursor: not-allowed;
+    }
+    #cjed-toggle {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      width: 56px;
+      height: 56px;
+      background: #173229;
+      color: #ead6a6;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4), 0 0 15px rgba(208, 166, 93, 0.2);
+      cursor: pointer;
+      z-index: 99998;
+      border: 1px solid rgba(234, 214, 166, 0.3);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s, border-color 0.3s;
+    }
+    #cjed-toggle:hover {
+      transform: scale(1.08) rotate(45deg);
+      background: #265241;
+      border-color: #ead6a6;
+    }
+    .cjed-toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translate(-50%, 50px);
+      opacity: 0;
+      background: rgba(23, 50, 41, 0.95);
+      backdrop-filter: blur(10px);
+      border: 1px solid #d0a65d;
+      color: #f8f2e8;
+      padding: 12px 24px;
+      border-radius: 8px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      z-index: 100000;
+      pointer-events: none;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .cjed-toast.show {
+      transform: translate(-50%, 0);
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
@@ -1276,7 +1575,7 @@
           <!-- Bebidas -->
           <article class="menu-card reveal" data-category="bebidas">
             <figure>
-              <img loading="lazy" src="assets/images/menu/cafe-olla.jpg" alt="Café de Olla Tradicional de Cafe Jade">
+              <img id="img-menu-0" loading="lazy" src="assets/images/menu/cafe-olla.jpg" alt="Café de Olla Tradicional de Cafe Jade">
             </figure>
             <div class="menu-body">
               <div class="menu-meta">
@@ -1295,7 +1594,7 @@
 
           <article class="menu-card reveal" data-category="bebidas">
             <figure>
-              <img loading="lazy" src="assets/images/menu/frappe-jade.jpg" alt="Café Frappé de la Casa en Cafe Jade">
+              <img id="img-menu-1" loading="lazy" src="assets/images/menu/frappe-jade.jpg" alt="Café Frappé de la Casa en Cafe Jade">
             </figure>
             <div class="menu-body">
               <div class="menu-meta">
@@ -1314,7 +1613,7 @@
 
           <article class="menu-card reveal" data-category="bebidas">
             <figure>
-              <img loading="lazy" src="assets/images/menu/mojito.jpg" alt="Mojito refrescante en Cafe Jade">
+              <img id="img-menu-2" loading="lazy" src="assets/images/menu/mojito.jpg" alt="Mojito refrescante en Cafe Jade">
             </figure>
             <div class="menu-body">
               <div class="menu-meta">
@@ -1333,7 +1632,7 @@
 
           <article class="menu-card reveal" data-category="bebidas">
             <figure>
-              <img loading="lazy" src="assets/images/menu/coctel-citrico.jpg" alt="Cóctel Cítrico de Autor en Cafe Jade">
+              <img id="img-menu-3" loading="lazy" src="assets/images/menu/coctel-citrico.jpg" alt="Cóctel Cítrico de Autor en Cafe Jade">
             </figure>
             <div class="menu-body">
               <div class="menu-meta">
@@ -1353,7 +1652,7 @@
           <!-- Comida -->
           <article class="menu-card reveal" data-category="comida">
             <figure>
-              <img loading="lazy" src="assets/images/menu/hamburguesa-regional.jpg" alt="Hamburguesa Regional de Cafe Jade">
+              <img id="img-menu-4" loading="lazy" src="assets/images/menu/hamburguesa-regional.jpg" alt="Hamburguesa Regional de Cafe Jade">
             </figure>
             <div class="menu-body">
               <div class="menu-meta">
@@ -1372,7 +1671,7 @@
 
           <article class="menu-card reveal" data-category="comida">
             <figure>
-              <img loading="lazy" src="assets/images/menu/tacos-cochinita.jpg" alt="Tacos de Cochinita Pibil en Cafe Jade">
+              <img id="img-menu-5" loading="lazy" src="assets/images/menu/tacos-cochinita.jpg" alt="Tacos de Cochinita Pibil en Cafe Jade">
             </figure>
             <div class="menu-body">
               <div class="menu-meta">
@@ -1391,7 +1690,7 @@
 
           <article class="menu-card reveal" data-category="comida">
             <figure>
-              <img loading="lazy" src="assets/images/menu/chilaquiles-verdes.jpg" alt="Chilaquiles Verdes con Pollo en Cafe Jade">
+              <img id="img-menu-6" loading="lazy" src="assets/images/menu/chilaquiles-verdes.jpg" alt="Chilaquiles Verdes con Pollo en Cafe Jade">
             </figure>
             <div class="menu-body">
               <div class="menu-meta">
@@ -1410,7 +1709,7 @@
 
           <article class="menu-card reveal" data-category="comida">
             <figure>
-              <img loading="lazy" src="assets/images/menu/ceviche-casa.jpg" alt="Ceviche de la Casa en Cafe Jade">
+              <img id="img-menu-7" loading="lazy" src="assets/images/menu/ceviche-casa.jpg" alt="Ceviche de la Casa en Cafe Jade">
             </figure>
             <div class="menu-body">
               <div class="menu-meta">
@@ -1430,7 +1729,7 @@
           <!-- Postres -->
           <article class="menu-card reveal" data-category="postres">
             <figure>
-              <img loading="lazy" src="assets/images/menu/helado.jpg" alt="Copa de Helado Artesanal en Cafe Jade">
+              <img id="img-menu-8" loading="lazy" src="assets/images/menu/helado.jpg" alt="Copa de Helado Artesanal en Cafe Jade">
             </figure>
             <div class="menu-body">
               <div class="menu-meta">
@@ -1454,7 +1753,7 @@
       <div class="container story-layout">
         <article class="story-card reveal">
           <figure>
-            <img loading="lazy" src="assets/images/events/cafe-jade-ambiance.jpg" alt="Cálida atmósfera del comedor interior de Cafe Jade">
+            <img id="img-story" loading="lazy" src="assets/images/events/cafe-jade-ambiance.jpg" alt="Cálida atmósfera del comedor interior de Cafe Jade">
           </figure>
         </article>
 
@@ -1511,7 +1810,7 @@
         <div class="event-grid">
           <article class="event-card reveal" data-event-es="Catas de Café Chiapaneco" data-event-en="Chiapan Coffee Tastings" tabindex="0" role="button" aria-pressed="false">
             <figure>
-              <img loading="lazy" src="assets/images/events/degustacion.jpg" alt="Muestras de bebidas y café en Cafe Jade">
+              <img id="img-event-0" loading="lazy" src="assets/images/events/degustacion.jpg" alt="Muestras de bebidas y café en Cafe Jade">
             </figure>
             <div class="event-copy">
               <div class="event-date" data-i18n-es="Por agenda" data-i18n-en="By schedule">Por agenda</div>
@@ -1527,7 +1826,7 @@
 
           <article class="event-card reveal" data-event-es="Noche Acústica bajo la Selva" data-event-en="Acoustic Night under the Jungle Sky" tabindex="0" role="button" aria-pressed="false">
             <figure>
-              <img loading="lazy" src="assets/images/events/musica-envivo.jpg" alt="Luz de neón de Cafe Jade por la noche">
+              <img id="img-event-1" loading="lazy" src="assets/images/events/musica-envivo.jpg" alt="Luz de neón de Cafe Jade por la noche">
             </figure>
             <div class="event-copy">
               <div class="event-date" data-i18n-es="Consulta cartelera" data-i18n-en="Check lineup">Consulta cartelera</div>
@@ -1543,7 +1842,7 @@
 
           <article class="event-card reveal" data-event-es="Eventos y Reservas de Grupos" data-event-en="Group Events & Private Booking" tabindex="0" role="button" aria-pressed="false">
             <figure>
-              <img loading="lazy" src="assets/images/events/evento-privado.jpg" alt="Detalle de mesa y ambiente acogedor en Cafe Jade">
+              <img id="img-event-2" loading="lazy" src="assets/images/events/evento-privado.jpg" alt="Detalle de mesa y ambiente acogedor en Cafe Jade">
             </figure>
             <div class="event-copy">
               <div class="event-date" data-i18n-es="Fecha a elegir" data-i18n-en="Date on request">Fecha a elegir</div>
@@ -1923,6 +2222,410 @@
 
     bookingDate.min = new Date().toISOString().split("T")[0];
     applyLanguage("es");
+  </script>
+
+  <!-- Visual Editor Script (Only runs in local dev) -->
+  <script>
+    (function() {
+      // Check if running locally
+      const isLocal = window.location.hostname === "localhost" || 
+                      window.location.hostname === "127.0.0.1" || 
+                      window.location.port !== "";
+      
+      if (!isLocal) {
+        return; // Exit and do not expose editor in production
+      }
+      
+      const ALL_IMAGES = [
+        "01.jpg", "02.jpg", "_mg_9539.jpg", "dji_20250217185011_0004_d.jpg",
+        "hamburguesa regional.jpg", "img_2030-2-2.jpg", "img_2684.jpg", "img_2698-2.jpg",
+        "img_2756.jpg", "img_2774-2.jpg", "img_2792.jpg", "img_2838.jpg",
+        "img_2926.jpg", "img_2958.jpg", "img_3059.jpg", "img_4093.jpg",
+        "img_4107.jpg", "img_4110.jpg", "img_4128.jpg", "img_4134.jpg",
+        "img_4136.jpg", "img_4158.jpg", "img_4185.jpg", "img_4202.jpg",
+        "img_4230.jpg", "img_4316.jpg", "img_4321.jpg", "img_4365-2.jpg",
+        "img_6878.jpg", "img_9616.jpg"
+      ];
+
+      const EDITABLE_IMAGES = [
+        { id: "hero-bg", label: "Hero Portada (Fondo)", type: "bg-css", varName: "--hero-bg-image", defaultVal: "assets/images/hero/cafe-jade-portada.jpg" },
+        { id: "story-bg", label: "Story (Fondo)", type: "bg-css", varName: "--story-bg-image", defaultVal: "assets/images/events/cafe-jade-ambiance.jpg" },
+        { id: "img-story", label: "Atmósfera Principal (Story)", type: "img-tag", defaultVal: "assets/images/events/cafe-jade-ambiance.jpg" },
+        { id: "img-menu-0", label: "Menú 0 - Café de Olla", type: "img-tag", defaultVal: "assets/images/menu/cafe-olla.jpg" },
+        { id: "img-menu-1", label: "Menú 1 - Café Frappé", type: "img-tag", defaultVal: "assets/images/menu/frappe-jade.jpg" },
+        { id: "img-menu-2", label: "Menú 2 - Mojito", type: "img-tag", defaultVal: "assets/images/menu/mojito.jpg" },
+        { id: "img-menu-3", label: "Menú 3 - Cóctel Cítrico", type: "img-tag", defaultVal: "assets/images/menu/coctel-citrico.jpg" },
+        { id: "img-menu-4", label: "Menú 4 - Hamburguesa Regional", type: "img-tag", defaultVal: "assets/images/menu/hamburguesa-regional.jpg" },
+        { id: "img-menu-5", label: "Menú 5 - Tacos de Cochinita", type: "img-tag", defaultVal: "assets/images/menu/tacos-cochinita.jpg" },
+        { id: "img-menu-6", label: "Menú 6 - Chilaquiles Verdes", type: "img-tag", defaultVal: "assets/images/menu/chilaquiles-verdes.jpg" },
+        { id: "img-menu-7", label: "Menú 7 - Ceviche de la Casa", type: "img-tag", defaultVal: "assets/images/menu/ceviche-casa.jpg" },
+        { id: "img-menu-8", label: "Menú 8 - Copa de Helado", type: "img-tag", defaultVal: "assets/images/menu/helado.jpg" },
+        { id: "img-event-0", label: "Evento 0 - Degustación", type: "img-tag", defaultVal: "assets/images/events/degustacion.jpg" },
+        { id: "img-event-1", label: "Evento 1 - Música en Vivo", type: "img-tag", defaultVal: "assets/images/events/musica-envivo.jpg" },
+        { id: "img-event-2", label: "Evento 2 - Evento Privado", type: "img-tag", defaultVal: "assets/images/events/evento-privado.jpg" }
+      ];
+
+      // Inject HTML components
+      const toastEl = document.createElement("div");
+      toastEl.className = "cjed-toast";
+      toastEl.id = "cjed-toast";
+      toastEl.innerHTML = `<span>✓</span> <span id="cjed-toast-msg">Cambios guardados con éxito.</span>`;
+      document.body.appendChild(toastEl);
+
+      const panelHTML = `
+        <div id="cjed-panel">
+          <div class="cjed-header">
+            <h3>Editor Visual</h3>
+            <button class="cjed-close" id="cjed-close-btn">&times;</button>
+          </div>
+          <div class="cjed-tabs">
+            <button class="cjed-tab-btn active" data-tab="cjed-tab-design">Diseño & Fondos</button>
+            <button class="cjed-tab-btn" data-tab="cjed-tab-typography">Tipografía</button>
+            <button class="cjed-tab-btn" data-tab="cjed-tab-images">Imágenes</button>
+          </div>
+          <div class="cjed-content">
+            <!-- Design Tab -->
+            <div class="cjed-tab-pane active" id="cjed-tab-design">
+              <div class="cjed-group">
+                <h4>Efectos Glassmorphism</h4>
+                <div class="cjed-field">
+                  <label>Opacidad de fondo <span>(--glass-bg-opacity)</span></label>
+                  <div class="cjed-slider-container">
+                    <input type="range" data-var="--glass-bg-opacity" min="0.1" max="1" step="0.01">
+                    <span class="cjed-value">0.9</span>
+                  </div>
+                </div>
+                <div class="cjed-field">
+                  <label>Desenfoque blur <span>(--glass-blur)</span></label>
+                  <div class="cjed-slider-container">
+                    <input type="range" data-var="--glass-blur" min="0" max="40" step="1" data-unit="px">
+                    <span class="cjed-value">16px</span>
+                  </div>
+                </div>
+              </div>
+              <div class="cjed-group">
+                <h4>Espaciados y Márgenes</h4>
+                <div class="cjed-field">
+                  <label>Padding de tarjetas <span>(--card-padding)</span></label>
+                  <div class="cjed-slider-container">
+                    <input type="range" data-var="--card-padding" min="0.5" max="3.5" step="0.05" data-unit="rem">
+                    <span class="cjed-value">1.35rem</span>
+                  </div>
+                </div>
+                <div class="cjed-field">
+                  <label>Padding de secciones <span>(--section-padding)</span></label>
+                  <div class="cjed-slider-container">
+                    <input type="range" data-var="--section-padding" min="1" max="8" step="0.1" data-unit="rem">
+                    <span class="cjed-value">3.5rem</span>
+                  </div>
+                </div>
+              </div>
+              <div class="cjed-group">
+                <h4>Alineación Fondos (X / Y)</h4>
+                <div class="cjed-field">
+                  <label>Hero Background X</label>
+                  <div class="cjed-slider-container">
+                    <input type="range" data-var="--hero-bg-pos-x" min="0" max="100" step="1" data-unit="%">
+                    <span class="cjed-value">50%</span>
+                  </div>
+                </div>
+                <div class="cjed-field">
+                  <label>Hero Background Y</label>
+                  <div class="cjed-slider-container">
+                    <input type="range" data-var="--hero-bg-pos-y" min="0" max="100" step="1" data-unit="%">
+                    <span class="cjed-value">50%</span>
+                  </div>
+                </div>
+                <div class="cjed-field">
+                  <label>Story Background X</label>
+                  <div class="cjed-slider-container">
+                    <input type="range" data-var="--story-bg-pos-x" min="0" max="100" step="1" data-unit="%">
+                    <span class="cjed-value">50%</span>
+                  </div>
+                </div>
+                <div class="cjed-field">
+                  <label>Story Background Y</label>
+                  <div class="cjed-slider-container">
+                    <input type="range" data-var="--story-bg-pos-y" min="0" max="100" step="1" data-unit="%">
+                    <span class="cjed-value">50%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Typography Tab -->
+            <div class="cjed-tab-pane" id="cjed-tab-typography">
+              <div class="cjed-group">
+                <h4>Interletrado (Letter Spacing)</h4>
+                <div class="cjed-field">
+                  <label>Títulos Principales <span>(--font-letter-spacing-display)</span></label>
+                  <div class="cjed-slider-container">
+                    <input type="range" data-var="--font-letter-spacing-display" min="-0.05" max="0.1" step="0.005" data-unit="em">
+                    <span class="cjed-value">-0.015em</span>
+                  </div>
+                </div>
+                <div class="cjed-field">
+                  <label>Eyebrows (Sobre-títulos) <span>(--font-letter-spacing-eyebrow)</span></label>
+                  <div class="cjed-slider-container">
+                    <input type="range" data-var="--font-letter-spacing-eyebrow" min="0.02" max="0.30" step="0.01" data-unit="em">
+                    <span class="cjed-value">0.12em</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Images Tab -->
+            <div class="cjed-tab-pane" id="cjed-tab-images">
+              <div class="cjed-images-list" id="cjed-images-container">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+          </div>
+          <div class="cjed-footer">
+            <button class="cjed-save-btn" id="cjed-save-btn">Guardar Cambios</button>
+          </div>
+        </div>
+
+        <button id="cjed-toggle" title="Toggle Visual Editor (Ctrl+Shift+E)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+        </button>
+      `;
+
+      const container = document.createElement("div");
+      container.innerHTML = panelHTML;
+      document.body.appendChild(container);
+
+      const panel = document.getElementById("cjed-panel");
+      const toggleBtn = document.getElementById("cjed-toggle");
+      const closeBtn = document.getElementById("cjed-close-btn");
+      const saveBtn = document.getElementById("cjed-save-btn");
+      const toast = document.getElementById("cjed-toast");
+      const toastMsg = document.getElementById("cjed-toast-msg");
+      const tabButtons = document.querySelectorAll(".cjed-tab-btn");
+      const tabPanes = document.querySelectorAll(".cjed-tab-pane");
+
+      // Handle panel toggling
+      function togglePanel() {
+        panel.classList.toggle("is-open");
+      }
+      toggleBtn.addEventListener("click", togglePanel);
+      closeBtn.addEventListener("click", () => panel.classList.remove("is-open"));
+
+      // Keyboard shortcut Ctrl+Shift+E
+      window.addEventListener("keydown", (e) => {
+        if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "e") {
+          e.preventDefault();
+          togglePanel();
+        }
+      });
+
+      // Handle tab switching
+      tabButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          tabButtons.forEach(b => b.classList.remove("active"));
+          tabPanes.forEach(p => p.classList.remove("active"));
+          btn.classList.add("active");
+          document.getElementById(btn.dataset.tab).classList.add("active");
+        });
+      });
+
+      // Get current CSS variable values and initialize range sliders
+      const rootStyles = getComputedStyle(document.documentElement);
+      const sliders = panel.querySelectorAll("input[type='range']");
+      
+      sliders.forEach(slider => {
+        const varName = slider.dataset.var;
+        const unit = slider.dataset.unit || "";
+        let currentVal = rootStyles.getPropertyValue(varName).trim();
+        
+        // Extract raw number value for the slider
+        let rawNum = parseFloat(currentVal);
+        if (isNaN(rawNum)) {
+          rawNum = 0;
+        }
+        
+        slider.value = rawNum;
+        const valDisplay = slider.nextElementSibling;
+        if (valDisplay) {
+          valDisplay.textContent = currentVal;
+        }
+
+        // Apply changes in real-time
+        slider.addEventListener("input", () => {
+          const valWithUnit = slider.value + unit;
+          document.documentElement.style.setProperty(varName, valWithUnit);
+          if (valDisplay) {
+            valDisplay.textContent = valWithUnit;
+          }
+        });
+      });
+
+      // Populate editable images tab dynamically
+      const imagesContainer = document.getElementById("cjed-images-container");
+      
+      EDITABLE_IMAGES.forEach(img => {
+        const row = document.createElement("div");
+        row.className = "cjed-image-row";
+        
+        const label = document.createElement("label");
+        label.textContent = img.label;
+        row.appendChild(label);
+        
+        const controls = document.createElement("div");
+        controls.className = "cjed-image-row-controls";
+        
+        const select = document.createElement("select");
+        select.className = "cjed-image-select";
+        select.dataset.id = img.id;
+        select.dataset.type = img.type;
+        if (img.varName) select.dataset.var = img.varName;
+        
+        // Determine current value
+        let currentVal = "";
+        if (img.type === "img-tag") {
+          const imgEl = document.getElementById(img.id);
+          currentVal = imgEl ? imgEl.getAttribute("src") : img.defaultVal;
+        } else {
+          // background css variable
+          const cssVal = rootStyles.getPropertyValue(img.varName).trim();
+          const match = cssVal.match(/url\(['"]?([^'")]+)['"]?\)/);
+          currentVal = match ? match[1] : cssVal;
+        }
+
+        // Add original option if it's not currently set to one of our optimized ones
+        const currentFilename = currentVal.substring(currentVal.lastIndexOf("/") + 1);
+        const isOptimized = currentVal.includes("assets/images/all_optimized/");
+        
+        if (!isOptimized || !ALL_IMAGES.includes(currentFilename)) {
+          const origOpt = document.createElement("option");
+          origOpt.value = currentVal;
+          origOpt.textContent = `Original (${currentFilename})`;
+          origOpt.selected = true;
+          select.appendChild(origOpt);
+        }
+
+        // Add all optimized options
+        ALL_IMAGES.forEach(filename => {
+          const opt = document.createElement("option");
+          opt.value = "assets/images/all_optimized/" + filename;
+          opt.textContent = filename;
+          if (isOptimized && currentFilename === filename) {
+            opt.selected = true;
+          }
+          select.appendChild(opt);
+        });
+
+        // Add preview thumbnail
+        const preview = document.createElement("div");
+        preview.className = "cjed-image-preview";
+        
+        function updatePreview(val) {
+          preview.style.backgroundImage = `url('${val}')`;
+        }
+        
+        updatePreview(select.value);
+        controls.appendChild(select);
+        controls.appendChild(preview);
+        row.appendChild(controls);
+        imagesContainer.appendChild(row);
+
+        // Bind update handler
+        select.addEventListener("change", () => {
+          const newVal = select.value;
+          updatePreview(newVal);
+          
+          if (img.type === "img-tag") {
+            const imgEl = document.getElementById(img.id);
+            if (imgEl) {
+              imgEl.src = newVal;
+            }
+          } else {
+            // background css variable
+            document.documentElement.style.setProperty(img.varName, `url("${newVal}")`);
+          }
+        });
+      });
+
+      // Show toast message function
+      function showToast(message, isError = false) {
+        toastMsg.textContent = message;
+        toast.style.borderColor = isError ? "#a24d2c" : "#d0a65d";
+        toast.classList.add("show");
+        setTimeout(() => {
+          toast.classList.remove("show");
+        }, 4000);
+      }
+
+      // Handle Save functionality
+      saveBtn.addEventListener("click", () => {
+        saveBtn.classList.add("saving");
+        saveBtn.disabled = true;
+        saveBtn.textContent = "Guardando...";
+
+        const payload = {
+          cssVariables: {},
+          images: {}
+        };
+
+        // Gather all slider variables
+        sliders.forEach(slider => {
+          const varName = slider.dataset.var;
+          const unit = slider.dataset.unit || "";
+          payload.cssVariables[varName] = slider.value + unit;
+        });
+
+        // Gather all selected images
+        const selects = imagesContainer.querySelectorAll(".cjed-image-select");
+        selects.forEach(select => {
+          const id = select.dataset.id;
+          const type = select.dataset.type;
+          const val = select.value;
+          
+          if (type === "img-tag") {
+            payload.images[id] = val;
+          } else {
+            const varName = select.dataset.var;
+            payload.cssVariables[varName] = `url("${val}")`;
+          }
+        });
+
+        // Send payload to local Python server
+        fetch("/save", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("HTTP error " + response.status);
+          }
+          return response.json();
+        })
+        .then(data => {
+          saveBtn.classList.remove("saving");
+          saveBtn.disabled = false;
+          saveBtn.textContent = "Guardar Cambios";
+          if (data.status === "ok") {
+            showToast("¡Configuración guardada en index.html exitosamente!");
+          } else {
+            showToast("Error al guardar: " + data.error, true);
+          }
+        })
+        .catch(err => {
+          saveBtn.classList.remove("saving");
+          saveBtn.disabled = false;
+          saveBtn.textContent = "Guardar Cambios";
+          showToast("Error de conexión al servidor: " + err.message, true);
+          console.error(err);
+        });
+      });
+
+    })();
   </script>
 </body>
 </html>
