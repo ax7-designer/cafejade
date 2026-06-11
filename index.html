@@ -55,6 +55,21 @@
       --section-padding: 3.5rem;
       --hero-bg-image: url("assets/images/hero/cafe-jade-portada.jpg");
       --story-bg-image: url("assets/images/events/cafe-jade-ambiance.jpg");
+
+      /* Editable Image Transforms */
+      --img-story-transform: translate(0px, 0px) scale(1);
+      --img-menu-0-transform: translate(0px, 0px) scale(1);
+      --img-menu-1-transform: translate(0px, 0px) scale(1);
+      --img-menu-2-transform: translate(0px, 0px) scale(1);
+      --img-menu-3-transform: translate(0px, 0px) scale(1);
+      --img-menu-4-transform: translate(0px, 0px) scale(1);
+      --img-menu-5-transform: translate(0px, 0px) scale(1);
+      --img-menu-6-transform: translate(0px, 0px) scale(1);
+      --img-menu-7-transform: translate(0px, 0px) scale(1);
+      --img-menu-8-transform: translate(0px, 0px) scale(1);
+      --img-event-0-transform: translate(0px, 0px) scale(1);
+      --img-event-1-transform: translate(0px, 0px) scale(1);
+      --img-event-2-transform: translate(0px, 0px) scale(1);
     }
 
     * {
@@ -1110,6 +1125,117 @@
       .hero-copy h1 {
         font-size: 5.9rem;
       }
+    }
+
+    /* Editable Image CSS Transforms */
+    #img-story { transform: var(--img-story-transform); transform-origin: center center; }
+    #img-menu-0 { transform: var(--img-menu-0-transform); transform-origin: center center; }
+    #img-menu-1 { transform: var(--img-menu-1-transform); transform-origin: center center; }
+    #img-menu-2 { transform: var(--img-menu-2-transform); transform-origin: center center; }
+    #img-menu-3 { transform: var(--img-menu-3-transform); transform-origin: center center; }
+    #img-menu-4 { transform: var(--img-menu-4-transform); transform-origin: center center; }
+    #img-menu-5 { transform: var(--img-menu-5-transform); transform-origin: center center; }
+    #img-menu-6 { transform: var(--img-menu-6-transform); transform-origin: center center; }
+    #img-menu-7 { transform: var(--img-menu-7-transform); transform-origin: center center; }
+    #img-menu-8 { transform: var(--img-menu-8-transform); transform-origin: center center; }
+    #img-event-0 { transform: var(--img-event-0-transform); transform-origin: center center; }
+    #img-event-1 { transform: var(--img-event-1-transform); transform-origin: center center; }
+    #img-event-2 { transform: var(--img-event-2-transform); transform-origin: center center; }
+
+    /* Interactive dragging / reframe visual styles */
+    body.cjed-edit-mode .menu-card figure,
+    body.cjed-edit-mode .story-card figure,
+    body.cjed-edit-mode .event-card figure {
+      border: 2px dashed var(--gold-500);
+      position: relative;
+      cursor: grab;
+      user-select: none;
+      overflow: hidden; /* Ensure zoom clips properly */
+    }
+    body.cjed-edit-mode .menu-card figure::after,
+    body.cjed-edit-mode .story-card figure::after,
+    body.cjed-edit-mode .event-card figure::after {
+      content: 'Ajustar imagen (Arrastrar + Rueda)';
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(23, 50, 41, 0.85);
+      border: 1px solid var(--gold-300);
+      color: var(--cream);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 500;
+      pointer-events: none;
+      z-index: 10;
+      white-space: nowrap;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    body.cjed-edit-mode .menu-card figure:active,
+    body.cjed-edit-mode .story-card figure:active,
+    body.cjed-edit-mode .event-card figure:active {
+      cursor: grabbing;
+    }
+    body.cjed-edit-mode .menu-card figure img,
+    body.cjed-edit-mode .story-card figure img,
+    body.cjed-edit-mode .event-card figure img {
+      pointer-events: none; /* Let drag events hit the figure parent container */
+    }
+
+    /* Background image dragging visual styles */
+    body.cjed-edit-mode .hero,
+    body.cjed-edit-mode .section-alt {
+      cursor: move;
+      position: relative;
+    }
+    body.cjed-edit-mode .hero::before,
+    body.cjed-edit-mode .section-alt::before {
+      content: 'Alinear fondo (Arrastrar)';
+      position: absolute;
+      top: 100px;
+      right: 20px;
+      background: rgba(23, 50, 41, 0.85);
+      border: 1px solid var(--gold-300);
+      color: var(--cream);
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 500;
+      pointer-events: none;
+      z-index: 10;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    body.cjed-edit-mode a,
+    body.cjed-edit-mode button:not(.cjed-tab-btn):not(#cjed-toggle):not(#cjed-close-btn):not(#cjed-save-btn):not(#cjed-edit-mode-btn) {
+      pointer-events: none; /* Prevent accidental navigation/clicks during editing */
+    }
+
+    .cjed-action-btn {
+      width: 100%;
+      background: rgba(208, 166, 93, 0.1);
+      color: #d0a65d;
+      border: 1px solid #d0a65d;
+      padding: 10px;
+      border-radius: 6px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+    .cjed-action-btn:hover {
+      background: #d0a65d;
+      color: #173229;
+    }
+    .cjed-action-btn.active {
+      background: #a24d2c;
+      color: #f8f2e8;
+      border-color: #a24d2c;
     }
 
     /* Visual Editor Panel CSS (Dev Environment only) */
@@ -2278,6 +2404,13 @@
             <h3>Editor Visual</h3>
             <button class="cjed-close" id="cjed-close-btn">&times;</button>
           </div>
+          
+          <div style="padding: 15px 20px 0 20px;">
+            <button id="cjed-edit-mode-btn" class="cjed-action-btn">
+              <span>✛</span> Activar Modo Encuadre (Drag & Zoom)
+            </button>
+          </div>
+
           <div class="cjed-tabs">
             <button class="cjed-tab-btn active" data-tab="cjed-tab-design">Diseño & Fondos</button>
             <button class="cjed-tab-btn" data-tab="cjed-tab-typography">Tipografía</button>
@@ -2402,6 +2535,7 @@
       const toggleBtn = document.getElementById("cjed-toggle");
       const closeBtn = document.getElementById("cjed-close-btn");
       const saveBtn = document.getElementById("cjed-save-btn");
+      const editModeBtn = document.getElementById("cjed-edit-mode-btn");
       const toast = document.getElementById("cjed-toast");
       const toastMsg = document.getElementById("cjed-toast-msg");
       const tabButtons = document.querySelectorAll(".cjed-tab-btn");
@@ -2419,6 +2553,18 @@
         if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "e") {
           e.preventDefault();
           togglePanel();
+        }
+      });
+
+      // Handle Edit Mode toggle
+      editModeBtn.addEventListener("click", () => {
+        const isActive = document.body.classList.toggle("cjed-edit-mode");
+        editModeBtn.classList.toggle("active", isActive);
+        if (isActive) {
+          editModeBtn.innerHTML = `<span>✕</span> Desactivar Modo Encuadre`;
+          showToast("Modo Encuadre activo. Arrastra imágenes o fondos para mover, usa la rueda para hacer zoom.");
+        } else {
+          editModeBtn.innerHTML = `<span>✛</span> Activar Modo Encuadre (Drag & Zoom)`;
         }
       });
 
@@ -2541,6 +2687,9 @@
             const imgEl = document.getElementById(img.id);
             if (imgEl) {
               imgEl.src = newVal;
+              // Reset transform when swapping images
+              const varName = `--${img.id}-transform`;
+              document.documentElement.style.setProperty(varName, "translate(0px, 0px) scale(1)");
             }
           } else {
             // background css variable
@@ -2558,6 +2707,190 @@
           toast.classList.remove("show");
         }, 4000);
       }
+
+      // --- Drag and Drop / Reframe Implementation ---
+      let isDragging = false;
+      let dragTarget = null;
+      let startX = 0;
+      let startY = 0;
+      let initialVal = {};
+
+      const editableImageElements = [
+        { imgId: "img-story", varName: "--img-story-transform" },
+        ...Array.from({ length: 9 }, (_, i) => ({ imgId: `img-menu-${i}`, varName: `--img-menu-${i}-transform` })),
+        ...Array.from({ length: 3 }, (_, i) => ({ imgId: `img-event-${i}`, varName: `--img-event-${i}-transform` }))
+      ];
+
+      function parseTransform(val) {
+        const match = val.match(/translate\(([-\d.]+)px,\s*([-\d.]+)px\)\s*scale\(([\d.]+)\)/);
+        if (match) {
+          return {
+            x: parseFloat(match[1]),
+            y: parseFloat(match[2]),
+            scale: parseFloat(match[3])
+          };
+        }
+        return { x: 0, y: 0, scale: 1 };
+      }
+
+      function startDrag(clientX, clientY, type, targetData) {
+        isDragging = true;
+        dragTarget = targetData;
+        startX = clientX;
+        startY = clientY;
+        
+        if (targetData.type === "img") {
+          const currentVal = rootStyles.getPropertyValue(targetData.varName).trim() || "translate(0px, 0px) scale(1)";
+          initialVal = parseTransform(currentVal);
+          targetData.el.style.transition = "none";
+        } else if (targetData.type === "bg") {
+          initialVal = {
+            x: parseFloat(rootStyles.getPropertyValue(targetData.varNameX)) || 50,
+            y: parseFloat(rootStyles.getPropertyValue(targetData.varNameY)) || 50
+          };
+        }
+      }
+
+      function moveDrag(clientX, clientY) {
+        if (!isDragging || !dragTarget) return;
+        
+        const dx = clientX - startX;
+        const dy = clientY - startY;
+        
+        if (dragTarget.type === "img") {
+          const newTx = initialVal.x + dx;
+          const newTy = initialVal.y + dy;
+          const newValString = `translate(${newTx}px, ${newTy}px) scale(${initialVal.scale.toFixed(3)})`;
+          document.documentElement.style.setProperty(dragTarget.varName, newValString);
+        } else if (dragTarget.type === "bg") {
+          const rect = dragTarget.el.getBoundingClientRect();
+          const pctX = (dx / rect.width) * 100;
+          const pctY = (dy / rect.height) * 100;
+          
+          const newX = Math.max(0, Math.min(100, initialVal.x - pctX * 0.5));
+          const newY = Math.max(0, Math.min(100, initialVal.y - pctY * 0.5));
+          
+          document.documentElement.style.setProperty(dragTarget.varNameX, newX.toFixed(1) + "%");
+          document.documentElement.style.setProperty(dragTarget.varNameY, newY.toFixed(1) + "%");
+          
+          const sliderX = document.querySelector(`input[data-var="${dragTarget.varNameX}"]`);
+          const sliderY = document.querySelector(`input[data-var="${dragTarget.varNameY}"]`);
+          if (sliderX) {
+            sliderX.value = newX;
+            sliderX.nextElementSibling.textContent = newX.toFixed(0) + "%";
+          }
+          if (sliderY) {
+            sliderY.value = newY;
+            sliderY.nextElementSibling.textContent = newY.toFixed(0) + "%";
+          }
+        }
+      }
+
+      function endDrag() {
+        if (isDragging && dragTarget) {
+          if (dragTarget.type === "img") {
+            dragTarget.el.style.transition = "";
+          }
+          isDragging = false;
+          dragTarget = null;
+        }
+      }
+
+      // Bind regular images
+      editableImageElements.forEach(item => {
+        const imgEl = document.getElementById(item.imgId);
+        if (!imgEl) return;
+        const frameEl = imgEl.parentElement;
+        if (!frameEl) return;
+        
+        imgEl.addEventListener("dragstart", e => e.preventDefault());
+        
+        const onStart = (e, clientX, clientY) => {
+          if (!document.body.classList.contains("cjed-edit-mode")) return;
+          e.preventDefault();
+          startDrag(clientX, clientY, "img", {
+            type: "img",
+            imgId: item.imgId,
+            varName: item.varName,
+            el: imgEl
+          });
+        };
+        
+        frameEl.addEventListener("mousedown", (e) => onStart(e, e.clientX, e.clientY));
+        frameEl.addEventListener("touchstart", (e) => {
+          const touch = e.touches[0];
+          onStart(e, touch.clientX, touch.clientY);
+        }, { passive: false });
+        
+        frameEl.addEventListener("wheel", (e) => {
+          if (!document.body.classList.contains("cjed-edit-mode")) return;
+          e.preventDefault();
+          
+          const currentVal = rootStyles.getPropertyValue(item.varName).trim() || "translate(0px, 0px) scale(1)";
+          const transform = parseTransform(currentVal);
+          
+          const zoomIntensity = 0.05;
+          const delta = e.deltaY < 0 ? 1 : -1;
+          const newScale = Math.max(1, Math.min(6, transform.scale + delta * zoomIntensity));
+          
+          const newValString = `translate(${transform.x}px, ${transform.y}px) scale(${newScale.toFixed(3)})`;
+          document.documentElement.style.setProperty(item.varName, newValString);
+        }, { passive: false });
+      });
+
+      // Bind background images
+      const heroBgEl = document.querySelector(".hero");
+      if (heroBgEl) {
+        const onStartBg = (e, clientX, clientY) => {
+          if (!document.body.classList.contains("cjed-edit-mode")) return;
+          if (e.target !== heroBgEl && !e.target.classList.contains("hero-content")) return;
+          e.preventDefault();
+          startDrag(clientX, clientY, "bg", {
+            type: "bg",
+            el: heroBgEl,
+            varNameX: "--hero-bg-pos-x",
+            varNameY: "--hero-bg-pos-y"
+          });
+        };
+        heroBgEl.addEventListener("mousedown", (e) => onStartBg(e, e.clientX, e.clientY));
+        heroBgEl.addEventListener("touchstart", (e) => {
+          const touch = e.touches[0];
+          onStartBg(e, touch.clientX, touch.clientY);
+        }, { passive: false });
+      }
+
+      const storyBgEl = document.querySelector(".section-alt");
+      if (storyBgEl) {
+        const onStartBg = (e, clientX, clientY) => {
+          if (!document.body.classList.contains("cjed-edit-mode")) return;
+          if (e.target !== storyBgEl && e.target.id !== "historia") return;
+          e.preventDefault();
+          startDrag(clientX, clientY, "bg", {
+            type: "bg",
+            el: storyBgEl,
+            varNameX: "--story-bg-pos-x",
+            varNameY: "--story-bg-pos-y"
+          });
+        };
+        storyBgEl.addEventListener("mousedown", (e) => onStartBg(e, e.clientX, e.clientY));
+        storyBgEl.addEventListener("touchstart", (e) => {
+          const touch = e.touches[0];
+          onStartBg(e, touch.clientX, touch.clientY);
+        }, { passive: false });
+      }
+
+      // Global window movement bindings
+      window.addEventListener("mousemove", (e) => moveDrag(e.clientX, e.clientY));
+      window.addEventListener("mouseup", endDrag);
+      
+      window.addEventListener("touchmove", (e) => {
+        if (isDragging) {
+          e.preventDefault();
+          const touch = e.touches[0];
+          moveDrag(touch.clientX, touch.clientY);
+        }
+      }, { passive: false });
+      window.addEventListener("touchend", endDrag);
 
       // Handle Save functionality
       saveBtn.addEventListener("click", () => {
@@ -2590,6 +2923,12 @@
             const varName = select.dataset.var;
             payload.cssVariables[varName] = `url("${val}")`;
           }
+        });
+
+        // Gather all active drag crop translations & scales
+        editableImageElements.forEach(item => {
+          const currentVal = rootStyles.getPropertyValue(item.varName).trim() || "translate(0px, 0px) scale(1)";
+          payload.cssVariables[item.varName] = currentVal;
         });
 
         // Send payload to local Python server
