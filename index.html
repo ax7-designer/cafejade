@@ -40,7 +40,7 @@
       --radius-sm: 8px;
       --container: 1180px;
       --font-body: "Inter", sans-serif;
-      --font-display: Georgia, "Times New Roman", serif;
+      --font-display: "Playfair Display", Georgia, serif;
     }
 
     * {
@@ -147,7 +147,7 @@
     .booking-panel h3 {
       font-family: var(--font-display);
       font-weight: 600;
-      letter-spacing: 0;
+      letter-spacing: -0.015em;
     }
 
     .brand-copy {
@@ -406,7 +406,7 @@
       color: #fff;
       background:
         linear-gradient(115deg, rgba(15, 27, 23, 0.88) 10%, rgba(15, 27, 23, 0.56) 58%, rgba(15, 27, 23, 0.26) 100%),
-        url("assets/images/hero/cafe-jade-collage-local-comida-fachada.png") center/cover;
+        url("assets/images/hero/cafe-jade-portada.jpg") center/cover;
     }
 
     .hero-grid {
@@ -427,7 +427,7 @@
       margin-bottom: 1rem;
       color: var(--terracotta-700);
       text-transform: uppercase;
-      letter-spacing: 0;
+      letter-spacing: 0.12em;
       font-size: 0.72rem;
       font-weight: 700;
     }
@@ -539,7 +539,7 @@
     .section-alt {
       background:
         linear-gradient(180deg, rgba(255, 250, 244, 0.75), rgba(255, 250, 244, 0.95)),
-        url("assets/images/events/cafe-jade-musica-local-fachada.png") center/cover fixed;
+        url("assets/images/events/cafe-jade-ambiance.jpg") center/cover fixed;
     }
 
     .section-heading {
@@ -582,20 +582,23 @@
 
     .menu-card {
       overflow: hidden;
-      cursor: pointer;
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .menu-card:focus-visible,
-    .event-card:focus-visible {
-      outline: 2px solid var(--terracotta-500);
-      outline-offset: 3px;
+    .menu-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--jade-500);
+      box-shadow: 0 24px 48px rgba(23, 50, 41, 0.12);
     }
 
-    .menu-card.is-selected {
-      transform: translateY(-4px);
-      border-color: rgba(197, 108, 67, 0.38);
-      box-shadow: 0 22px 45px rgba(162, 77, 44, 0.16);
+    .menu-card.is-hidden {
+      display: none;
+    }
+
+    .brand-logo {
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
     }
 
     .menu-card figure {
@@ -666,21 +669,41 @@
       color: var(--muted);
     }
 
-    .menu-note {
-      margin-top: 1.4rem;
-      padding: 1rem 1.15rem;
-      border-radius: var(--radius-sm);
-      background: rgba(208, 166, 93, 0.12);
+    .menu-filters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .filter-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0.4rem 1.4rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      color: var(--muted);
+      font-size: 0.94rem;
+      font-weight: 600;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 2px 8px rgba(23, 50, 41, 0.05);
+    }
+
+    .filter-btn:hover {
+      border-color: var(--jade-500);
       color: var(--jade-900);
+      transform: translateY(-1px);
     }
 
-    .menu-note strong {
-      display: block;
-      margin-bottom: 0.3rem;
-    }
-
-    .selection-actions {
-      margin-top: 1.3rem;
+    .filter-btn.is-active {
+      background: var(--jade-900);
+      border-color: var(--jade-900);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(23, 50, 41, 0.22);
     }
 
     .story-layout {
@@ -1078,6 +1101,16 @@
 <body>
   <header class="site-header" id="top">
     <div class="container header-inner">
+      <!-- 
+        LOGO REPLACEMENT GUIDE:
+        To replace this text logo with an image/SVG:
+        1. Replace <span class="brand-mark">CJ</span> with:
+           <img class="brand-logo" src="assets/images/brand/logo-light.svg" alt="Cafe Jade Logo">
+        2. Specifications:
+           - Recommended formats: SVG (ideal) or PNG with transparent background.
+           - Color: White or light-gold (#ead6a6) to pop over dark transparent sticky header.
+           - Shape: Circle or square layout (1:1 aspect ratio).
+      -->
       <a class="brand" href="#inicio">
         <span class="brand-mark">CJ</span>
         <span class="brand-copy">
@@ -1155,66 +1188,64 @@
       <div class="container hero-grid">
         <div class="hero-content">
           <div class="hero-copy reveal">
-          <span class="eyebrow" data-i18n-es="Café, cocina y cultura" data-i18n-en="Coffee, cuisine, and culture">Café, cocina y cultura</span>
+            <span class="eyebrow" data-i18n-es="Café, cocina y cultura" data-i18n-en="Coffee, cuisine, and culture">Café, cocina y cultura</span>
             <h1 data-i18n-es="Cafe Jade Palenque" data-i18n-en="Cafe Jade Palenque">Cafe Jade Palenque</h1>
             <p
-              data-i18n-es="Una experiencia gastronomica que va mas alla de lo ordinario: cafe, cocina y encuentros culturales en el corazon de Palenque."
-              data-i18n-en="A dining experience beyond the ordinary: coffee, cuisine, and cultural gatherings in the heart of Palenque."
+              data-i18n-es="Una experiencia gastronómica genuina en Palenque. Sabores tradicionales, café de altura y encuentros culturales."
+              data-i18n-en="A genuine dining experience in Palenque. Traditional flavors, specialty coffee, and cultural gatherings."
             >
-              Una experiencia gastronomica que va mas alla de lo ordinario: cafe, cocina y encuentros culturales en el corazon de Palenque.
+              Una experiencia gastronómica genuina en Palenque. Sabores tradicionales, café de altura y encuentros culturales.
             </p>
             <div class="hero-actions">
-              <a class="button" href="#menu" data-i18n-es="Ver menu" data-i18n-en="View menu">Ver menu</a>
+              <a class="button" href="#menu" data-i18n-es="Ver menú" data-i18n-en="View menu">Ver menú</a>
               <a
                 class="button-secondary"
-                href="https://wa.me/529166880081?text=Hola%20Cafe%20Jade,%20me%20gustaria%20hacer%20un%20pedido."
-                target="_blank"
-                rel="noopener noreferrer"
-                data-i18n-es="Pedir por WhatsApp"
-                data-i18n-en="Order on WhatsApp"
-              >Pedir por WhatsApp</a>
+                href="#contacto"
+                data-i18n-es="Reservar mesa"
+                data-i18n-en="Book a table"
+              >Reservar mesa</a>
             </div>
           </div>
 
           <div class="hero-highlights reveal">
             <article>
-              <strong data-i18n-es="Ubicacion" data-i18n-en="Location">Ubicacion</strong>
-              <span data-i18n-es="La Canada, Palenque" data-i18n-en="La Canada, Palenque">La Canada, Palenque</span>
+              <strong data-i18n-es="Ubicación" data-i18n-en="Location">Ubicación</strong>
+              <span data-i18n-es="La Cañada, Palenque" data-i18n-en="La Canada, Palenque">La Cañada, Palenque</span>
             </article>
             <article>
-              <strong data-i18n-es="Experiencia" data-i18n-en="Experience">Experiencia</strong>
-              <span data-i18n-es="Cafe, cocina y noches con musica" data-i18n-en="Coffee, cuisine, and live music nights">Cafe, cocina y noches con musica</span>
+              <strong data-i18n-es="Gastronomía" data-i18n-en="Gastronomy">Gastronomía</strong>
+              <span data-i18n-es="Café selecto y cocina local" data-i18n-en="Specialty coffee and local food">Café selecto y cocina local</span>
             </article>
             <article>
-              <strong data-i18n-es="Reservas" data-i18n-en="Reservations">Reservas</strong>
-              <span data-i18n-es="Mesas, grupos y eventos privados" data-i18n-en="Tables, groups, and private events">Mesas, grupos y eventos privados</span>
+              <strong data-i18n-es="Noches de Selva" data-i18n-en="Jungle Nights">Noches de Selva</strong>
+              <span data-i18n-es="Música acústica y veladas" data-i18n-en="Acoustic music and gatherings">Música acústica y veladas</span>
             </article>
           </div>
         </div>
 
         <aside class="hero-card reveal">
           <p
-            data-i18n-es="Restaurante, cafeteria y espacio para musica en vivo, celebraciones privadas y sobremesas largas."
-            data-i18n-en="Restaurant, coffee house, and home for live music, private celebrations, and long lingering meals."
+            data-i18n-es="Disfruta de la mística atmósfera de La Cañada, rodeado de vegetación y la calidez de nuestro servicio."
+            data-i18n-en="Enjoy the mystical atmosphere of La Canada, surrounded by lush greenery and warm, attentive service."
           >
-            Restaurante, cafeteria y espacio para musica en vivo, celebraciones privadas y sobremesas largas.
+            Disfruta de la mística atmósfera de La Cañada, rodeado de vegetación y la calidez de nuestro servicio.
           </p>
           <div class="hero-meta">
             <article>
-              <strong data-i18n-es="Pedido directo" data-i18n-en="Direct ordering">Pedido directo</strong>
-              <span data-i18n-es="WhatsApp en un toque" data-i18n-en="WhatsApp in one tap">WhatsApp en un toque</span>
+              <strong data-i18n-es="Sabor de Origen" data-i18n-en="Local Heritage">Sabor de Origen</strong>
+              <span data-i18n-es="Café de altura chiapaneco" data-i18n-en="Chiapas specialty coffee">Café de altura chiapaneco</span>
             </article>
             <article>
               <strong data-i18n-es="Reservaciones" data-i18n-en="Reservations">Reservaciones</strong>
               <span data-i18n-es="Mesas y eventos privados" data-i18n-en="Tables and private events">Mesas y eventos privados</span>
             </article>
             <article>
-              <strong data-i18n-es="Turismo" data-i18n-en="Visitors">Turismo</strong>
-              <span data-i18n-es="Base bilingue ES / EN" data-i18n-en="Bilingual base ES / EN">Base bilingue ES / EN</span>
+              <strong data-i18n-es="Noches Acústicas" data-i18n-en="Live Music">Noches Acústicas</strong>
+              <span data-i18n-es="Acordes en vivo bajo la selva" data-i18n-en="Acoustic live music events">Acordes en vivo bajo la selva</span>
             </article>
             <article>
-              <strong data-i18n-es="Ambiente" data-i18n-en="Atmosphere">Ambiente</strong>
-              <span data-i18n-es="Tradicion chiapaneca actualizada" data-i18n-en="Chiapan tradition, freshly refined">Tradicion chiapaneca actualizada</span>
+              <strong data-i18n-es="Atmósfera" data-i18n-en="Atmosphere">Atmósfera</strong>
+              <span data-i18n-es="Tradición chiapaneca y naturaleza" data-i18n-en="Chiapan heritage and nature">Tradición chiapaneca y naturaleza</span>
             </article>
           </div>
         </aside>
@@ -1225,150 +1256,196 @@
       <div class="container">
         <div class="section-heading reveal">
           <span class="eyebrow" data-i18n-es="Sabores para quedarse" data-i18n-en="Flavors worth staying for">Sabores para quedarse</span>
-          <h2 data-i18n-es="Menu visual, tactil y facil de pedir" data-i18n-en="A visual, tactile menu that is easy to order from">Menu visual, tactil y facil de pedir</h2>
+          <h2 data-i18n-es="Nuestra propuesta gastronómica" data-i18n-en="Our culinary selection">Nuestra propuesta gastronómica</h2>
           <p
-            data-i18n-es="Selecciona cualquier platillo o bebida para preparar tu consulta por WhatsApp. La base ya utiliza fotografias reales del espacio y puede crecer despues con mas categorias y precios finales."
-            data-i18n-en="Select any dish or drink to prepare your WhatsApp inquiry. This base already uses real venue photography and can later grow with more categories and final pricing."
+            data-i18n-es="Desde hamburguesas regionales con ingredientes locales hasta coctelería fresca de autor y café tradicional chiapaneco. Filtra nuestra carta por tus categorías favoritas."
+            data-i18n-en="From regional burgers with local ingredients to fresh signature cocktails and traditional Chiapas coffee. Filter our menu by your favorite categories."
           >
-            Selecciona cualquier platillo o bebida para preparar tu consulta por WhatsApp. La base ya utiliza fotografias reales del espacio y puede crecer despues con mas categorias y precios finales.
+            Desde hamburguesas regionales con ingredientes locales hasta coctelería fresca de autor y café tradicional chiapaneco. Filtra nuestra carta por tus categorías favoritas.
           </p>
         </div>
 
+        <div class="menu-filters reveal">
+          <button class="filter-btn is-active" data-filter="all" data-i18n-es="Todos" data-i18n-en="All">Todos</button>
+          <button class="filter-btn" data-filter="bebidas" data-i18n-es="Bebidas y Café" data-i18n-en="Drinks & Coffee">Bebidas y Café</button>
+          <button class="filter-btn" data-filter="comida" data-i18n-es="Comida y Especialidades" data-i18n-en="Food & Specials">Comida y Especialidades</button>
+          <button class="filter-btn" data-filter="postres" data-i18n-es="Postres" data-i18n-en="Desserts">Postres</button>
+        </div>
+
         <div class="menu-grid">
-          <article class="menu-card reveal" data-item-es="Rollos frescos Jade" data-item-en="Fresh Jade rolls" tabindex="0" role="button" aria-pressed="false">
+          <!-- Bebidas -->
+          <article class="menu-card reveal" data-category="bebidas">
             <figure>
-              <img loading="lazy" src="assets/images/menu/rollos-frescos-cafe-jade.png" alt="Rollos frescos servidos en Cafe Jade">
+              <img loading="lazy" src="assets/images/menu/cafe-olla.jpg" alt="Café de Olla Tradicional de Cafe Jade">
             </figure>
             <div class="menu-body">
               <div class="menu-meta">
-                <span class="tag" data-i18n-es="Entrada" data-i18n-en="Starter">Entrada</span>
-                <span class="price">$60</span>
+                <span class="tag" data-i18n-es="Bebidas y Café" data-i18n-en="Drinks & Coffee">Bebidas y Café</span>
+                <span class="price">$45</span>
               </div>
-              <h3 data-i18n-es="Rollos frescos Jade" data-i18n-en="Fresh Jade rolls">Rollos frescos Jade</h3>
+              <h3 data-i18n-es="Café de Olla Tradicional" data-i18n-en="Traditional Café de Olla">Café de Olla Tradicional</h3>
               <p
-                data-i18n-es="Una entrada ligera, colorida y preparada para abrir la mesa con frescura."
-                data-i18n-en="A light, colorful starter made to open the table with freshness."
+                data-i18n-es="Preparado al estilo tradicional con piloncillo, canela y granos selectos de Chiapas."
+                data-i18n-en="Traditionally brewed with Mexican piloncillo sugar, cinnamon, and select Chiapan coffee beans."
               >
-                Una entrada ligera, colorida y preparada para abrir la mesa con frescura.
+                Preparado al estilo tradicional con piloncillo, canela y granos selectos de Chiapas.
               </p>
             </div>
           </article>
 
-          <article class="menu-card reveal" data-item-es="Ceviche con mango" data-item-en="Mango ceviche" tabindex="0" role="button" aria-pressed="false">
+          <article class="menu-card reveal" data-category="bebidas">
             <figure>
-              <img loading="lazy" src="assets/images/menu/ceviche-mango-cafe-jade.png" alt="Ceviche con mango servido en Cafe Jade">
+              <img loading="lazy" src="assets/images/menu/frappe-jade.jpg" alt="Café Frappé de la Casa en Cafe Jade">
             </figure>
             <div class="menu-body">
               <div class="menu-meta">
-                <span class="tag" data-i18n-es="Cocina" data-i18n-en="Cuisine">Cocina</span>
-                <span class="price">$210</span>
+                <span class="tag" data-i18n-es="Bebidas y Café" data-i18n-en="Drinks & Coffee">Bebidas y Café</span>
+                <span class="price">$65</span>
               </div>
-              <h3 data-i18n-es="Ceviche con mango" data-i18n-en="Mango ceviche">Ceviche con mango</h3>
+              <h3 data-i18n-es="Frappé de la Casa" data-i18n-en="House Frappé">Frappé de la Casa</h3>
               <p
-                data-i18n-es="Fruta, acidez y frescura en una presentacion vibrante de la casa."
-                data-i18n-en="Fruit, acidity, and freshness in a vibrant house presentation."
+                data-i18n-es="Frappé cremoso de café infusionado en frío, coronado con granos de café crujientes."
+                data-i18n-en="Creamy cold-brew blended frappé, topped with crunchy espresso beans."
               >
-                Fruta, acidez y frescura en una presentacion vibrante de la casa.
+                Frappé cremoso de café infusionado en frío, coronado con granos de café crujientes.
               </p>
             </div>
           </article>
 
-          <article class="menu-card reveal" data-item-es="Bebida especiada" data-item-en="Spiced drink" tabindex="0" role="button" aria-pressed="false">
+          <article class="menu-card reveal" data-category="bebidas">
             <figure>
-              <img loading="lazy" src="assets/images/menu/bebida-especiada-cafe-jade.png" alt="Bebida especiada de Cafe Jade">
+              <img loading="lazy" src="assets/images/menu/mojito.jpg" alt="Mojito refrescante en Cafe Jade">
             </figure>
             <div class="menu-body">
               <div class="menu-meta">
-                <span class="tag" data-i18n-es="Bebidas" data-i18n-en="Drinks">Bebidas</span>
-                <span class="price">$145</span>
+                <span class="tag" data-i18n-es="Bebidas y Café" data-i18n-en="Drinks & Coffee">Bebidas y Café</span>
+                <span class="price">$95</span>
               </div>
-              <h3 data-i18n-es="Bebida especiada" data-i18n-en="Spiced drink">Bebida especiada</h3>
+              <h3 data-i18n-es="Mojito de Hierbabuena" data-i18n-en="Mint Mojito">Mojito de Hierbabuena</h3>
               <p
-                data-i18n-es="Ideal para tarde de terraza, sobremesa o una noche de musica en vivo."
-                data-i18n-en="Ideal for the terrace, a long meal, or a live music evening."
+                data-i18n-es="Refrescante combinación de hierbabuena fresca, ron blanco, azúcar de caña y agua mineral."
+                data-i18n-en="Refreshing combination of fresh mint, white rum, cane sugar, and club soda."
               >
-                Ideal para tarde de terraza, sobremesa o una noche de musica en vivo.
+                Refrescante combinación de hierbabuena fresca, ron blanco, azúcar de caña y agua mineral.
               </p>
             </div>
           </article>
 
-          <article class="menu-card reveal" data-item-es="Postre de la casa" data-item-en="House dessert" tabindex="0" role="button" aria-pressed="false">
+          <article class="menu-card reveal" data-category="bebidas">
             <figure>
-              <img loading="lazy" src="assets/images/menu/postre-chocolate-cafe-jade.png" alt="Postre de chocolate de Cafe Jade">
+              <img loading="lazy" src="assets/images/menu/coctel-citrico.jpg" alt="Cóctel Cítrico de Autor en Cafe Jade">
+            </figure>
+            <div class="menu-body">
+              <div class="menu-meta">
+                <span class="tag" data-i18n-es="Bebidas y Café" data-i18n-en="Drinks & Coffee">Bebidas y Café</span>
+                <span class="price">$110</span>
+              </div>
+              <h3 data-i18n-es="Cóctel Cítrico de Autor" data-i18n-en="Signature Citrus Cocktail">Cóctel Cítrico de Autor</h3>
+              <p
+                data-i18n-es="Mezcla artesanal de jugos de cítricos frescos, ginebra premium y notas herbales secretas."
+                data-i18n-en="Artisanal blend of fresh citrus juices, premium gin, and secret herbal notes."
+              >
+                Mezcla artesanal de jugos de cítricos frescos, ginebra premium y notas herbales secretas.
+              </p>
+            </div>
+          </article>
+
+          <!-- Comida -->
+          <article class="menu-card reveal" data-category="comida">
+            <figure>
+              <img loading="lazy" src="assets/images/menu/hamburguesa-regional.jpg" alt="Hamburguesa Regional de Cafe Jade">
+            </figure>
+            <div class="menu-body">
+              <div class="menu-meta">
+                <span class="tag" data-i18n-es="Comida y Especialidades" data-i18n-en="Food & Specials">Comida y Especialidades</span>
+                <span class="price">$165</span>
+              </div>
+              <h3 data-i18n-es="Hamburguesa Regional" data-i18n-en="Regional Burger">Hamburguesa Regional</h3>
+              <p
+                data-i18n-es="Jugosa carne premium de la región, queso fundido, tocino crujiente y vegetales frescos."
+                data-i18n-en="Juicy premium local beef, melted cheese, crispy bacon, and fresh garden vegetables."
+              >
+                Jugosa carne premium de la región, queso fundido, tocino crujiente y vegetales frescos.
+              </p>
+            </div>
+          </article>
+
+          <article class="menu-card reveal" data-category="comida">
+            <figure>
+              <img loading="lazy" src="assets/images/menu/tacos-cochinita.jpg" alt="Tacos de Cochinita Pibil en Cafe Jade">
+            </figure>
+            <div class="menu-body">
+              <div class="menu-meta">
+                <span class="tag" data-i18n-es="Comida y Especialidades" data-i18n-en="Food & Specials">Comida y Especialidades</span>
+                <span class="price">$90</span>
+              </div>
+              <h3 data-i18n-es="Tacos de Cochinita Pibil" data-i18n-en="Cochinita Pibil Tacos">Tacos de Cochinita Pibil</h3>
+              <p
+                data-i18n-es="Tres tacos de cochinita adobada al achiote, servidos con cebolla morada curtida y salsa habanera."
+                data-i18n-en="Three achiote-marinated pulled pork tacos, served with pickled red onions and habanero sauce."
+              >
+                Tres tacos de cochinita adobada al achiote, servidos con cebolla morada curtida y salsa habanera.
+              </p>
+            </div>
+          </article>
+
+          <article class="menu-card reveal" data-category="comida">
+            <figure>
+              <img loading="lazy" src="assets/images/menu/chilaquiles-verdes.jpg" alt="Chilaquiles Verdes con Pollo en Cafe Jade">
+            </figure>
+            <div class="menu-body">
+              <div class="menu-meta">
+                <span class="tag" data-i18n-es="Comida y Especialidades" data-i18n-en="Food & Specials">Comida y Especialidades</span>
+                <span class="price">$125</span>
+              </div>
+              <h3 data-i18n-es="Chilaquiles Verdes con Pollo" data-i18n-en="Green Chilaquiles with Chicken">Chilaquiles Verdes con Pollo</h3>
+              <p
+                data-i18n-es="Totopos de maíz crujientes bañados en salsa verde cremosa de la casa, crema, queso cotija y pechuga deshebrada."
+                data-i18n-en="Crispy corn tortilla chips bathed in creamy green salsa, cream, cotija cheese, and shredded chicken breast."
+              >
+                Totopos de maíz crujientes bañados en salsa verde cremosa de la casa, crema, queso cotija y pechuga deshebrada.
+              </p>
+            </div>
+          </article>
+
+          <article class="menu-card reveal" data-category="comida">
+            <figure>
+              <img loading="lazy" src="assets/images/menu/ceviche-casa.jpg" alt="Ceviche de la Casa en Cafe Jade">
+            </figure>
+            <div class="menu-body">
+              <div class="menu-meta">
+                <span class="tag" data-i18n-es="Comida y Especialidades" data-i18n-en="Food & Specials">Comida y Especialidades</span>
+                <span class="price">$185</span>
+              </div>
+              <h3 data-i18n-es="Ceviche de la Casa" data-i18n-en="House Ceviche">Ceviche de la Casa</h3>
+              <p
+                data-i18n-es="Mariscos frescos marinados en jugo de limón de la región, con mango de temporada, aguacate y tostadas de maíz."
+                data-i18n-en="Fresh seafood cured in regional lime juice, with seasonal mango, avocado, and corn tostadas."
+              >
+                Mariscos frescos marinados en jugo de limón de la región, con mango de temporada, aguacate y tostadas de maíz.
+              </p>
+            </div>
+          </article>
+
+          <!-- Postres -->
+          <article class="menu-card reveal" data-category="postres">
+            <figure>
+              <img loading="lazy" src="assets/images/menu/helado.jpg" alt="Copa de Helado Artesanal en Cafe Jade">
             </figure>
             <div class="menu-body">
               <div class="menu-meta">
                 <span class="tag" data-i18n-es="Postres" data-i18n-en="Desserts">Postres</span>
-                <span class="price">$145</span>
+                <span class="price">$75</span>
               </div>
-              <h3 data-i18n-es="Postre de la casa" data-i18n-en="House dessert">Postre de la casa</h3>
+              <h3 data-i18n-es="Copa de Helado Artesanal" data-i18n-en="Artisanal Ice Cream Cup">Copa de Helado Artesanal</h3>
               <p
-                data-i18n-es="Un cierre dulce y cuidado para una experiencia completa."
-                data-i18n-en="A polished sweet finish for a full dining experience."
+                data-i18n-es="Una refrescante bola de helado artesanal con toques florales y cremosidad inigualable."
+                data-i18n-en="A refreshing scoop of artisanal ice cream with floral notes and unmatched creaminess."
               >
-                Un cierre dulce y cuidado para una experiencia completa.
+                Una refrescante bola de helado artesanal con toques florales y cremosidad inigualable.
               </p>
             </div>
           </article>
-
-          <article class="menu-card reveal" data-item-es="Tostada con salsa de la casa" data-item-en="Tostada with house salsa" tabindex="0" role="button" aria-pressed="false">
-            <figure>
-              <img loading="lazy" src="assets/images/menu/tostada-salsa-cafe-jade.png" alt="Tostada servida con salsa en Cafe Jade">
-            </figure>
-            <div class="menu-body">
-              <div class="menu-meta">
-                <span class="tag" data-i18n-es="Especiales" data-i18n-en="Specials">Especiales</span>
-                <span class="price">$160</span>
-              </div>
-              <h3 data-i18n-es="Tostada con salsa de la casa" data-i18n-en="Tostada with house salsa">Tostada con salsa de la casa</h3>
-              <p
-                data-i18n-es="Textura, color y un perfil fresco que acompana bien una comida larga."
-                data-i18n-en="Texture, color, and a fresh profile that suits a lingering meal."
-              >
-                Textura, color y un perfil fresco que acompana bien una comida larga.
-              </p>
-            </div>
-          </article>
-
-          <article class="menu-card reveal" data-item-es="Tostada de atun" data-item-en="Tuna tostada" tabindex="0" role="button" aria-pressed="false">
-            <figure>
-              <img loading="lazy" src="assets/images/menu/tostada-atun-cafe-jade.png" alt="Tostada de atun servida en Cafe Jade">
-            </figure>
-            <div class="menu-body">
-              <div class="menu-meta">
-                <span class="tag" data-i18n-es="Cocina" data-i18n-en="Cuisine">Cocina</span>
-                <span class="price">$190</span>
-              </div>
-              <h3 data-i18n-es="Tostada de atun" data-i18n-en="Tuna tostada">Tostada de atun</h3>
-              <p
-                data-i18n-es="Una opcion luminosa y cuidada para quien busca algo fresco y con caracter."
-                data-i18n-en="A bright, carefully plated option for anyone craving something fresh with character."
-              >
-                Una opcion luminosa y cuidada para quien busca algo fresco y con caracter.
-              </p>
-            </div>
-          </article>
-        </div>
-
-        <div class="menu-note reveal" id="menuSelectionNote" aria-live="polite">
-          <strong data-i18n-es="Seleccion actual:" data-i18n-en="Current selection:">Seleccion actual:</strong>
-          <span
-            id="menuSelectionText"
-            data-default-es="Aun no has elegido productos."
-            data-default-en="You have not selected any items yet."
-          >Aun no has elegido productos.</span>
-        </div>
-
-        <div class="hero-actions selection-actions">
-          <a
-            class="button"
-            href="https://wa.me/529166880081?text=Hola%20Cafe%20Jade,%20me%20gustaria%20hacer%20un%20pedido."
-            id="menuWhatsAppLink"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-i18n-es="Pedir por WhatsApp"
-            data-i18n-en="Order on WhatsApp"
-          >Pedir por WhatsApp</a>
         </div>
       </div>
     </section>
@@ -1377,7 +1454,7 @@
       <div class="container story-layout">
         <article class="story-card reveal">
           <figure>
-            <img loading="lazy" src="assets/images/events/cafe-jade-musica-local-fachada.png" alt="Musica en vivo y ambiente de Cafe Jade">
+            <img loading="lazy" src="assets/images/events/cafe-jade-ambiance.jpg" alt="Cálida atmósfera del comedor interior de Cafe Jade">
           </figure>
         </article>
 
@@ -1424,62 +1501,62 @@
             Música en vivo, veladas y celebraciones privadas
           </h2>
           <p
-            data-i18n-es="Selecciona un evento si quieres que se agregue automaticamente a tu mensaje de reservacion."
-            data-i18n-en="Select an event if you want it automatically added to your reservation message."
+            data-i18n-es="Disfruta de nuestras noches acústicas, catas guiadas de café chiapaneco o reserva nuestro espacio completo para tus celebraciones privadas."
+            data-i18n-en="Enjoy our live acoustic sessions, curated Chiapan coffee tasting flights, or reserve our full venue for your private celebrations."
           >
-            Selecciona un evento si quieres que se agregue automaticamente a tu mensaje de reservacion.
+            Disfruta de nuestras noches acústicas, catas guiadas de café chiapaneco o reserva nuestro espacio completo para tus celebraciones privadas.
           </p>
         </div>
 
         <div class="event-grid">
-          <article class="event-card reveal" data-event-es="Mesa de degustacion Jade" data-event-en="Jade tasting table" tabindex="0" role="button" aria-pressed="false">
+          <article class="event-card reveal" data-event-es="Catas de Café Chiapaneco" data-event-en="Chiapan Coffee Tastings" tabindex="0" role="button" aria-pressed="false">
             <figure>
-              <img loading="lazy" src="assets/images/menu/tostada-salsa-cafe-jade.png" alt="Platillo servido con salsa en Cafe Jade">
+              <img loading="lazy" src="assets/images/events/degustacion.jpg" alt="Muestras de bebidas y café en Cafe Jade">
             </figure>
             <div class="event-copy">
               <div class="event-date" data-i18n-es="Por agenda" data-i18n-en="By schedule">Por agenda</div>
-              <h3 data-i18n-es="Mesa de degustacion Jade" data-i18n-en="Jade tasting table">Mesa de degustacion Jade</h3>
+              <h3 data-i18n-es="Catas de Café Chiapaneco" data-i18n-en="Chiapan Coffee Tastings">Catas de Café Chiapaneco</h3>
               <p
-                data-i18n-es="Una experiencia para probar platillos, bebidas y recomendaciones de la casa."
-                data-i18n-en="An experience for tasting dishes, drinks, and house recommendations."
+                data-i18n-es="Una experiencia sensorial para explorar los matices y aromas del mejor grano de altura."
+                data-i18n-en="A sensory experience exploring the subtle notes and aromas of Chiapas' finest specialty beans."
               >
-                Una experiencia para probar platillos, bebidas y recomendaciones de la casa.
+                Una experiencia sensorial para explorar los matices y aromas del mejor grano de altura.
               </p>
             </div>
           </article>
 
-          <article class="event-card reveal" data-event-es="Noche acústica bajo la selva" data-event-en="Acoustic night under the jungle sky" tabindex="0" role="button" aria-pressed="false">
+          <article class="event-card reveal" data-event-es="Noche Acústica bajo la Selva" data-event-en="Acoustic Night under the Jungle Sky" tabindex="0" role="button" aria-pressed="false">
             <figure>
-              <img loading="lazy" src="assets/images/events/acoustic-night-gpt-image.png" alt="Música en vivo en Cafe Jade durante una noche acústica">
+              <img loading="lazy" src="assets/images/events/musica-envivo.jpg" alt="Luz de neón de Cafe Jade por la noche">
             </figure>
             <div class="event-copy">
               <div class="event-date" data-i18n-es="Consulta cartelera" data-i18n-en="Check lineup">Consulta cartelera</div>
-              <h3 data-i18n-es="Noche acústica bajo la selva" data-i18n-en="Acoustic night under the jungle sky">Noche acústica bajo la selva</h3>
+              <h3 data-i18n-es="Noche Acústica bajo la Selva" data-i18n-en="Acoustic Night under the Jungle Sky">Noche Acústica bajo la Selva</h3>
               <p
-                data-i18n-es="Una velada íntima para cenar, brindar y escuchar música en vivo."
-                data-i18n-en="An intimate evening to dine, toast, and enjoy live music."
+                data-i18n-es="Una velada íntima de acordes en directo en nuestra terraza, perfecta para cenar y brindar."
+                data-i18n-en="An intimate evening of live music on our terrace, perfect for dining and raising a toast."
               >
-                Una velada íntima para cenar, brindar y escuchar música en vivo.
+                Una velada íntima de acordes en directo en nuestra terraza, perfecta para cenar y brindar.
               </p>
             </div>
           </article>
 
-          <article class="event-card reveal" data-event-es="Evento privado en Cafe Jade" data-event-en="Private event at Cafe Jade" tabindex="0" role="button" aria-pressed="false">
+          <article class="event-card reveal" data-event-es="Eventos y Reservas de Grupos" data-event-en="Group Events & Private Booking" tabindex="0" role="button" aria-pressed="false">
             <figure>
-              <img loading="lazy" src="assets/images/hero/cafe-jade-collage-local-comida-fachada.png" alt="Clientes, platillo y fachada de Cafe Jade">
+              <img loading="lazy" src="assets/images/events/evento-privado.jpg" alt="Detalle de mesa y ambiente acogedor en Cafe Jade">
             </figure>
             <div class="event-copy">
               <div class="event-date" data-i18n-es="Fecha a elegir" data-i18n-en="Date on request">Fecha a elegir</div>
-              <h3 data-i18n-es="Evento privado en Cafe Jade" data-i18n-en="Private event at Cafe Jade">Evento privado en Cafe Jade</h3>
+              <h3 data-i18n-es="Eventos y Reservas de Grupos" data-i18n-en="Group Events & Private Booking">Eventos y Reservas de Grupos</h3>
               <p
-                data-i18n-es="Mesas, celebraciones y experiencias especiales para grupos."
-                data-i18n-en="Tables, celebrations, and special experiences for groups."
+                data-i18n-es="Personalizamos el menú y el espacio para tus celebraciones, reuniones de negocios o cenas especiales."
+                data-i18n-en="We customize the menu and workspace for your celebrations, business meetings, or special dinners."
               >
-                Mesas, celebraciones y experiencias especiales para grupos.
+                Personalizamos el menú y el espacio para tus celebraciones, reuniones de negocios o cenas especiales.
               </p>
             </div>
           </article>
-        </div>
+        </div>        </div>
 
         <div class="events-actions reveal">
           <a
@@ -1500,12 +1577,12 @@
       <div class="container">
         <div class="section-heading reveal">
           <span class="eyebrow" data-i18n-es="Contacto" data-i18n-en="Contact">Contacto</span>
-          <h2 data-i18n-es="Ubicación exacta, WhatsApp y reservaciones" data-i18n-en="Exact location, WhatsApp, and reservations">Ubicación exacta, WhatsApp y reservaciones</h2>
+          <h2 data-i18n-es="Reserva tu mesa en el corazón de Palenque" data-i18n-en="Reserve your table in the heart of Palenque">Reserva tu mesa en el corazón de Palenque</h2>
           <p
-            data-i18n-es="La forma mas directa de avanzar es escribir por WhatsApp. Tambien puedes dejar lista una solicitud de mesa desde aqui."
-            data-i18n-en="The fastest path is to write on WhatsApp. You can also prepare a reservation request from here."
+            data-i18n-es="Completa el formulario para reservar tu mesa de forma gratuita. El mensaje se generará en tu WhatsApp para coordinar tu confirmación inmediata."
+            data-i18n-en="Complete the form to book your table for free. The message will be generated in your WhatsApp for immediate coordination and confirmation."
           >
-            La forma mas directa de avanzar es escribir por WhatsApp. Tambien puedes dejar lista una solicitud de mesa desde aqui.
+            Completa el formulario para reservar tu mesa de forma gratuita. El mensaje se generará en tu WhatsApp para coordinar tu confirmación inmediata.
           </p>
         </div>
 
@@ -1653,7 +1730,6 @@
   <script>
     const state = {
       lang: "es",
-      selectedMenuItems: [],
       selectedEvent: ""
     };
 
@@ -1661,8 +1737,6 @@
     const translatableNodes = document.querySelectorAll("[data-i18n-es]");
     const menuCards = document.querySelectorAll(".menu-card");
     const eventCards = document.querySelectorAll(".event-card");
-    const menuSelectionText = document.getElementById("menuSelectionText");
-    const menuWhatsAppLink = document.getElementById("menuWhatsAppLink");
     const eventWhatsAppLink = document.getElementById("eventWhatsAppLink");
     const bookingForm = document.getElementById("bookingForm");
     const bookingNote = document.getElementById("bookingNote");
@@ -1670,6 +1744,7 @@
     const mobileToggle = document.getElementById("mobileToggle");
     const mobilePanel = document.getElementById("mobilePanel");
     const navLinks = document.querySelectorAll(".nav-link");
+    const filterButtons = document.querySelectorAll(".filter-btn");
 
     function applyLanguage(lang) {
       state.lang = lang;
@@ -1687,18 +1762,10 @@
       });
 
       syncSelectionsFromUI();
-      updateMenuSelectionText();
       updateWhatsAppLinks();
     }
 
     function syncSelectionsFromUI() {
-      state.selectedMenuItems = Array.from(document.querySelectorAll(".menu-card.is-selected"))
-        .map((card) => state.lang === "es" ? card.dataset.itemEs : card.dataset.itemEn);
-
-      menuCards.forEach((card) => {
-        card.setAttribute("aria-pressed", card.classList.contains("is-selected") ? "true" : "false");
-      });
-
       const activeEvent = document.querySelector(".event-card.is-selected");
       state.selectedEvent = activeEvent
         ? (state.lang === "es" ? activeEvent.dataset.eventEs : activeEvent.dataset.eventEn)
@@ -1715,30 +1782,7 @@
       }
     }
 
-    function updateMenuSelectionText() {
-      const defaultText = state.lang === "es"
-        ? menuSelectionText.dataset.defaultEs
-        : menuSelectionText.dataset.defaultEn;
-
-      if (!state.selectedMenuItems.length) {
-        menuSelectionText.textContent = defaultText;
-        return;
-      }
-
-      menuSelectionText.textContent = state.selectedMenuItems.join(", ");
-    }
-
     function updateWhatsAppLinks() {
-      const menuBase = state.lang === "es"
-        ? "Hola Cafe Jade, me gustaria hacer un pedido."
-        : "Hello Cafe Jade, I would like to place an order.";
-      const menuExtra = state.selectedMenuItems.length
-        ? (state.lang === "es"
-            ? "\n\nMe interesa: " + state.selectedMenuItems.join(", ")
-            : "\n\nI am interested in: " + state.selectedMenuItems.join(", "))
-        : "";
-      menuWhatsAppLink.href = "https://wa.me/529166880081?text=" + encodeURIComponent(menuBase + menuExtra);
-
       const eventBase = state.lang === "es"
         ? "Hola Cafe Jade, me gustaria cotizar un evento."
         : "Hello Cafe Jade, I would like to plan an event.";
@@ -1750,30 +1794,30 @@
       eventWhatsAppLink.href = "https://wa.me/529166880081?text=" + encodeURIComponent(eventBase + eventExtra);
     }
 
-    function toggleMenuCard(card) {
-        const item = state.lang === "es" ? card.dataset.itemEs : card.dataset.itemEn;
-        card.classList.toggle("is-selected");
-
-        if (card.classList.contains("is-selected")) {
-          if (!state.selectedMenuItems.includes(item)) {
-            state.selectedMenuItems.push(item);
-          }
+    // Menu Category Filtering
+    function filterMenu(category) {
+      menuCards.forEach((card) => {
+        const cardCategory = card.dataset.category;
+        if (category === "all" || cardCategory === category) {
+          card.classList.remove("is-hidden");
+          // Smooth fade-in
+          card.style.opacity = "0";
+          setTimeout(() => {
+            card.style.opacity = "1";
+          }, 50);
         } else {
-          state.selectedMenuItems = state.selectedMenuItems.filter((entry) => entry !== item);
+          card.classList.add("is-hidden");
         }
+      });
 
-        syncSelectionsFromUI();
-        updateMenuSelectionText();
-        updateWhatsAppLinks();
+      filterButtons.forEach((btn) => {
+        btn.classList.toggle("is-active", btn.dataset.filter === category);
+      });
     }
 
-    menuCards.forEach((card) => {
-      card.addEventListener("click", () => toggleMenuCard(card));
-      card.addEventListener("keydown", (event) => {
-        if (event.key === "Enter" || event.key === " ") {
-          event.preventDefault();
-          toggleMenuCard(card);
-        }
+    filterButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        filterMenu(btn.dataset.filter);
       });
     });
 

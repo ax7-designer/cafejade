@@ -16,3 +16,9 @@ output/
 .DS_Store
 Thumbs.db
 *.log
+
+# Raw photos & temp tools
+FOTOS JADE/
+temp_thumbnails/
+scripts/
+
