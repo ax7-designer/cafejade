@@ -18,7 +18,6 @@ Thumbs.db
 *.log
 
 # Raw photos & temp tools
-FOTOS JADE/
 temp_thumbnails/
 scripts/
 assets/images/all_optimized/
