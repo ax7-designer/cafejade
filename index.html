@@ -8,6 +8,13 @@
     name="description"
     content="Cafe Jade Palenque: restaurante, cafe y espacio cultural con menu, eventos, reservaciones y contacto directo por WhatsApp."
   >
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="keywords" content="Cafe Jade Palenque, restaurante en Palenque, cafe en Palenque, eventos en Palenque, musica en vivo Palenque, La Canada Palenque, Chiapas">
+  <meta name="geo.region" content="MX-CHP">
+  <meta name="geo.placename" content="Palenque, Chiapas">
+  <meta name="geo.position" content="17.509475;-91.986831">
+  <meta name="ICBM" content="17.509475, -91.986831">
+  <link rel="canonical" href="https://luxury-syrniki-73ec68.netlify.app/">
   <meta name="theme-color" content="#173229">
   <meta property="og:title" content="Cafe Jade Palenque">
   <meta
@@ -15,6 +22,42 @@
     content="Restaurante, cafe y espacio cultural con menu, eventos, reservaciones y contacto directo por WhatsApp."
   >
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://luxury-syrniki-73ec68.netlify.app/">
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:site_name" content="Cafe Jade Palenque">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Cafe Jade Palenque",
+      "description": "Restaurante, cafe y espacio cultural con cocina regional, cafe chiapaneco, musica en vivo, reservaciones y eventos privados en Palenque, Chiapas.",
+      "servesCuisine": ["Mexicana", "Chiapaneca", "Cafe", "Postres"],
+      "priceRange": "$$",
+      "email": "cafejadepalenque@hotmail.com",
+      "url": "https://luxury-syrniki-73ec68.netlify.app/",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Prolongacion Av. Hidalgo Esq. 5ta Poniente Norte, #1 Zona Turistica La Canada",
+        "addressLocality": "Palenque",
+        "addressRegion": "Chiapas",
+        "postalCode": "29960",
+        "addressCountry": "MX"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 17.509475,
+        "longitude": -91.986831
+      },
+      "sameAs": [
+        "https://www.instagram.com/cafejadechiapas/",
+        "https://www.facebook.com/cafejadechiapas/"
+      ],
+      "potentialAction": {
+        "@type": "ReserveAction",
+        "target": "https://wa.me/529166880081"
+      }
+    }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -57,12 +100,12 @@
       --story-bg-image: url("assets/images/all_optimized/img_9616.jpg");
 
       /* Editable Image Transforms */
-      --img-story-transform: translate(0px, 0px) scale(1.000) rotate(0deg) scale(1, 1);
+      --img-story-transform: translate(0px, -8px) scale(1.150) rotate(-1.5deg) scale(1, 1);
       --img-menu-0-transform: translate(-39px, -22px) scale(1.400) rotate(0deg) scale(-1, 1);
       --img-menu-1-transform: translate(15px, -14px) scale(1.150) rotate(0deg) scale(1, 1);
       --img-menu-2-transform: translate(-1px, -1px) scale(1.050) rotate(0deg) scale(1, 1);
       --img-menu-3-transform: translate(6px, -61px) scale(1.500) rotate(0deg) scale(1, 1);
-      --img-menu-4-transform: translate(33px, 18px) scale(1.300) rotate(0deg) scale(1, 1);
+      --img-menu-4-transform: translate(0px, 0px) scale(1.400) rotate(90deg) scale(1, 1);
       --img-menu-5-transform: translate(-6px, 3px) scale(1.000) rotate(0deg) scale(1, 1);
       --img-menu-6-transform: translate(0px, 0px) scale(1.000) rotate(0deg) scale(1, 1);
       --img-menu-7-transform: translate(0px, 0px) scale(1.000) rotate(0deg) scale(1, 1);
@@ -90,7 +133,7 @@
       color: var(--ink);
       font-family: var(--font-body);
       font-size: 17px;
-      line-height: 1.72;
+      line-height: 1.38;
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -780,6 +823,29 @@
       transition: transform 0.2s ease, border-color 0.2s ease;
     }
 
+    .event-card.reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition:
+        opacity 0.65s ease,
+        transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .event-card.reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .event-card.reveal:nth-child(2) {
+      transition-delay: 0.08s;
+    }
+
+    .event-card.reveal:nth-child(3) {
+      transition-delay: 0.16s;
+    }
+
     .event-card:hover,
     .event-card.is-selected {
       transform: translateY(-4px);
@@ -802,6 +868,7 @@
     .events-actions {
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
       gap: 0.9rem;
     }
 
@@ -842,8 +909,11 @@
     }
 
     .booking-panel {
-      margin-top: 0.85rem;
       padding: 1rem;
+    }
+
+    .contact-booking {
+      grid-column: 1 / -1;
     }
 
     .social-links {
@@ -910,9 +980,44 @@
       resize: vertical;
     }
 
+    .date-field {
+      gap: 0.48rem;
+    }
+
+    .quick-date-group {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.4rem;
+    }
+
+    .date-chip {
+      min-height: 38px;
+      padding: 0.45rem 0.5rem;
+      border: 1px solid rgba(23, 50, 41, 0.12);
+      border-radius: 999px;
+      background: rgba(63, 115, 93, 0.08);
+      color: var(--jade-700);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .date-chip:hover,
+    .date-chip.is-active {
+      background: var(--jade-900);
+      border-color: var(--jade-900);
+      color: #fff;
+    }
+
+    .field-hint {
+      color: var(--muted);
+      font-size: 0.78rem;
+      line-height: 1.35;
+    }
+
     .form-actions {
       display: flex;
       flex-wrap: wrap;
+      align-items: center;
       gap: 0.65rem;
       margin-top: 0.85rem;
     }
@@ -1106,6 +1211,23 @@
 
       .contact-grid {
         grid-template-columns: 1.1fr 0.95fr;
+      }
+
+      .contact-booking {
+        padding: 1.2rem;
+      }
+
+      .contact-booking .booking-grid {
+        grid-template-columns: 1.15fr 0.7fr 1fr 0.75fr;
+        align-items: start;
+      }
+
+      .contact-booking .field.span-2 {
+        grid-column: span 2;
+      }
+
+      .contact-booking .form-actions {
+        justify-content: flex-start;
       }
 
       .map-card {
@@ -2053,94 +2175,95 @@
         </div>
 
         <div class="contact-grid">
-          <div class="reveal">
-            <div class="contact-card">
-              <h3 data-i18n-es="Cafe Jade Palenque" data-i18n-en="Cafe Jade Palenque">Cafe Jade Palenque</h3>
-              <ul class="contact-list">
-                <li>
-                  <strong data-i18n-es="Dirección:" data-i18n-en="Address:">Dirección:</strong>
-                  <span>Prolongación Av. Hidalgo Esq. 5ta Poniente Norte, #1 Zona Turística La Cañada, 29960 Palenque, Chiapas, México.</span>
-                </li>
-                <li>
-                  <strong data-i18n-es="Coordenadas:" data-i18n-en="Coordinates:">Coordenadas:</strong>
-                  <a href="https://www.google.com/maps?q=17.509475,-91.986831" target="_blank" rel="noopener noreferrer">17.509475, -91.986831</a>
-                </li>
-
-                <li>
-                  <strong data-i18n-es="Correo:" data-i18n-en="Email:">Correo:</strong>
-                  <a href="mailto:cafejadepalenque@hotmail.com">cafejadepalenque@hotmail.com</a>
-                </li>
-                <li>
-                  <strong data-i18n-es="Horario:" data-i18n-en="Hours:">Horario:</strong>
-                  <span data-i18n-es="Consulta el horario del dia por WhatsApp o redes sociales." data-i18n-en="Check the current opening hours on WhatsApp or social media.">Consulta el horario del dia por WhatsApp o redes sociales.</span>
-                </li>
-              </ul>
-              <div class="social-links">
-                <a class="social-link" href="https://www.instagram.com/cafejadechiapas/?hl=es-la" target="_blank" rel="noopener noreferrer">Instagram</a>
-                <a class="social-link" href="https://www.facebook.com/cafejadechiapas/?ref=page_internal" target="_blank" rel="noopener noreferrer">Facebook</a>
-              </div>
-            </div>
-
-            <div class="booking-panel">
-              <h3 data-i18n-es="Preparar reservacion" data-i18n-en="Prepare reservation">Preparar reservacion</h3>
-              <p
-                data-i18n-es="Deja los datos básicos y envía la solicitud por WhatsApp."
-                data-i18n-en="Add the basics and send the request by WhatsApp."
-              >
-                Deja los datos básicos y envía la solicitud por WhatsApp.
-              </p>
-              <form id="bookingForm">
-                <div class="booking-grid">
-                  <div class="field">
-                    <label for="bookingName" data-i18n-es="Nombre" data-i18n-en="Name">Nombre</label>
-                    <input id="bookingName" name="bookingName" type="text" required>
-                  </div>
-                  <div class="field">
-                    <label for="bookingPeople" data-i18n-es="Personas" data-i18n-en="Guests">Personas</label>
-                    <select id="bookingPeople" name="bookingPeople">
-                      <option value="2">2</option>
-                      <option value="4">4</option>
-                      <option value="6">6</option>
-                      <option value="8+">8+</option>
-                    </select>
-                  </div>
-                  <div class="field">
-                    <label for="bookingDate" data-i18n-es="Fecha" data-i18n-en="Date">Fecha</label>
-                    <input id="bookingDate" name="bookingDate" type="date" required>
-                  </div>
-                  <div class="field">
-                    <label for="bookingTime" data-i18n-es="Hora" data-i18n-en="Time">Hora</label>
-                    <input id="bookingTime" name="bookingTime" type="time" required>
-                  </div>
-                  <div class="field span-2">
-                    <label for="bookingNote" data-i18n-es="Notas" data-i18n-en="Notes">Notas</label>
-                    <textarea id="bookingNote" name="bookingNote"></textarea>
-                  </div>
-                </div>
-                <div class="form-actions">
-                  <button class="button" type="submit" data-i18n-es="Enviar por WhatsApp" data-i18n-en="Send on WhatsApp">Enviar por WhatsApp</button>
-                  <a
-                    class="button-outline button"
-                    href="https://wa.me/529166880081?text=Hola%20Cafe%20Jade,%20me%20gustaria%20solicitar%20informacion."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-i18n-es="Consulta general"
-                    data-i18n-en="General inquiry"
-                  >Consulta general</a>
-                </div>
-              </form>
+          <div class="contact-card reveal">
+            <h3 data-i18n-es="Cafe Jade Palenque" data-i18n-en="Cafe Jade Palenque">Cafe Jade Palenque</h3>
+            <ul class="contact-list">
+              <li>
+                <strong data-i18n-es="Dirección:" data-i18n-en="Address:">Dirección:</strong>
+                <span>Prolongación Av. Hidalgo Esq. 5ta Poniente Norte, #1 Zona Turística La Cañada, 29960 Palenque, Chiapas, México.</span>
+              </li>
+              <li>
+                <strong data-i18n-es="Coordenadas:" data-i18n-en="Coordinates:">Coordenadas:</strong>
+                <a href="https://www.google.com/maps?q=17.509475,-91.986831" target="_blank" rel="noopener noreferrer">17.509475, -91.986831</a>
+              </li>
+              <li>
+                <strong data-i18n-es="Correo:" data-i18n-en="Email:">Correo:</strong>
+                <a href="mailto:cafejadepalenque@hotmail.com">cafejadepalenque@hotmail.com</a>
+              </li>
+              <li>
+                <strong data-i18n-es="Horario:" data-i18n-en="Hours:">Horario:</strong>
+                <span data-i18n-es="Consulta el horario del dia por WhatsApp o redes sociales." data-i18n-en="Check the current opening hours on WhatsApp or social media.">Consulta el horario del dia por WhatsApp o redes sociales.</span>
+              </li>
+            </ul>
+            <div class="social-links">
+              <a class="social-link" href="https://www.instagram.com/cafejadechiapas/?hl=es-la" target="_blank" rel="noopener noreferrer">Instagram</a>
+              <a class="social-link" href="https://www.facebook.com/cafejadechiapas/?ref=page_internal" target="_blank" rel="noopener noreferrer">Facebook</a>
             </div>
           </div>
 
-          <div class="reveal">
-            <div class="map-card">
-              <iframe
-                title="Mapa Cafe Jade Palenque"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps?q=17.509475,-91.986831&z=18&output=embed"
-              ></iframe>
-            </div>
+          <div class="map-card reveal">
+            <iframe
+              title="Mapa Cafe Jade Palenque"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=17.509475,-91.986831&z=18&output=embed"
+            ></iframe>
+          </div>
+
+          <div class="booking-panel contact-booking reveal">
+            <h3 data-i18n-es="Preparar reservación" data-i18n-en="Prepare reservation">Preparar reservación</h3>
+            <p
+              data-i18n-es="Elige una fecha rápida de este año o ajusta el día exacto antes de enviar tu solicitud por WhatsApp."
+              data-i18n-en="Pick a quick date for this year or adjust the exact day before sending your request on WhatsApp."
+            >
+              Elige una fecha rápida de este año o ajusta el día exacto antes de enviar tu solicitud por WhatsApp.
+            </p>
+            <form id="bookingForm">
+              <div class="booking-grid">
+                <div class="field">
+                  <label for="bookingName" data-i18n-es="Nombre" data-i18n-en="Name">Nombre</label>
+                  <input id="bookingName" name="bookingName" type="text" autocomplete="name" required>
+                </div>
+                <div class="field">
+                  <label for="bookingPeople" data-i18n-es="Personas" data-i18n-en="Guests">Personas</label>
+                  <select id="bookingPeople" name="bookingPeople">
+                    <option value="2">2</option>
+                    <option value="4">4</option>
+                    <option value="6">6</option>
+                    <option value="8+">8+</option>
+                  </select>
+                </div>
+                <div class="field date-field">
+                  <label for="bookingDate" data-i18n-es="Fecha de este año" data-i18n-en="Date this year">Fecha de este año</label>
+                  <div class="quick-date-group" aria-label="Fechas rápidas">
+                    <button class="date-chip" type="button" data-date-preset="today" data-i18n-es="Hoy" data-i18n-en="Today">Hoy</button>
+                    <button class="date-chip" type="button" data-date-preset="tomorrow" data-i18n-es="Mañana" data-i18n-en="Tomorrow">Mañana</button>
+                    <button class="date-chip" type="button" data-date-preset="weekend" data-i18n-es="Sábado" data-i18n-en="Saturday">Sábado</button>
+                  </div>
+                  <input id="bookingDate" name="bookingDate" type="date" required>
+                  <span class="field-hint" data-i18n-es="Limitado al año actual para reservas próximas." data-i18n-en="Limited to the current year for upcoming bookings.">Limitado al año actual para reservas próximas.</span>
+                </div>
+                <div class="field">
+                  <label for="bookingTime" data-i18n-es="Hora" data-i18n-en="Time">Hora</label>
+                  <input id="bookingTime" name="bookingTime" type="time" required>
+                </div>
+                <div class="field span-2">
+                  <label for="bookingNote" data-i18n-es="Notas" data-i18n-en="Notes">Notas</label>
+                  <textarea id="bookingNote" name="bookingNote"></textarea>
+                </div>
+              </div>
+              <div class="form-actions">
+                <button class="button" type="submit" data-i18n-es="Enviar por WhatsApp" data-i18n-en="Send on WhatsApp">Enviar por WhatsApp</button>
+                <a
+                  class="button-outline button"
+                  href="https://wa.me/529166880081?text=Hola%20Cafe%20Jade,%20me%20gustaria%20solicitar%20informacion."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-i18n-es="Consulta general"
+                  data-i18n-en="General inquiry"
+                >Consulta general</a>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -2198,6 +2321,7 @@
     const bookingForm = document.getElementById("bookingForm");
     const bookingNote = document.getElementById("bookingNote");
     const bookingDate = document.getElementById("bookingDate");
+    const quickDateButtons = document.querySelectorAll(".date-chip");
     const mobileToggle = document.getElementById("mobileToggle");
     const mobilePanel = document.getElementById("mobilePanel");
     const navLinks = document.querySelectorAll(".nav-link");
@@ -2251,6 +2375,45 @@
       eventWhatsAppLink.href = "https://wa.me/529166880081?text=" + encodeURIComponent(eventBase + eventExtra);
     }
 
+    function toDateValue(date) {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, "0");
+      const day = String(date.getDate()).padStart(2, "0");
+      return year + "-" + month + "-" + day;
+    }
+
+    function formatDateForMessage(value) {
+      if (!value) return "";
+      const parts = value.split("-");
+      if (parts.length !== 3) return value;
+      return parts[2] + "/" + parts[1] + "/" + parts[0];
+    }
+
+    function getNextSaturday(fromDate) {
+      const date = new Date(fromDate);
+      const daysUntilSaturday = (6 - date.getDay() + 7) % 7 || 7;
+      date.setDate(date.getDate() + daysUntilSaturday);
+      return date;
+    }
+
+    function setQuickDate(preset) {
+      const today = new Date();
+      let target = new Date(today);
+
+      if (preset === "tomorrow") {
+        target.setDate(today.getDate() + 1);
+      }
+
+      if (preset === "weekend") {
+        target = getNextSaturday(today);
+      }
+
+      bookingDate.value = toDateValue(target);
+      quickDateButtons.forEach((button) => {
+        button.classList.toggle("is-active", button.dataset.datePreset === preset);
+      });
+    }
+
     // Menu Category Filtering
     function filterMenu(category) {
       menuCards.forEach((card) => {
@@ -2276,6 +2439,14 @@
       btn.addEventListener("click", () => {
         filterMenu(btn.dataset.filter);
       });
+    });
+
+    quickDateButtons.forEach((button) => {
+      button.addEventListener("click", () => setQuickDate(button.dataset.datePreset));
+    });
+
+    bookingDate.addEventListener("input", () => {
+      quickDateButtons.forEach((button) => button.classList.remove("is-active"));
     });
 
     function activateEventCard(card) {
@@ -2305,6 +2476,7 @@
       const name = document.getElementById("bookingName").value.trim();
       const people = document.getElementById("bookingPeople").value;
       const date = document.getElementById("bookingDate").value;
+      const readableDate = formatDateForMessage(date);
       const time = document.getElementById("bookingTime").value;
       const note = bookingNote.value.trim();
 
@@ -2315,14 +2487,14 @@
         ? [
             "Nombre: " + name,
             "Personas: " + people,
-            "Fecha: " + date,
+            "Fecha: " + readableDate,
             "Hora: " + time,
             "Notas: " + (note || "Ninguna")
           ]
         : [
             "Name: " + name,
             "Guests: " + people,
-            "Date: " + date,
+            "Date: " + readableDate,
             "Time: " + time,
             "Notes: " + (note || "None")
           ];
@@ -2378,7 +2550,10 @@
 
     sectionTargets.forEach((section) => sectionObserver.observe(section));
 
-    bookingDate.min = new Date().toISOString().split("T")[0];
+    const today = new Date();
+    bookingDate.min = toDateValue(today);
+    bookingDate.max = today.getFullYear() + "-12-31";
+    setQuickDate("today");
     applyLanguage("es");
   </script>
 
