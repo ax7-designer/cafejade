@@ -1244,11 +1244,14 @@
       }
 
       .contact-booking .booking-grid {
-        grid-template-columns: 1.15fr 0.7fr 1fr;
+        grid-template-columns: minmax(0, 1fr) 380px;
         grid-template-areas:
-          "name guests date"
-          "notes notes time";
+          "name date"
+          "notes date"
+          "actions date";
         align-items: start;
+        column-gap: 1.2rem;
+        row-gap: 0.85rem;
       }
 
       .field-name {
@@ -1276,8 +1279,15 @@
       }
 
       .contact-booking .form-actions {
-        width: min(100%, 620px);
+        grid-area: actions;
+        width: 100%;
         justify-content: center;
+        margin-top: 0;
+      }
+
+      .reservation-side {
+        display: grid;
+        gap: 0.85rem;
       }
 
       .map-card {
@@ -2284,44 +2294,46 @@
                   <label for="bookingName" data-i18n-es="Nombre" data-i18n-en="Name">Nombre</label>
                   <input id="bookingName" name="bookingName" type="text" autocomplete="name" required>
                 </div>
-                <div class="field field-guests">
-                  <label for="bookingPeople" data-i18n-es="Personas" data-i18n-en="Guests">Personas</label>
-                  <select id="bookingPeople" name="bookingPeople">
-                    <option value="2">2</option>
-                    <option value="4">4</option>
-                    <option value="6">6</option>
-                    <option value="8+">8+</option>
-                  </select>
-                </div>
-                <div class="field date-field field-date">
-                  <label for="bookingDate" data-i18n-es="Fecha de este año" data-i18n-en="Date this year">Fecha de este año</label>
-                  <div class="quick-date-group" aria-label="Fechas rápidas">
-                    <button class="date-chip" type="button" data-date-preset="today" data-i18n-es="Hoy" data-i18n-en="Today">Hoy</button>
-                    <button class="date-chip" type="button" data-date-preset="tomorrow" data-i18n-es="Mañana" data-i18n-en="Tomorrow">Mañana</button>
-                    <button class="date-chip" type="button" data-date-preset="weekend" data-i18n-es="Sábado" data-i18n-en="Saturday">Sábado</button>
+                <div class="reservation-side field-date">
+                  <div class="field date-field">
+                    <label for="bookingDate" data-i18n-es="Fecha de este año" data-i18n-en="Date this year">Fecha de este año</label>
+                    <div class="quick-date-group" aria-label="Fechas rápidas">
+                      <button class="date-chip" type="button" data-date-preset="today" data-i18n-es="Hoy" data-i18n-en="Today">Hoy</button>
+                      <button class="date-chip" type="button" data-date-preset="tomorrow" data-i18n-es="Mañana" data-i18n-en="Tomorrow">Mañana</button>
+                      <button class="date-chip" type="button" data-date-preset="weekend" data-i18n-es="Sábado" data-i18n-en="Saturday">Sábado</button>
+                    </div>
+                    <input id="bookingDate" name="bookingDate" type="date" required>
+                    <span class="field-hint" data-i18n-es="Limitado al año actual para reservas próximas." data-i18n-en="Limited to the current year for upcoming bookings.">Limitado al año actual para reservas próximas.</span>
                   </div>
-                  <input id="bookingDate" name="bookingDate" type="date" required>
-                  <span class="field-hint" data-i18n-es="Limitado al año actual para reservas próximas." data-i18n-en="Limited to the current year for upcoming bookings.">Limitado al año actual para reservas próximas.</span>
-                </div>
-                <div class="field field-time">
-                  <label for="bookingTime" data-i18n-es="Hora" data-i18n-en="Time">Hora</label>
-                  <input id="bookingTime" name="bookingTime" type="time" required>
+                  <div class="field field-guests">
+                    <label for="bookingPeople" data-i18n-es="Personas" data-i18n-en="Guests">Personas</label>
+                    <select id="bookingPeople" name="bookingPeople">
+                      <option value="2">2</option>
+                      <option value="4">4</option>
+                      <option value="6">6</option>
+                      <option value="8+">8+</option>
+                    </select>
+                  </div>
+                  <div class="field field-time">
+                    <label for="bookingTime" data-i18n-es="Hora" data-i18n-en="Time">Hora</label>
+                    <input id="bookingTime" name="bookingTime" type="time" required>
+                  </div>
                 </div>
                 <div class="field span-2 field-notes">
                   <label for="bookingNote" data-i18n-es="Notas" data-i18n-en="Notes">Notas</label>
                   <textarea id="bookingNote" name="bookingNote"></textarea>
                 </div>
-              </div>
-              <div class="form-actions">
-                <button class="button" type="submit" data-i18n-es="Enviar por WhatsApp" data-i18n-en="Send on WhatsApp">Enviar por WhatsApp</button>
-                <a
-                  class="button-outline button"
-                  href="https://wa.me/529166880081?text=Hola%20Cafe%20Jade,%20me%20gustaria%20solicitar%20informacion."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-i18n-es="Consulta general"
-                  data-i18n-en="General inquiry"
-                >Consulta general</a>
+                <div class="form-actions">
+                  <button class="button" type="submit" data-i18n-es="Enviar por WhatsApp" data-i18n-en="Send on WhatsApp">Enviar por WhatsApp</button>
+                  <a
+                    class="button-outline button"
+                    href="https://wa.me/529166880081?text=Hola%20Cafe%20Jade,%20me%20gustaria%20solicitar%20informacion."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-i18n-es="Consulta general"
+                    data-i18n-en="General inquiry"
+                  >Consulta general</a>
+                </div>
               </div>
             </form>
           </div>
