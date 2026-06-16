@@ -4,9 +4,12 @@ Fecha: 2026-06-12
 
 ## Identidad visual
 
-- Pendiente: solicitar o producir un logo horizontal.
-- Archivo disponible actualmente: `D:\CajeJade\LogoBlanco-03.svg`.
-- Nota: el archivo actual puede no encajar al 100% con la composicion visual vigente del sitio. Conviene probar una version horizontal antes de sustituir la marca del encabezado.
+- Resuelto en prototipo: se integraron los logotipos vectoriales oficiales en navegacion fija, hero y footer.
+- Assets publicados:
+  - `assets/images/brand/logo-cj-horizontal-blanco.svg`
+  - `assets/images/brand/logo-cj-horizontal-verde.svg`
+  - `assets/images/brand/logo-cj-simbolo-original.svg`
+- Pendiente opcional: validar con el cliente si la version blanca horizontal debe mantenerse como uso principal en fondos oscuros.
 
 ## Menu completo
 

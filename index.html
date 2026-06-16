@@ -197,20 +197,6 @@
       min-width: 0;
     }
 
-    .brand-mark {
-      display: grid;
-      place-items: center;
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      border: 1px solid rgba(255, 250, 244, 0.28);
-      background: rgba(255, 250, 244, 0.08);
-      color: var(--gold-300);
-      font-family: var(--font-display);
-      font-size: 1.05rem;
-    }
-
-    .brand-copy strong,
     .hero-copy h1,
     .section-heading h2,
     .story-copy h3,
@@ -222,23 +208,22 @@
       letter-spacing: var(--font-letter-spacing-display);
     }
 
-    .brand-copy {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.05;
-      min-width: 0;
+    .brand-logo-nav {
+      width: clamp(108px, 13vw, 154px);
+      height: auto;
+      flex: 0 0 auto;
     }
 
-    .brand-copy strong {
-      font-size: 0.88rem;
-      white-space: nowrap;
+    .hero-brand-logo {
+      width: min(78vw, 280px);
+      height: auto;
+      margin: -0.35rem 0 1rem;
     }
 
-    .brand-copy span {
-      color: var(--gold-300);
-      font-size: 0.66rem;
-      letter-spacing: 0;
-      text-transform: uppercase;
+    .footer-brand-logo {
+      width: min(100%, 170px);
+      height: auto;
+      margin-bottom: 0.8rem;
     }
 
     .desktop-nav {
@@ -965,6 +950,13 @@
       margin-top: 0.9rem;
     }
 
+    .reservation-main,
+    .reservation-side,
+    .reservation-inline {
+      display: grid;
+      gap: 0.85rem;
+    }
+
     .field {
       display: grid;
       gap: 0.32rem;
@@ -989,6 +981,11 @@
       border: 1px solid rgba(23, 50, 41, 0.12);
       border-radius: 12px;
       background: #fff;
+    }
+
+    .field-guests select {
+      text-align: center;
+      text-align-last: center;
     }
 
     .field textarea {
@@ -1034,6 +1031,7 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
+      justify-content: center;
       gap: 0.7rem;
       margin-top: 1rem;
     }
@@ -1121,6 +1119,15 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
+      .contact-booking .booking-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .reservation-inline {
+        grid-template-columns: minmax(0, 1fr) 112px;
+        align-items: end;
+      }
+
       .field.span-2 {
         grid-column: span 2;
       }
@@ -1140,17 +1147,8 @@
         gap: 0.9rem;
       }
 
-      .brand-mark {
-        width: 44px;
-        height: 44px;
-      }
-
-      .brand-copy strong {
-        font-size: 1.05rem;
-      }
-
-      .brand-copy span {
-        font-size: 0.78rem;
+      .brand-logo-nav {
+        width: clamp(136px, 12vw, 170px);
       }
 
       .desktop-nav {
@@ -1244,26 +1242,22 @@
       }
 
       .contact-booking .booking-grid {
-        grid-template-columns: minmax(0, 1fr) minmax(320px, 380px);
+        grid-template-columns: minmax(0, 1fr) minmax(300px, 340px);
         grid-template-areas:
-          "name side"
-          "notes side"
+          "main side"
           "actions side";
         align-items: start;
         column-gap: 1.2rem;
         row-gap: 0.85rem;
       }
 
-      .field-name {
-        grid-area: name;
+      .reservation-main {
+        grid-area: main;
       }
 
-      .field-notes {
-        grid-area: notes;
-      }
-
-      .contact-booking .field.span-2 {
-        grid-column: auto;
+      .reservation-inline {
+        grid-template-columns: minmax(0, 1fr) 112px;
+        align-items: end;
       }
 
       .contact-booking .form-actions {
@@ -1275,8 +1269,6 @@
 
       .reservation-side {
         grid-area: side;
-        display: grid;
-        gap: 0.85rem;
       }
 
       .map-card {
@@ -1738,22 +1730,8 @@
 <body>
   <header class="site-header" id="top">
     <div class="container header-inner">
-      <!-- 
-        LOGO REPLACEMENT GUIDE:
-        To replace this text logo with an image/SVG:
-        1. Replace <span class="brand-mark">CJ</span> with:
-           <img class="brand-logo" src="assets/images/brand/logo-light.svg" alt="Cafe Jade Logo">
-        2. Specifications:
-           - Recommended formats: SVG (ideal) or PNG with transparent background.
-           - Color: White or light-gold (#ead6a6) to pop over dark transparent sticky header.
-           - Shape: Circle or square layout (1:1 aspect ratio).
-      -->
       <a class="brand" href="#inicio">
-        <span class="brand-mark">CJ</span>
-        <span class="brand-copy">
-          <strong>Cafe Jade</strong>
-          <span>Palenque</span>
-        </span>
+        <img class="brand-logo-nav" src="assets/images/brand/logo-cj-horizontal-blanco.svg" alt="Cafe Jade Palenque">
       </a>
 
       <nav class="desktop-nav" aria-label="Navegacion principal">
@@ -1826,6 +1804,7 @@
         <div class="hero-content">
           <div class="hero-copy reveal">
             <span class="eyebrow" data-i18n-es="Café, cocina y cultura" data-i18n-en="Coffee, cuisine, and culture">Café, cocina y cultura</span>
+            <img class="hero-brand-logo" src="assets/images/brand/logo-cj-horizontal-blanco.svg" alt="Cafe Jade Palenque">
             <h1 data-i18n-es="Cafe Jade Palenque" data-i18n-en="Cafe Jade Palenque">Cafe Jade Palenque</h1>
             <p
               data-i18n-es="Una experiencia gastronómica genuina en Palenque. Sabores tradicionales, café de altura y encuentros culturales."
@@ -2279,11 +2258,28 @@
             </p>
             <form id="bookingForm">
               <div class="booking-grid">
-                <div class="field field-name">
-                  <label for="bookingName" data-i18n-es="Nombre" data-i18n-en="Name">Nombre</label>
-                  <input id="bookingName" name="bookingName" type="text" autocomplete="name" required>
+                <div class="reservation-main">
+                  <div class="reservation-inline">
+                    <div class="field field-name">
+                      <label for="bookingName" data-i18n-es="Nombre" data-i18n-en="Name">Nombre</label>
+                      <input id="bookingName" name="bookingName" type="text" autocomplete="name" required>
+                    </div>
+                    <div class="field field-guests">
+                      <label for="bookingPeople" data-i18n-es="Personas" data-i18n-en="Guests">Personas</label>
+                      <select id="bookingPeople" name="bookingPeople">
+                        <option value="2">2</option>
+                        <option value="4">4</option>
+                        <option value="6">6</option>
+                        <option value="8+">8+</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="field field-notes">
+                    <label for="bookingNote" data-i18n-es="Notas" data-i18n-en="Notes">Notas</label>
+                    <textarea id="bookingNote" name="bookingNote"></textarea>
+                  </div>
                 </div>
-                <div class="reservation-side field-date">
+                <div class="reservation-side">
                   <div class="field date-field">
                     <label for="bookingDate" data-i18n-es="Fecha de este año" data-i18n-en="Date this year">Fecha de este año</label>
                     <div class="quick-date-group" aria-label="Fechas rápidas">
@@ -2294,23 +2290,10 @@
                     <input id="bookingDate" name="bookingDate" type="date" required>
                     <span class="field-hint" data-i18n-es="Limitado al año actual para reservas próximas." data-i18n-en="Limited to the current year for upcoming bookings.">Limitado al año actual para reservas próximas.</span>
                   </div>
-                  <div class="field field-guests">
-                    <label for="bookingPeople" data-i18n-es="Personas" data-i18n-en="Guests">Personas</label>
-                    <select id="bookingPeople" name="bookingPeople">
-                      <option value="2">2</option>
-                      <option value="4">4</option>
-                      <option value="6">6</option>
-                      <option value="8+">8+</option>
-                    </select>
-                  </div>
                   <div class="field field-time">
                     <label for="bookingTime" data-i18n-es="Hora" data-i18n-en="Time">Hora</label>
                     <input id="bookingTime" name="bookingTime" type="time" required>
                   </div>
-                </div>
-                <div class="field span-2 field-notes">
-                  <label for="bookingNote" data-i18n-es="Notas" data-i18n-en="Notes">Notas</label>
-                  <textarea id="bookingNote" name="bookingNote"></textarea>
                 </div>
                 <div class="form-actions">
                   <button class="button" type="submit" data-i18n-es="Enviar por WhatsApp" data-i18n-en="Send on WhatsApp">Enviar por WhatsApp</button>
@@ -2334,7 +2317,7 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div>
-        <strong>Cafe Jade</strong>
+        <img class="footer-brand-logo" src="assets/images/brand/logo-cj-horizontal-blanco.svg" alt="Cafe Jade Palenque">
         <p
           data-i18n-es="Restaurante, cafe y punto de encuentro cultural en Palenque."
           data-i18n-en="Restaurant, coffee house, and cultural meeting point in Palenque."
