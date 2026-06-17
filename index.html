@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cafe Jade Palenque | Restaurante, cafe y eventos</title>
+  <title>Cafe Jade Palenque | Restaurante, café y eventos</title>
   <meta
     name="description"
-    content="Cafe Jade Palenque: restaurante, cafe y espacio cultural con menu, eventos, reservaciones y contacto directo por WhatsApp."
+    content="Cafe Jade Palenque: restaurante, café y espacio cultural con menú, eventos, reservaciones y contacto directo por WhatsApp."
   >
   <meta name="robots" content="index, follow, max-image-preview:large">
-  <meta name="keywords" content="Cafe Jade Palenque, restaurante en Palenque, cafe en Palenque, eventos en Palenque, musica en vivo Palenque, La Canada Palenque, Chiapas">
+  <meta name="keywords" content="Cafe Jade Palenque, restaurante en Palenque, café en Palenque, eventos en Palenque, música en vivo Palenque, La Cañada Palenque, Chiapas">
   <meta name="geo.region" content="MX-CHP">
   <meta name="geo.placename" content="Palenque, Chiapas">
   <meta name="geo.position" content="17.509475;-91.986831">
@@ -19,7 +19,7 @@
   <meta property="og:title" content="Cafe Jade Palenque">
   <meta
     property="og:description"
-    content="Restaurante, cafe y espacio cultural con menu, eventos, reservaciones y contacto directo por WhatsApp."
+    content="Restaurante, café y espacio cultural con menú, eventos, reservaciones y contacto directo por WhatsApp."
   >
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://luxury-syrniki-73ec68.netlify.app/">
@@ -30,7 +30,7 @@
       "@context": "https://schema.org",
       "@type": "Restaurant",
       "name": "Cafe Jade Palenque",
-      "description": "Restaurante, cafe y espacio cultural con cocina regional, cafe chiapaneco, musica en vivo, reservaciones y eventos privados en Palenque, Chiapas.",
+      "description": "Restaurante, café y espacio cultural con cocina regional, café chiapaneco, música en vivo, reservaciones y eventos privados en Palenque, Chiapas.",
       "servesCuisine": ["Mexicana", "Chiapaneca", "Cafe", "Postres"],
       "priceRange": "$$",
       "email": "cafejadepalenque@hotmail.com",
@@ -389,15 +389,17 @@
     }
 
     .button-secondary {
-      background: rgba(255, 250, 244, 0.12);
+      background: var(--jade-700);
       color: #fff;
-      border: 1px solid rgba(255, 250, 244, 0.18);
+      border: 1px solid rgba(255, 250, 244, 0.48);
+      box-shadow: 0 14px 28px rgba(23, 50, 41, 0.24);
     }
 
     .button-outline {
-      background: transparent;
+      background: var(--paper);
       color: var(--jade-900);
-      border: 1px solid rgba(23, 50, 41, 0.18);
+      border: 1px solid rgba(23, 50, 41, 0.24);
+      box-shadow: 0 12px 22px rgba(23, 50, 41, 0.12);
     }
 
     .button:hover,
@@ -416,7 +418,9 @@
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      border: 1px solid rgba(255, 250, 244, 0.16);
+      border: 1px solid rgba(255, 250, 244, 0.42);
+      background: var(--jade-700);
+      box-shadow: 0 12px 22px rgba(23, 50, 41, 0.22);
     }
 
     .mobile-toggle span {
@@ -664,7 +668,23 @@
       overflow: hidden;
     }
 
+    .menu-media {
+      position: relative;
+      background: var(--jade-900);
+    }
+
+    .menu-slide {
+      display: none;
+      width: 100%;
+      height: 100%;
+    }
+
+    .menu-slide.is-active {
+      display: block;
+    }
+
     .menu-card img,
+    .menu-card video,
     .story-card img,
     .event-card img {
       height: 100%;
@@ -1731,12 +1751,12 @@
   <header class="site-header" id="top">
     <div class="container header-inner">
       <a class="brand" href="#inicio">
-        <img class="brand-logo-nav" src="assets/images/brand/logo-cj-horizontal-blanco.svg" alt="Cafe Jade Palenque">
+        <img class="brand-logo-nav" src="assets/images/brand/LogoCJ_Horizontal_Blanco.svg" alt="Cafe Jade Palenque">
       </a>
 
-      <nav class="desktop-nav" aria-label="Navegacion principal">
+      <nav class="desktop-nav" aria-label="Navegación principal">
         <a class="nav-link active" href="#inicio" data-i18n-es="Inicio" data-i18n-en="Home">Inicio</a>
-        <a class="nav-link" href="#menu" data-i18n-es="Menu" data-i18n-en="Menu">Menu</a>
+        <a class="nav-link" href="#menu" data-i18n-es="Menú" data-i18n-en="Menu">Menú</a>
         <a class="nav-link" href="#historia" data-i18n-es="Nuestra Historia" data-i18n-en="Our Story">Nuestra Historia</a>
         <a class="nav-link" href="#eventos" data-i18n-es="Eventos" data-i18n-en="Events">Eventos</a>
         <a class="nav-link" href="#contacto" data-i18n-es="Contacto" data-i18n-en="Contact">Contacto</a>
@@ -1744,7 +1764,7 @@
 
       <div class="header-actions">
         <div class="lang-switch" aria-label="Selector de idioma">
-          <button class="lang-btn is-active" type="button" data-lang="es" aria-label="Español, relevante para Mexico y Espana">
+          <button class="lang-btn is-active" type="button" data-lang="es" aria-label="Español, relevante para México y España">
             <span class="lang-cluster">
               <span class="lang-code">ES</span>
               <span class="flag-pair" aria-hidden="true">
@@ -1765,13 +1785,13 @@
         </div>
         <a
           class="header-cta"
-          href="https://wa.me/529166880081?text=Hola%20Cafe%20Jade,%20me%20gustaria%20hacer%20una%20reservacion."
+          href="https://wa.me/529166880081?text=Hola%20Cafe%20Jade,%20me%20gustar%C3%ADa%20hacer%20una%20reservaci%C3%B3n."
           target="_blank"
           rel="noopener noreferrer"
           data-i18n-es="Reservar"
           data-i18n-en="Reserve"
         >Reservar</a>
-        <button class="mobile-toggle" id="mobileToggle" type="button" aria-label="Abrir menu">
+        <button class="mobile-toggle" id="mobileToggle" type="button" aria-label="Abrir menú">
           <span></span>
           <span></span>
           <span></span>
@@ -1780,15 +1800,15 @@
     </div>
 
     <div class="container mobile-panel" id="mobilePanel">
-      <nav class="mobile-menu" aria-label="Navegacion movil">
+      <nav class="mobile-menu" aria-label="Navegación móvil">
         <a class="nav-link active" href="#inicio" data-i18n-es="Inicio" data-i18n-en="Home">Inicio</a>
-        <a class="nav-link" href="#menu" data-i18n-es="Menu" data-i18n-en="Menu">Menu</a>
+        <a class="nav-link" href="#menu" data-i18n-es="Menú" data-i18n-en="Menu">Menú</a>
         <a class="nav-link" href="#historia" data-i18n-es="Nuestra Historia" data-i18n-en="Our Story">Nuestra Historia</a>
         <a class="nav-link" href="#eventos" data-i18n-es="Eventos" data-i18n-en="Events">Eventos</a>
         <a class="nav-link" href="#contacto" data-i18n-es="Contacto" data-i18n-en="Contact">Contacto</a>
         <a
           class="button"
-          href="https://wa.me/529166880081?text=Hola%20Cafe%20Jade,%20me%20gustaria%20hacer%20una%20reservacion."
+          href="https://wa.me/529166880081?text=Hola%20Cafe%20Jade,%20me%20gustar%C3%ADa%20hacer%20una%20reservaci%C3%B3n."
           target="_blank"
           rel="noopener noreferrer"
           data-i18n-es="Reservar"
@@ -1804,7 +1824,7 @@
         <div class="hero-content">
           <div class="hero-copy reveal">
             <span class="eyebrow" data-i18n-es="Café, cocina y cultura" data-i18n-en="Coffee, cuisine, and culture">Café, cocina y cultura</span>
-            <img class="hero-brand-logo" src="assets/images/brand/logo-cj-horizontal-blanco.svg" alt="Cafe Jade Palenque">
+            <img class="hero-brand-logo" src="assets/images/brand/LogoCJ_Horizontal_Blanco.svg" alt="Cafe Jade Palenque">
             <h1 data-i18n-es="Cafe Jade Palenque" data-i18n-en="Cafe Jade Palenque">Cafe Jade Palenque</h1>
             <p
               data-i18n-es="Una experiencia gastronómica genuina en Palenque. Sabores tradicionales, café de altura y encuentros culturales."
@@ -1891,8 +1911,10 @@
         <div class="menu-grid">
           <!-- Bebidas -->
           <article class="menu-card reveal" data-category="bebidas">
-            <figure>
-              <img id="img-menu-0" loading="eager" decoding="async" src="assets/images/all_optimized/img_2030-2-2.jpg" alt="Café de Olla Tradicional de Cafe Jade">
+            <figure class="menu-media" aria-label="Galería multimedia del Café de Olla Tradicional" data-media-max="5">
+              <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
+                <img id="img-menu-0" loading="eager" decoding="async" src="assets/images/all_optimized/img_2030-2-2.jpg" alt="Café de Olla Tradicional de Café Jade">
+              </div>
             </figure>
             <div class="menu-body">
               <div class="menu-meta">
@@ -1910,8 +1932,10 @@
           </article>
 
           <article class="menu-card reveal" data-category="bebidas">
-            <figure>
-              <img id="img-menu-1" loading="eager" decoding="async" src="assets/images/all_optimized/img_2684.jpg" alt="Café Frappé de la Casa en Cafe Jade">
+            <figure class="menu-media" aria-label="Galería multimedia del Frappé de la Casa" data-media-max="5">
+              <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
+                <img id="img-menu-1" loading="eager" decoding="async" src="assets/images/all_optimized/img_2684.jpg" alt="Café Frappé de la Casa en Café Jade">
+              </div>
             </figure>
             <div class="menu-body">
               <div class="menu-meta">
@@ -1929,8 +1953,10 @@
           </article>
 
           <article class="menu-card reveal" data-category="bebidas">
-            <figure>
-              <img id="img-menu-2" loading="eager" decoding="async" src="assets/images/all_optimized/img_2926.jpg" alt="Mojito refrescante en Cafe Jade">
+            <figure class="menu-media" aria-label="Galería multimedia del Mojito de Hierbabuena" data-media-max="5">
+              <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
+                <img id="img-menu-2" loading="eager" decoding="async" src="assets/images/all_optimized/img_2926.jpg" alt="Mojito refrescante en Café Jade">
+              </div>
             </figure>
             <div class="menu-body">
               <div class="menu-meta">
@@ -1948,8 +1974,10 @@
           </article>
 
           <article class="menu-card reveal" data-category="bebidas">
-            <figure>
-              <img id="img-menu-3" loading="eager" decoding="async" src="assets/images/all_optimized/img_4128.jpg" alt="Cóctel Cítrico de Autor en Cafe Jade">
+            <figure class="menu-media" aria-label="Galería multimedia del Cóctel Cítrico de Autor" data-media-max="5">
+              <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
+                <img id="img-menu-3" loading="eager" decoding="async" src="assets/images/all_optimized/img_4128.jpg" alt="Cóctel Cítrico de Autor en Café Jade">
+              </div>
             </figure>
             <div class="menu-body">
               <div class="menu-meta">
@@ -1968,8 +1996,10 @@
 
           <!-- Comida -->
           <article class="menu-card reveal" data-category="comida">
-            <figure>
-              <img id="img-menu-4" loading="eager" decoding="async" src="assets/images/all_optimized/hamburguesa regional.jpg" alt="Hamburguesa Regional de Cafe Jade">
+            <figure class="menu-media" aria-label="Galería multimedia de la Hamburguesa Regional" data-media-max="5">
+              <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
+                <img id="img-menu-4" loading="eager" decoding="async" src="assets/images/all_optimized/hamburguesa regional.jpg" alt="Hamburguesa Regional de Café Jade">
+              </div>
             </figure>
             <div class="menu-body">
               <div class="menu-meta">
@@ -1987,8 +2017,10 @@
           </article>
 
           <article class="menu-card reveal" data-category="comida">
-            <figure>
-              <img id="img-menu-5" loading="eager" decoding="async" src="assets/images/all_optimized/img_4110.jpg" alt="Tacos de Cochinita Pibil en Cafe Jade">
+            <figure class="menu-media" aria-label="Galería multimedia de los Tacos de Cochinita Pibil" data-media-max="5">
+              <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
+                <img id="img-menu-5" loading="eager" decoding="async" src="assets/images/all_optimized/img_4110.jpg" alt="Tacos de Cochinita Pibil en Café Jade">
+              </div>
             </figure>
             <div class="menu-body">
               <div class="menu-meta">
@@ -2006,8 +2038,10 @@
           </article>
 
           <article class="menu-card reveal" data-category="comida">
-            <figure>
-              <img id="img-menu-6" loading="eager" decoding="async" src="assets/images/all_optimized/img_4134.jpg" alt="Chilaquiles Verdes con Pollo en Cafe Jade">
+            <figure class="menu-media" aria-label="Galería multimedia de los Chilaquiles Verdes con Pollo" data-media-max="5">
+              <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
+                <img id="img-menu-6" loading="eager" decoding="async" src="assets/images/all_optimized/img_4134.jpg" alt="Chilaquiles Verdes con Pollo en Café Jade">
+              </div>
             </figure>
             <div class="menu-body">
               <div class="menu-meta">
@@ -2025,8 +2059,10 @@
           </article>
 
           <article class="menu-card reveal" data-category="comida">
-            <figure>
-              <img id="img-menu-7" loading="eager" decoding="async" src="assets/images/all_optimized/img_4202.jpg" alt="Ceviche de la Casa en Cafe Jade">
+            <figure class="menu-media" aria-label="Galería multimedia del Ceviche de la Casa" data-media-max="5">
+              <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
+                <img id="img-menu-7" loading="eager" decoding="async" src="assets/images/all_optimized/img_4202.jpg" alt="Ceviche de la Casa en Café Jade">
+              </div>
             </figure>
             <div class="menu-body">
               <div class="menu-meta">
@@ -2045,8 +2081,10 @@
 
           <!-- Postres -->
           <article class="menu-card reveal" data-category="postres">
-            <figure>
-              <img id="img-menu-8" loading="eager" decoding="async" src="assets/images/all_optimized/img_3059.jpg" alt="Copa de Helado Artesanal en Cafe Jade">
+            <figure class="menu-media" aria-label="Galería multimedia de la Copa de Helado Artesanal" data-media-max="5">
+              <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
+                <img id="img-menu-8" loading="eager" decoding="async" src="assets/images/all_optimized/img_3059.jpg" alt="Copa de Helado Artesanal en Café Jade">
+              </div>
             </figure>
             <div class="menu-body">
               <div class="menu-meta">
@@ -2083,23 +2121,23 @@
             Un punto de encuentro en Palenque
           </h3>
           <p
-            data-i18n-es="Cafe Jade vive entre la hospitalidad, el sabor y el deseo de que cada mesa se sienta especial. La experiencia mezcla cocina, cafe, sobremesa y un ambiente cultural que dialoga con el ritmo propio de Palenque."
+            data-i18n-es="Cafe Jade vive entre la hospitalidad, el sabor y el deseo de que cada mesa se sienta especial. La experiencia mezcla cocina, café, sobremesa y un ambiente cultural que dialoga con el ritmo propio de Palenque."
             data-i18n-en="Cafe Jade lives at the meeting point of hospitality, flavor, and the desire to make every table feel special. The experience blends cuisine, coffee, conversation, and a cultural atmosphere shaped by Palenque."
           >
-            Cafe Jade vive entre la hospitalidad, el sabor y el deseo de que cada mesa se sienta especial. La experiencia mezcla cocina, cafe, sobremesa y un ambiente cultural que dialoga con el ritmo propio de Palenque.
+            Cafe Jade vive entre la hospitalidad, el sabor y el deseo de que cada mesa se sienta especial. La experiencia mezcla cocina, café, sobremesa y un ambiente cultural que dialoga con el ritmo propio de Palenque.
           </p>
           <ul class="detail-list">
             <li>
               <strong data-i18n-es="Ambiente:" data-i18n-en="Atmosphere:">Ambiente:</strong>
-              <span data-i18n-es="Tradicional, calido y con caracter propio." data-i18n-en="Traditional, warm, and full of character.">Tradicional, calido y con caracter propio.</span>
+              <span data-i18n-es="Tradicional, cálido y con carácter propio." data-i18n-en="Traditional, warm, and full of character.">Tradicional, cálido y con carácter propio.</span>
             </li>
             <li>
               <strong data-i18n-es="Valor:" data-i18n-en="Value:">Valor:</strong>
-              <span data-i18n-es="Atencion cuidada, sabores memorables y un espacio para reunirse." data-i18n-en="Thoughtful service, memorable flavors, and a place to gather.">Atencion cuidada, sabores memorables y un espacio para reunirse.</span>
+              <span data-i18n-es="Atención cuidada, sabores memorables y un espacio para reunirse." data-i18n-en="Thoughtful service, memorable flavors, and a place to gather.">Atención cuidada, sabores memorables y un espacio para reunirse.</span>
             </li>
             <li>
               <strong data-i18n-es="Destino:" data-i18n-en="Destination:">Destino:</strong>
-              <span data-i18n-es="Ideal para visitantes, familias, cenas y noches con musica." data-i18n-en="Ideal for visitors, families, dinners, and evenings with music.">Ideal para visitantes, familias, cenas y noches con musica.</span>
+              <span data-i18n-es="Ideal para visitantes, familias, cenas y noches con música." data-i18n-en="Ideal for visitors, families, dinners, and evenings with music.">Ideal para visitantes, familias, cenas y noches con música.</span>
             </li>
           </ul>
         </div>
@@ -2177,7 +2215,7 @@
         <div class="events-actions reveal">
           <a
             class="button"
-            href="https://wa.me/529166880081?text=Hola%20Cafe%20Jade,%20me%20gustaria%20cotizar%20un%20evento%20privado."
+            href="https://wa.me/529166880081?text=Hola%20Cafe%20Jade,%20me%20gustar%C3%ADa%20cotizar%20un%20evento%20privado."
             id="eventWhatsAppLink"
             target="_blank"
             rel="noopener noreferrer"
@@ -2220,7 +2258,7 @@
               </li>
               <li>
                 <strong data-i18n-es="Horario:" data-i18n-en="Hours:">Horario:</strong>
-                <span data-i18n-es="Consulta el horario del dia por WhatsApp o redes sociales." data-i18n-en="Check the current opening hours on WhatsApp or social media.">Consulta el horario del dia por WhatsApp o redes sociales.</span>
+                <span data-i18n-es="Consulta el horario del día por WhatsApp o redes sociales." data-i18n-en="Check the current opening hours on WhatsApp or social media.">Consulta el horario del día por WhatsApp o redes sociales.</span>
               </li>
             </ul>
             <div class="social-links">
@@ -2299,9 +2337,10 @@
                   <button class="button" type="submit" data-i18n-es="Enviar por WhatsApp" data-i18n-en="Send on WhatsApp">Enviar por WhatsApp</button>
                   <a
                     class="button-outline button"
-                    href="https://wa.me/529166880081?text=Hola%20Cafe%20Jade,%20me%20gustaria%20solicitar%20informacion."
+                    href="https://wa.me/529166880081?text=Hola%20Cafe%20Jade,%20me%20gustar%C3%ADa%20solicitar%20informaci%C3%B3n."
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="Solicitar información por WhatsApp"
                     data-i18n-es="Consulta general"
                     data-i18n-en="General inquiry"
                   >Consulta general</a>
@@ -2317,22 +2356,22 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div>
-        <img class="footer-brand-logo" src="assets/images/brand/logo-cj-horizontal-blanco.svg" alt="Cafe Jade Palenque">
+        <img class="footer-brand-logo" src="assets/images/brand/LogoCJ_Horizontal_Blanco.svg" alt="Cafe Jade Palenque">
         <p
-          data-i18n-es="Restaurante, cafe y punto de encuentro cultural en Palenque."
+          data-i18n-es="Restaurante, café y punto de encuentro cultural en Palenque."
           data-i18n-en="Restaurant, coffee house, and cultural meeting point in Palenque."
         >
-          Restaurante, cafe y punto de encuentro cultural en Palenque.
+          Restaurante, café y punto de encuentro cultural en Palenque.
         </p>
       </div>
       <div>
         <strong data-i18n-es="Acciones" data-i18n-en="Actions">Acciones</strong>
-        <p><a href="#menu" data-i18n-es="Ver menu" data-i18n-en="View menu">Ver menu</a></p>
+        <p><a href="#menu" data-i18n-es="Ver menú" data-i18n-en="View menu">Ver menú</a></p>
         <p><a href="#eventos" data-i18n-es="Ver eventos" data-i18n-en="See events">Ver eventos</a></p>
         <p><a href="#contacto" data-i18n-es="Reservar" data-i18n-en="Reserve">Reservar</a></p>
       </div>
       <div>
-        <strong data-i18n-es="Contacto rapido" data-i18n-en="Quick contact">Contacto rapido</strong>
+        <strong data-i18n-es="Contacto rápido" data-i18n-en="Quick contact">Contacto rápido</strong>
         <p><a href="mailto:cafejadepalenque@hotmail.com">cafejadepalenque@hotmail.com</a></p>
       </div>
     </div>
@@ -2340,7 +2379,7 @@
 
   <a
     class="wa-fab"
-    href="https://wa.me/529166880081?text=Hola%20Cafe%20Jade,%20me%20gustaria%20solicitar%20informacion."
+    href="https://wa.me/529166880081?text=Hola%20Cafe%20Jade,%20me%20gustar%C3%ADa%20solicitar%20informaci%C3%B3n."
     target="_blank"
     rel="noopener noreferrer"
     aria-label="Abrir WhatsApp"
@@ -2402,18 +2441,18 @@
 
       if (activeEvent) {
         bookingNote.value = state.lang === "es"
-          ? "Interes en: " + state.selectedEvent
+          ? "Interés en: " + state.selectedEvent
           : "Interested in: " + state.selectedEvent;
       }
     }
 
     function updateWhatsAppLinks() {
       const eventBase = state.lang === "es"
-        ? "Hola Cafe Jade, me gustaria cotizar un evento."
+        ? "Hola Cafe Jade, me gustaría cotizar un evento."
         : "Hello Cafe Jade, I would like to plan an event.";
       const eventExtra = state.selectedEvent
         ? (state.lang === "es"
-            ? "\n\nEvento de interes: " + state.selectedEvent
+            ? "\n\nEvento de interés: " + state.selectedEvent
             : "\n\nEvent of interest: " + state.selectedEvent)
         : "";
       eventWhatsAppLink.href = "https://wa.me/529166880081?text=" + encodeURIComponent(eventBase + eventExtra);
@@ -2498,7 +2537,7 @@
         card.classList.add("is-selected");
         state.selectedEvent = state.lang === "es" ? card.dataset.eventEs : card.dataset.eventEn;
         bookingNote.value = state.lang === "es"
-          ? "Interes en: " + state.selectedEvent
+          ? "Interés en: " + state.selectedEvent
           : "Interested in: " + state.selectedEvent;
         syncSelectionsFromUI();
         updateWhatsAppLinks();
@@ -2525,7 +2564,7 @@
       const note = bookingNote.value.trim();
 
       const intro = state.lang === "es"
-        ? "Hola Cafe Jade, me gustaria hacer una reservacion."
+        ? "Hola Cafe Jade, me gustaría hacer una reservación."
         : "Hello Cafe Jade, I would like to make a reservation.";
       const lines = state.lang === "es"
         ? [
