@@ -37,6 +37,15 @@ if (!/\.hero-brand-logo\s*\{[\s\S]*?width:\s*min\(84vw,\s*380px\)/.test(html)) {
   fail("Hero logo size was not increased to the expected maximum.");
 }
 
+[
+  'data-i18n-es="Café Jade vive entre la hospitalidad',
+  'data-i18n-es="Café Jade Palenque"'
+].forEach((snippet) => {
+  if (!html.includes(snippet)) {
+    fail(`Expected accented brand copy: ${snippet}`);
+  }
+});
+
 const menuArticles = [...html.matchAll(/<article class="menu-card[\s\S]*?<\/article>/g)];
 if (menuArticles.length !== 9) {
   fail(`Expected 9 menu cards, found ${menuArticles.length}.`);
