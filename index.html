@@ -197,6 +197,18 @@
       min-width: 0;
     }
 
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
     .hero-copy h1,
     .section-heading h2,
     .story-copy h3,
@@ -209,15 +221,15 @@
     }
 
     .brand-logo-nav {
-      width: clamp(108px, 13vw, 154px);
+      width: clamp(132px, 15vw, 182px);
       height: auto;
       flex: 0 0 auto;
     }
 
     .hero-brand-logo {
-      width: min(78vw, 280px);
+      width: min(84vw, 380px);
       height: auto;
-      margin: -0.35rem 0 1rem;
+      margin: -0.35rem 0 1.15rem;
     }
 
     .footer-brand-logo {
@@ -673,14 +685,79 @@
       background: var(--jade-900);
     }
 
+    .menu-track {
+      display: flex;
+      height: 100%;
+      transition: transform 0.36s ease;
+      will-change: transform;
+    }
+
     .menu-slide {
-      display: none;
+      display: block;
+      flex: 0 0 100%;
       width: 100%;
       height: 100%;
     }
 
     .menu-slide.is-active {
       display: block;
+    }
+
+    .menu-carousel-btn {
+      position: absolute;
+      top: 50%;
+      z-index: 2;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 250, 244, 0.46);
+      background: rgba(23, 50, 41, 0.86);
+      color: #fff;
+      font-size: 1.28rem;
+      line-height: 1;
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.22);
+      transform: translateY(-50%);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .menu-carousel-btn:hover {
+      background: var(--jade-700);
+      transform: translateY(-50%) scale(1.04);
+    }
+
+    .menu-carousel-btn[data-direction="prev"] {
+      left: 0.72rem;
+    }
+
+    .menu-carousel-btn[data-direction="next"] {
+      right: 0.72rem;
+    }
+
+    .menu-carousel-dots {
+      position: absolute;
+      left: 50%;
+      bottom: 0.72rem;
+      z-index: 2;
+      display: inline-flex;
+      gap: 0.32rem;
+      padding: 0.28rem 0.38rem;
+      border-radius: 999px;
+      background: rgba(23, 50, 41, 0.62);
+      transform: translateX(-50%);
+    }
+
+    .menu-carousel-dot {
+      width: 7px;
+      height: 7px;
+      min-height: 7px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255, 250, 244, 0.52);
+    }
+
+    .menu-carousel-dot.is-active {
+      background: var(--gold-500);
     }
 
     .menu-card img,
@@ -1825,7 +1902,7 @@
           <div class="hero-copy reveal">
             <span class="eyebrow" data-i18n-es="Café, cocina y cultura" data-i18n-en="Coffee, cuisine, and culture">Café, cocina y cultura</span>
             <img class="hero-brand-logo" src="assets/images/brand/LogoCJ_Horizontal_Blanco.svg" alt="Cafe Jade Palenque">
-            <h1 data-i18n-es="Cafe Jade Palenque" data-i18n-en="Cafe Jade Palenque">Cafe Jade Palenque</h1>
+            <h1 class="visually-hidden" data-i18n-es="Cafe Jade Palenque" data-i18n-en="Cafe Jade Palenque">Cafe Jade Palenque</h1>
             <p
               data-i18n-es="Una experiencia gastronómica genuina en Palenque. Sabores tradicionales, café de altura y encuentros culturales."
               data-i18n-en="A genuine dining experience in Palenque. Traditional flavors, specialty coffee, and cultural gatherings."
@@ -1911,9 +1988,11 @@
         <div class="menu-grid">
           <!-- Bebidas -->
           <article class="menu-card reveal" data-category="bebidas">
-            <figure class="menu-media" aria-label="Galería multimedia del Café de Olla Tradicional" data-media-max="5">
-              <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
-                <img id="img-menu-0" loading="eager" decoding="async" src="assets/images/all_optimized/img_2030-2-2.jpg" alt="Café de Olla Tradicional de Café Jade">
+            <figure class="menu-media" aria-label="Galería multimedia del Café de Olla Tradicional" data-media-max="4">
+              <div class="menu-track">
+                <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
+                  <img id="img-menu-0" loading="eager" decoding="async" src="assets/images/all_optimized/img_2030-2-2.jpg" alt="Café de Olla Tradicional de Café Jade">
+                </div>
               </div>
             </figure>
             <div class="menu-body">
@@ -1932,9 +2011,11 @@
           </article>
 
           <article class="menu-card reveal" data-category="bebidas">
-            <figure class="menu-media" aria-label="Galería multimedia del Frappé de la Casa" data-media-max="5">
-              <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
-                <img id="img-menu-1" loading="eager" decoding="async" src="assets/images/all_optimized/img_2684.jpg" alt="Café Frappé de la Casa en Café Jade">
+            <figure class="menu-media" aria-label="Galería multimedia del Frappé de la Casa" data-media-max="4">
+              <div class="menu-track">
+                <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
+                  <img id="img-menu-1" loading="eager" decoding="async" src="assets/images/all_optimized/img_2684.jpg" alt="Café Frappé de la Casa en Café Jade">
+                </div>
               </div>
             </figure>
             <div class="menu-body">
@@ -1953,9 +2034,11 @@
           </article>
 
           <article class="menu-card reveal" data-category="bebidas">
-            <figure class="menu-media" aria-label="Galería multimedia del Mojito de Hierbabuena" data-media-max="5">
-              <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
-                <img id="img-menu-2" loading="eager" decoding="async" src="assets/images/all_optimized/img_2926.jpg" alt="Mojito refrescante en Café Jade">
+            <figure class="menu-media" aria-label="Galería multimedia del Mojito de Hierbabuena" data-media-max="4">
+              <div class="menu-track">
+                <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
+                  <img id="img-menu-2" loading="eager" decoding="async" src="assets/images/all_optimized/img_2926.jpg" alt="Mojito refrescante en Café Jade">
+                </div>
               </div>
             </figure>
             <div class="menu-body">
@@ -1974,9 +2057,11 @@
           </article>
 
           <article class="menu-card reveal" data-category="bebidas">
-            <figure class="menu-media" aria-label="Galería multimedia del Cóctel Cítrico de Autor" data-media-max="5">
-              <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
-                <img id="img-menu-3" loading="eager" decoding="async" src="assets/images/all_optimized/img_4128.jpg" alt="Cóctel Cítrico de Autor en Café Jade">
+            <figure class="menu-media" aria-label="Galería multimedia del Cóctel Cítrico de Autor" data-media-max="4">
+              <div class="menu-track">
+                <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
+                  <img id="img-menu-3" loading="eager" decoding="async" src="assets/images/all_optimized/img_4128.jpg" alt="Cóctel Cítrico de Autor en Café Jade">
+                </div>
               </div>
             </figure>
             <div class="menu-body">
@@ -1996,9 +2081,11 @@
 
           <!-- Comida -->
           <article class="menu-card reveal" data-category="comida">
-            <figure class="menu-media" aria-label="Galería multimedia de la Hamburguesa Regional" data-media-max="5">
-              <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
-                <img id="img-menu-4" loading="eager" decoding="async" src="assets/images/all_optimized/hamburguesa regional.jpg" alt="Hamburguesa Regional de Café Jade">
+            <figure class="menu-media" aria-label="Galería multimedia de la Hamburguesa Regional" data-media-max="4">
+              <div class="menu-track">
+                <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
+                  <img id="img-menu-4" loading="eager" decoding="async" src="assets/images/all_optimized/hamburguesa regional.jpg" alt="Hamburguesa Regional de Café Jade">
+                </div>
               </div>
             </figure>
             <div class="menu-body">
@@ -2017,9 +2104,11 @@
           </article>
 
           <article class="menu-card reveal" data-category="comida">
-            <figure class="menu-media" aria-label="Galería multimedia de los Tacos de Cochinita Pibil" data-media-max="5">
-              <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
-                <img id="img-menu-5" loading="eager" decoding="async" src="assets/images/all_optimized/img_4110.jpg" alt="Tacos de Cochinita Pibil en Café Jade">
+            <figure class="menu-media" aria-label="Galería multimedia de los Tacos de Cochinita Pibil" data-media-max="4">
+              <div class="menu-track">
+                <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
+                  <img id="img-menu-5" loading="eager" decoding="async" src="assets/images/all_optimized/img_4110.jpg" alt="Tacos de Cochinita Pibil en Café Jade">
+                </div>
               </div>
             </figure>
             <div class="menu-body">
@@ -2038,9 +2127,11 @@
           </article>
 
           <article class="menu-card reveal" data-category="comida">
-            <figure class="menu-media" aria-label="Galería multimedia de los Chilaquiles Verdes con Pollo" data-media-max="5">
-              <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
-                <img id="img-menu-6" loading="eager" decoding="async" src="assets/images/all_optimized/img_4134.jpg" alt="Chilaquiles Verdes con Pollo en Café Jade">
+            <figure class="menu-media" aria-label="Galería multimedia de los Chilaquiles Verdes con Pollo" data-media-max="4">
+              <div class="menu-track">
+                <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
+                  <img id="img-menu-6" loading="eager" decoding="async" src="assets/images/all_optimized/img_4134.jpg" alt="Chilaquiles Verdes con Pollo en Café Jade">
+                </div>
               </div>
             </figure>
             <div class="menu-body">
@@ -2059,9 +2150,11 @@
           </article>
 
           <article class="menu-card reveal" data-category="comida">
-            <figure class="menu-media" aria-label="Galería multimedia del Ceviche de la Casa" data-media-max="5">
-              <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
-                <img id="img-menu-7" loading="eager" decoding="async" src="assets/images/all_optimized/img_4202.jpg" alt="Ceviche de la Casa en Café Jade">
+            <figure class="menu-media" aria-label="Galería multimedia del Ceviche de la Casa" data-media-max="4">
+              <div class="menu-track">
+                <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
+                  <img id="img-menu-7" loading="eager" decoding="async" src="assets/images/all_optimized/img_4202.jpg" alt="Ceviche de la Casa en Café Jade">
+                </div>
               </div>
             </figure>
             <div class="menu-body">
@@ -2081,9 +2174,11 @@
 
           <!-- Postres -->
           <article class="menu-card reveal" data-category="postres">
-            <figure class="menu-media" aria-label="Galería multimedia de la Copa de Helado Artesanal" data-media-max="5">
-              <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
-                <img id="img-menu-8" loading="eager" decoding="async" src="assets/images/all_optimized/img_3059.jpg" alt="Copa de Helado Artesanal en Café Jade">
+            <figure class="menu-media" aria-label="Galería multimedia de la Copa de Helado Artesanal" data-media-max="4">
+              <div class="menu-track">
+                <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
+                  <img id="img-menu-8" loading="eager" decoding="async" src="assets/images/all_optimized/img_3059.jpg" alt="Copa de Helado Artesanal en Café Jade">
+                </div>
               </div>
             </figure>
             <div class="menu-body">
@@ -2410,6 +2505,84 @@
     const navLinks = document.querySelectorAll(".nav-link");
     const filterButtons = document.querySelectorAll(".filter-btn");
 
+    function initMenuMediaCarousels() {
+      document.querySelectorAll(".menu-media").forEach((media, cardIndex) => {
+        const track = media.querySelector(".menu-track");
+        const sourceSlide = track ? track.querySelector(".menu-slide") : null;
+        const maxSlides = Number(media.dataset.mediaMax) || 4;
+
+        if (!track || !sourceSlide) return;
+
+        // ponytail: Until real extra assets exist, clone the approved item visual so the 4-slot carousel can be tested without blank placeholders.
+        for (let slot = track.querySelectorAll(".menu-slide").length; slot < maxSlides; slot += 1) {
+          const clone = sourceSlide.cloneNode(true);
+          const image = clone.querySelector("img");
+          clone.classList.remove("is-active");
+          clone.setAttribute("data-media-index", String(slot + 1));
+          clone.setAttribute("data-media-type", slot === 3 ? "video-fallback" : "image");
+
+          if (image) {
+            image.removeAttribute("id");
+            image.loading = "lazy";
+            image.alt = (image.alt || "Cafe Jade menu item") + " " + (slot + 1);
+          }
+
+          track.appendChild(clone);
+        }
+
+        const slides = Array.from(track.querySelectorAll(".menu-slide")).slice(0, maxSlides);
+        let activeIndex = 0;
+
+        const prevButton = document.createElement("button");
+        prevButton.className = "menu-carousel-btn";
+        prevButton.type = "button";
+        prevButton.dataset.direction = "prev";
+        prevButton.setAttribute("aria-label", "Imagen anterior");
+        prevButton.textContent = "‹";
+
+        const nextButton = document.createElement("button");
+        nextButton.className = "menu-carousel-btn";
+        nextButton.type = "button";
+        nextButton.dataset.direction = "next";
+        nextButton.setAttribute("aria-label", "Imagen siguiente");
+        nextButton.textContent = "›";
+
+        const count = document.createElement("span");
+        count.className = "visually-hidden menu-slide-count";
+        count.setAttribute("aria-live", "polite");
+
+        const dots = document.createElement("div");
+        dots.className = "menu-carousel-dots";
+
+        slides.forEach((slide, dotIndex) => {
+          const dot = document.createElement("button");
+          dot.className = "menu-carousel-dot";
+          dot.type = "button";
+          dot.setAttribute("aria-label", "Ver material " + (dotIndex + 1));
+          dot.addEventListener("click", () => setSlide(dotIndex));
+          dots.appendChild(dot);
+        });
+
+        function setSlide(nextIndex) {
+          activeIndex = (nextIndex + slides.length) % slides.length;
+          track.style.transform = "translateX(-" + (activeIndex * 100) + "%)";
+          slides.forEach((slide, slideIndex) => {
+            slide.classList.toggle("is-active", slideIndex === activeIndex);
+          });
+          dots.querySelectorAll(".menu-carousel-dot").forEach((dot, dotIndex) => {
+            dot.classList.toggle("is-active", dotIndex === activeIndex);
+          });
+          count.textContent = "Material " + (activeIndex + 1) + " de " + slides.length;
+        }
+
+        prevButton.addEventListener("click", () => setSlide(activeIndex - 1));
+        nextButton.addEventListener("click", () => setSlide(activeIndex + 1));
+        media.append(prevButton, nextButton, dots, count);
+        media.dataset.carouselReady = String(cardIndex + 1);
+        setSlide(0);
+      });
+    }
+
     function applyLanguage(lang) {
       state.lang = lang;
       document.documentElement.lang = lang;
@@ -2637,6 +2810,7 @@
     bookingDate.min = toDateValue(today);
     bookingDate.max = today.getFullYear() + "-12-31";
     setQuickDate("today");
+    initMenuMediaCarousels();
     applyLanguage("es");
   </script>
 

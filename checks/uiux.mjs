@@ -25,6 +25,18 @@ function cssBlock(selector) {
   }
 });
 
+if (!/\.visually-hidden\s*\{[\s\S]*?clip:\s*rect\(0 0 0 0\)/.test(html)) {
+  fail("Missing visually-hidden utility for accessible hidden heading.");
+}
+
+if (!/<h1 class="visually-hidden"[^>]*>Cafe Jade Palenque<\/h1>/.test(html)) {
+  fail("Hero heading must be hidden visually while remaining accessible.");
+}
+
+if (!/\.hero-brand-logo\s*\{[\s\S]*?width:\s*min\(84vw,\s*380px\)/.test(html)) {
+  fail("Hero logo size was not increased to the expected maximum.");
+}
+
 const menuArticles = [...html.matchAll(/<article class="menu-card[\s\S]*?<\/article>/g)];
 if (menuArticles.length !== 9) {
   fail(`Expected 9 menu cards, found ${menuArticles.length}.`);
@@ -36,11 +48,29 @@ menuArticles.forEach((match, index) => {
   if (!/class="menu-media"/.test(card)) {
     fail(`Menu card ${index} is missing .menu-media.`);
   }
+  if (!/class="menu-track"/.test(card)) {
+    fail(`Menu card ${index} is missing .menu-track.`);
+  }
   if (!/class="menu-slide is-active"/.test(card)) {
     fail(`Menu card ${index} is missing an active slide.`);
   }
-  if (mediaMatches.length < 1 || mediaMatches.length > 5) {
-    fail(`Menu card ${index} must define 1 to 5 media slides, found ${mediaMatches.length}.`);
+  if (!/data-media-max="4"/.test(card)) {
+    fail(`Menu card ${index} must cap carousel media at 4 items.`);
+  }
+  if (mediaMatches.length !== 1) {
+    fail(`Menu card ${index} should define one source slide; JS expands it to 4, found ${mediaMatches.length}.`);
+  }
+});
+
+[
+  "initMenuMediaCarousels",
+  "menu-carousel-btn",
+  "menu-carousel-dot",
+  "menu-slide-count",
+  "data-media-type\", slot === 3 ? \"video-fallback\" : \"image\""
+].forEach((snippet) => {
+  if (!html.includes(snippet)) {
+    fail(`Carousel implementation snippet missing: ${snippet}`);
   }
 });
 
