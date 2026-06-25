@@ -10,15 +10,16 @@ Welcome, incoming agent! This document serves as a comprehensive handoff guide t
     *   Deep forest jade greens, gold accents, and warm cream base text colors.
     *   Premium typography using **Playfair Display** (headings) and **Inter** (body).
     *   Fine glass cards with custom blur and opacities.
-*   **Production Deployment:** Automatically built and served via Netlify, tracking the `main` branch:
-    *   **Live URL:** [https://luxury-syrniki-73ec68.netlify.app/](https://luxury-syrniki-73ec68.netlify.app/)
-    *   **Repository:** [https://github.com/ax7-designer/cafejade](https://github.com/ax7-designer/cafejade)
+*   **Current public demo:** [https://cafe-jade-palenque.vercel.app/](https://cafe-jade-palenque.vercel.app/)
+*   **Target deployment:** Hostinger temporary domain via hPanel Git once the Hostinger site is connected to GitHub.
+*   **Legacy Netlify URL:** [https://luxury-syrniki-73ec68.netlify.app/](https://luxury-syrniki-73ec68.netlify.app/) is older and should not be treated as latest.
+*   **Repository:** [https://github.com/ax7-designer/cafejade](https://github.com/ax7-designer/cafejade)
 
 ---
 
 ## 2. Key Directories & File Structure
 *   [index.html](file:///D:/CajeJade/index.html) - The core entry point containing all markup, styles (including variables in `:root`), translations (bilingüe), and the Javascript dev editor.
-*   [FOTOS JADE/](file:///D:/CajeJade/FOTOS%20JADE) - Raw high-resolution customer photos. **CRITICAL:** These are tracked in Git so they serve directly in Netlify without distortion or arbitrary cropping.
+*   [FOTOS JADE/](file:///D:/CajeJade/FOTOS%20JADE) - Raw high-resolution customer photos. **CRITICAL:** These are tracked in Git so they serve directly on the static host without distortion or arbitrary cropping.
 *   [scripts/](file:///D:/CajeJade/scripts) - Python utilities:
     *   `design_server.py`: The local backend that runs on port `5000` to serve the site and persist browser visual edits back to `index.html` on disk.
     *   `optimize_all.py` / `optimize_photos.py`: Image optimization scripts (currently optional, as raw photos are embedded directly to preserve real dimensions).

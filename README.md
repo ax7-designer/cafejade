@@ -2,9 +2,11 @@
 
 Prototipo web estatico para Cafe Jade Palenque: cafeteria, restaurante y centro cultural de eventos.
 
-## URL de produccion (Netlify)
+## Demo vigente
 
-https://luxury-syrniki-73ec68.netlify.app/
+https://cafe-jade-palenque.vercel.app/
+
+Nota: `https://luxury-syrniki-73ec68.netlify.app/` es una URL legacy de Netlify y no debe considerarse la version mas reciente.
 
 Repositorio GitHub: https://github.com/ax7-designer/cafejade
 
@@ -44,12 +46,13 @@ Acciones principales:
 
 Este proyecto puede mantenerse como sitio estatico sin Node.js. Para publicarlo con Git:
 
-1. Inicializar Git localmente.
-2. Crear un repositorio remoto en GitHub.
-3. Subir solo archivos publicos del sitio, nunca `.env` ni credenciales locales.
-4. En Hostinger hPanel, abrir el sitio y usar la seccion Git.
-5. Conectar el repositorio y rama principal.
-6. Dejar el install path vacio si debe desplegarse en `/public_html`.
+1. Confirmar que `main` este actualizado en GitHub: `https://github.com/ax7-designer/cafejade`.
+2. En Hostinger hPanel, crear o abrir el sitio del dominio temporal.
+3. Asegurar que `public_html` este vacio o respaldado antes del primer despliegue.
+4. En la seccion Git de hPanel, conectar el repositorio y la rama `main`.
+5. Dejar el destino en `/public_html` y sin comando de build: el sitio es estatico.
+6. Abrir el dominio temporal de Hostinger y verificar inicio, menu, reserva, mapa, logos e imagenes.
+7. Cuando `cafejade.mx` este pagado, actualizar `canonical`, Open Graph y datos estructurados antes de apuntar DNS.
 
 Nota: Hostinger requiere que la carpeta destino este vacia para el primer despliegue Git.
 

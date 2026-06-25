@@ -75,13 +75,21 @@ menuArticles.forEach((match, index) => {
   "initMenuMediaCarousels",
   "menu-carousel-btn",
   "menu-carousel-dot",
-  "menu-slide-count",
-  "data-media-type\", slot === 3 ? \"video-fallback\" : \"image\""
+  "menu-slide-count"
 ].forEach((snippet) => {
   if (!html.includes(snippet)) {
     fail(`Carousel implementation snippet missing: ${snippet}`);
   }
 });
+
+// The carousel must NOT clone a single image to fake a multi-photo gallery.
+// Controls (arrows/dots) are only built when two or more real slides exist.
+if (/<head>[\s\S]*cloneNode\("?(?:true)?"?\)/i.test(html) || html.includes("sourceSlide.cloneNode(true)")) {
+  fail("Carousel still clones a single slide instead of showing a static photo.");
+}
+if (!/slides\.length\s*<\s*2/.test(html)) {
+  fail("Carousel guard for single-image cards is missing.");
+}
 
 // ponytail: This is a targeted spell-scan for current menu/navigation copy; upgrade to a real i18n linter if copy moves into separate files.
 [
@@ -110,6 +118,89 @@ menuArticles.forEach((match, index) => {
     fail(`Official brand logo version is missing from assets/images/brand: ${basename(file)}`);
   }
 });
+
+const currentPublicUrl = "https://cafe-jade-palenque.vercel.app/";
+const legacyNetlifyUrl = "https://luxury-syrniki-73ec68.netlify.app/";
+if (html.includes(legacyNetlifyUrl)) {
+  fail("Legacy Netlify URL is still present in public metadata.");
+}
+if (!html.includes(currentPublicUrl)) {
+  fail("Current public demo URL is missing from public metadata.");
+}
+// --- Iteration 2 locks: reveal animations, image perf, mobile a11y, booking feedback, favicon ---
+
+// Reveal animations must actually animate (not be no-op).
+if (html.includes(".reveal {\n      opacity: 1;\n      transform: none;")) {
+  fail(".reveal CSS is still a no-op — entrance animations are dead.");
+}
+
+// Body line-height must be at least 1.5 for readability.
+const bodyBlock = cssBlock("body");
+const lineHeightMatch = bodyBlock.match(/line-height\s*:\s*([\d.]+)/);
+if (!lineHeightMatch || parseFloat(lineHeightMatch[1]) < 1.5) {
+  fail(`Body line-height is too tight (${lineHeightMatch ? lineHeightMatch[1] : "missing"}). Must be >= 1.5.`);
+}
+
+// prefers-reduced-motion must be supported.
+if (!html.includes("prefers-reduced-motion")) {
+  fail("Missing @media (prefers-reduced-motion: reduce) block.");
+}
+
+// Language persistence via localStorage.
+if (!html.includes("localStorage.setItem(\"cj-lang\"") && !html.includes("localStorage.getItem(\"cj-lang\"")) {
+  fail("Language preference is not persisted in localStorage.");
+}
+
+// Content images must carry width/height to prevent CLS.
+const contentImages = [...html.matchAll(/<img\s[^>]*id="img-(?:menu-\d+|story|event-\d+)"[^>]*>/g)];
+if (contentImages.length < 13) {
+  fail(`Expected at least 13 content images with id=img-* attributes, found ${contentImages.length}.`);
+}
+contentImages.forEach((match, index) => {
+  const tag = match[0];
+  if (!/width="\d+"/.test(tag)) {
+    fail(`Content image #${index} (id: ${tag.match(/id="([^"]+)"/)?.[1]}) is missing width attribute.`);
+  }
+  if (!/height="\d+"/.test(tag)) {
+    fail(`Content image #${index} (id: ${tag.match(/id="([^"]+)"/)?.[1]}) is missing height attribute.`);
+  }
+});
+
+// Only the first menu image (hero-adjacent) should be eager; rest must be lazy.
+const eagerCount = [...html.matchAll(/<img[^>]*loading="eager"[^>]*>/g)]
+  .filter((m) => /id="img-(?:menu|story|event)/.test(m[0])).length;
+if (eagerCount > 1) {
+  fail(`Too many eager content images (${eagerCount}). Only the first menu card should be eager.`);
+}
+
+// Mobile toggle must have aria-expanded.
+if (!html.includes('aria-expanded="false"')) {
+  fail("Mobile toggle is missing aria-expanded attribute.");
+}
+
+// Escape-to-close and focus trap for mobile menu.
+if (!/event\.key\s*===?\s*["']Escape["']/.test(html)) {
+  fail("No Escape-to-close handler for mobile menu.");
+}
+if (!/setMobileMenu/.test(html)) {
+  fail("setMobileMenu function not found — mobile a11y implementation incomplete.");
+}
+
+// Booking form success toast.
+if (!html.includes("bookingToast")) {
+  fail("Booking form is missing success feedback element (#bookingToast).");
+}
+if (!html.includes("is-visible")) {
+  fail("Booking toast is missing the is-visible toggle class.");
+}
+
+// Favicon must be declared.
+if (!html.includes('rel="icon"')) {
+  fail("No favicon <link> in <head>.");
+}
+if (!existsSync("favicon.svg")) {
+  fail("favicon.svg is missing from root directory.");
+}
 
 if (failures.length) {
   console.error(failures.join("\n"));

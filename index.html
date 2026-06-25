@@ -14,7 +14,7 @@
   <meta name="geo.placename" content="Palenque, Chiapas">
   <meta name="geo.position" content="17.509475;-91.986831">
   <meta name="ICBM" content="17.509475, -91.986831">
-  <link rel="canonical" href="https://luxury-syrniki-73ec68.netlify.app/">
+  <link rel="canonical" href="https://cafe-jade-palenque.vercel.app/">
   <meta name="theme-color" content="#173229">
   <meta property="og:title" content="Cafe Jade Palenque">
   <meta
@@ -22,7 +22,7 @@
     content="Restaurante, café y espacio cultural con menú, eventos, reservaciones y contacto directo por WhatsApp."
   >
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://luxury-syrniki-73ec68.netlify.app/">
+  <meta property="og:url" content="https://cafe-jade-palenque.vercel.app/">
   <meta property="og:locale" content="es_MX">
   <meta property="og:site_name" content="Cafe Jade Palenque">
   <script type="application/ld+json">
@@ -34,7 +34,7 @@
       "servesCuisine": ["Mexicana", "Chiapaneca", "Cafe", "Postres"],
       "priceRange": "$$",
       "email": "cafejadepalenque@hotmail.com",
-      "url": "https://luxury-syrniki-73ec68.netlify.app/",
+      "url": "https://cafe-jade-palenque.vercel.app/",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Prolongacion Av. Hidalgo Esq. 5ta Poniente Norte, #1 Zona Turistica La Canada",
@@ -58,6 +58,7 @@
       }
     }
   </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -133,7 +134,7 @@
       color: var(--ink);
       font-family: var(--font-body);
       font-size: 17px;
-      line-height: 1.38;
+      line-height: 1.55;
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -1133,6 +1134,29 @@
       margin-top: 1rem;
     }
 
+    .booking-toast {
+      display: none;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1rem;
+      margin-top: 0.75rem;
+      border-radius: var(--radius);
+      background: rgba(63, 115, 93, 0.1);
+      color: var(--jade-700);
+      font-weight: 600;
+      font-size: 0.88rem;
+      animation: toast-in 0.3s ease;
+    }
+
+    .booking-toast.is-visible {
+      display: inline-flex;
+    }
+
+    @keyframes toast-in {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
     .site-footer {
       padding: 2rem 0 5rem;
       background: var(--jade-900);
@@ -1181,13 +1205,35 @@
     }
 
     .reveal {
-      opacity: 1;
-      transform: none;
+      opacity: 0;
+      transform: translateY(18px);
+      transition:
+        opacity 0.65s ease,
+        transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .reveal.is-visible {
       opacity: 1;
-      transform: none;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+
+      .reveal,
+      .reveal.is-visible,
+      .event-card.reveal,
+      .event-card.reveal.is-visible {
+        opacity: 1 !important;
+        transform: none !important;
+      }
     }
 
     @media (min-width: 480px) {
@@ -1868,7 +1914,7 @@
           data-i18n-es="Reservar"
           data-i18n-en="Reserve"
         >Reservar</a>
-        <button class="mobile-toggle" id="mobileToggle" type="button" aria-label="Abrir menú">
+        <button class="mobile-toggle" id="mobileToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobilePanel">
           <span></span>
           <span></span>
           <span></span>
@@ -1991,7 +2037,7 @@
             <figure class="menu-media" aria-label="Galería multimedia del Café de Olla Tradicional" data-media-max="4">
               <div class="menu-track">
                 <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
-                  <img id="img-menu-0" loading="eager" decoding="async" src="assets/images/all_optimized/img_2030-2-2.jpg" alt="Café de Olla Tradicional de Café Jade">
+                  <img id="img-menu-0" loading="eager" decoding="async" width="1200" height="1800" src="assets/images/all_optimized/img_2030-2-2.jpg" alt="Café de Olla Tradicional de Café Jade">
                 </div>
               </div>
             </figure>
@@ -2014,7 +2060,7 @@
             <figure class="menu-media" aria-label="Galería multimedia del Frappé de la Casa" data-media-max="4">
               <div class="menu-track">
                 <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
-                  <img id="img-menu-1" loading="eager" decoding="async" src="assets/images/all_optimized/img_2684.jpg" alt="Café Frappé de la Casa en Café Jade">
+                  <img id="img-menu-1" loading="lazy" decoding="async" width="1200" height="1800" src="assets/images/all_optimized/img_2684.jpg" alt="Café Frappé de la Casa en Café Jade">
                 </div>
               </div>
             </figure>
@@ -2037,7 +2083,7 @@
             <figure class="menu-media" aria-label="Galería multimedia del Mojito de Hierbabuena" data-media-max="4">
               <div class="menu-track">
                 <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
-                  <img id="img-menu-2" loading="eager" decoding="async" src="assets/images/all_optimized/img_2926.jpg" alt="Mojito refrescante en Café Jade">
+                  <img id="img-menu-2" loading="lazy" decoding="async" width="1200" height="1800" src="assets/images/all_optimized/img_2926.jpg" alt="Mojito refrescante en Café Jade">
                 </div>
               </div>
             </figure>
@@ -2060,7 +2106,7 @@
             <figure class="menu-media" aria-label="Galería multimedia del Cóctel Cítrico de Autor" data-media-max="4">
               <div class="menu-track">
                 <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
-                  <img id="img-menu-3" loading="eager" decoding="async" src="assets/images/all_optimized/img_4128.jpg" alt="Cóctel Cítrico de Autor en Café Jade">
+                  <img id="img-menu-3" loading="lazy" decoding="async" width="1200" height="1800" src="assets/images/all_optimized/img_4128.jpg" alt="Cóctel Cítrico de Autor en Café Jade">
                 </div>
               </div>
             </figure>
@@ -2084,7 +2130,7 @@
             <figure class="menu-media" aria-label="Galería multimedia de la Hamburguesa Regional" data-media-max="4">
               <div class="menu-track">
                 <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
-                  <img id="img-menu-4" loading="eager" decoding="async" src="assets/images/all_optimized/hamburguesa regional.jpg" alt="Hamburguesa Regional de Café Jade">
+                  <img id="img-menu-4" loading="lazy" decoding="async" width="1200" height="800" src="assets/images/all_optimized/hamburguesa regional.jpg" alt="Hamburguesa Regional de Café Jade">
                 </div>
               </div>
             </figure>
@@ -2107,7 +2153,7 @@
             <figure class="menu-media" aria-label="Galería multimedia de los Tacos de Cochinita Pibil" data-media-max="4">
               <div class="menu-track">
                 <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
-                  <img id="img-menu-5" loading="eager" decoding="async" src="assets/images/all_optimized/img_4110.jpg" alt="Tacos de Cochinita Pibil en Café Jade">
+                  <img id="img-menu-5" loading="lazy" decoding="async" width="1200" height="1800" src="assets/images/all_optimized/img_4110.jpg" alt="Tacos de Cochinita Pibil en Café Jade">
                 </div>
               </div>
             </figure>
@@ -2130,7 +2176,7 @@
             <figure class="menu-media" aria-label="Galería multimedia de los Chilaquiles Verdes con Pollo" data-media-max="4">
               <div class="menu-track">
                 <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
-                  <img id="img-menu-6" loading="eager" decoding="async" src="assets/images/all_optimized/img_4134.jpg" alt="Chilaquiles Verdes con Pollo en Café Jade">
+                  <img id="img-menu-6" loading="lazy" decoding="async" width="1200" height="1800" src="assets/images/all_optimized/img_4134.jpg" alt="Chilaquiles Verdes con Pollo en Café Jade">
                 </div>
               </div>
             </figure>
@@ -2153,7 +2199,7 @@
             <figure class="menu-media" aria-label="Galería multimedia del Ceviche de la Casa" data-media-max="4">
               <div class="menu-track">
                 <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
-                  <img id="img-menu-7" loading="eager" decoding="async" src="assets/images/all_optimized/img_4202.jpg" alt="Ceviche de la Casa en Café Jade">
+                  <img id="img-menu-7" loading="lazy" decoding="async" width="1200" height="1800" src="assets/images/all_optimized/img_4202.jpg" alt="Ceviche de la Casa en Café Jade">
                 </div>
               </div>
             </figure>
@@ -2177,7 +2223,7 @@
             <figure class="menu-media" aria-label="Galería multimedia de la Copa de Helado Artesanal" data-media-max="4">
               <div class="menu-track">
                 <div class="menu-slide is-active" data-media-index="1" data-media-type="image">
-                  <img id="img-menu-8" loading="eager" decoding="async" src="assets/images/all_optimized/img_3059.jpg" alt="Copa de Helado Artesanal en Café Jade">
+                  <img id="img-menu-8" loading="lazy" decoding="async" width="1200" height="1800" src="assets/images/all_optimized/img_3059.jpg" alt="Copa de Helado Artesanal en Café Jade">
                 </div>
               </div>
             </figure>
@@ -2203,7 +2249,7 @@
       <div class="container story-layout">
         <article class="story-card reveal">
           <figure>
-            <img id="img-story" loading="eager" decoding="async" src="assets/images/all_optimized/img_9616.jpg" alt="Cálida atmósfera del comedor interior de Cafe Jade">
+            <img id="img-story" loading="lazy" decoding="async" width="1200" height="1800" src="assets/images/all_optimized/img_9616.jpg" alt="Cálida atmósfera del comedor interior de Cafe Jade">
           </figure>
         </article>
 
@@ -2260,7 +2306,7 @@
         <div class="event-grid">
           <article class="event-card reveal" data-event-es="Catas de Café Chiapaneco" data-event-en="Chiapan Coffee Tastings" tabindex="0" role="button" aria-pressed="false">
             <figure>
-              <img id="img-event-0" loading="eager" decoding="async" src="assets/images/all_optimized/_mg_9539.jpg" alt="Muestras de bebidas y café en Cafe Jade">
+              <img id="img-event-0" loading="lazy" decoding="async" width="1200" height="1800" src="assets/images/all_optimized/_mg_9539.jpg" alt="Muestras de bebidas y café en Cafe Jade">
             </figure>
             <div class="event-copy">
               <div class="event-date" data-i18n-es="Por agenda" data-i18n-en="By schedule">Por agenda</div>
@@ -2276,7 +2322,7 @@
 
           <article class="event-card reveal" data-event-es="Noche Acústica bajo la Selva" data-event-en="Acoustic Night under the Jungle Sky" tabindex="0" role="button" aria-pressed="false">
             <figure>
-              <img id="img-event-1" loading="eager" decoding="async" src="assets/images/all_optimized/dji_20250217185011_0004_d.jpg" alt="Luz de neón de Cafe Jade por la noche">
+              <img id="img-event-1" loading="lazy" decoding="async" width="1200" height="2133" src="assets/images/all_optimized/dji_20250217185011_0004_d.jpg" alt="Luz de neón de Cafe Jade por la noche">
             </figure>
             <div class="event-copy">
               <div class="event-date" data-i18n-es="Consulta cartelera" data-i18n-en="Check lineup">Consulta cartelera</div>
@@ -2292,7 +2338,7 @@
 
           <article class="event-card reveal" data-event-es="Eventos y Reservas de Grupos" data-event-en="Group Events & Private Booking" tabindex="0" role="button" aria-pressed="false">
             <figure>
-              <img id="img-event-2" loading="eager" decoding="async" src="assets/images/all_optimized/img_4365-2.jpg" alt="Detalle de mesa y ambiente acogedor en Cafe Jade">
+              <img id="img-event-2" loading="lazy" decoding="async" width="1200" height="1800" src="assets/images/all_optimized/img_4365-2.jpg" alt="Detalle de mesa y ambiente acogedor en Cafe Jade">
             </figure>
             <div class="event-copy">
               <div class="event-date" data-i18n-es="Fecha a elegir" data-i18n-en="Date on request">Fecha a elegir</div>
@@ -2442,6 +2488,10 @@
                 </div>
               </div>
             </form>
+            <div class="booking-toast" id="bookingToast" aria-live="polite">
+              <span>✓</span>
+              <span data-i18n-es="Abriendo WhatsApp con tu reservación…" data-i18n-en="Opening WhatsApp with your reservation…">Abriendo WhatsApp con tu reservación…</span>
+            </div>
           </div>
         </div>
       </div>
@@ -2509,28 +2559,18 @@
       document.querySelectorAll(".menu-media").forEach((media, cardIndex) => {
         const track = media.querySelector(".menu-track");
         const sourceSlide = track ? track.querySelector(".menu-slide") : null;
-        const maxSlides = Number(media.dataset.mediaMax) || 4;
 
         if (!track || !sourceSlide) return;
 
-        // ponytail: Until real extra assets exist, clone the approved item visual so the 4-slot carousel can be tested without blank placeholders.
-        for (let slot = track.querySelectorAll(".menu-slide").length; slot < maxSlides; slot += 1) {
-          const clone = sourceSlide.cloneNode(true);
-          const image = clone.querySelector("img");
-          clone.classList.remove("is-active");
-          clone.setAttribute("data-media-index", String(slot + 1));
-          clone.setAttribute("data-media-type", slot === 3 ? "video-fallback" : "image");
+        const slides = Array.from(track.querySelectorAll(".menu-slide"));
 
-          if (image) {
-            image.removeAttribute("id");
-            image.loading = "lazy";
-            image.alt = (image.alt || "Cafe Jade menu item") + " " + (slot + 1);
-          }
-
-          track.appendChild(clone);
+        // Single image: render as a static photo. Only build carousel controls
+        // when two or more real slides exist, so users never see misleading
+        // arrows/dots that cycle through a repeated photo.
+        if (slides.length < 2) {
+          return;
         }
 
-        const slides = Array.from(track.querySelectorAll(".menu-slide")).slice(0, maxSlides);
         let activeIndex = 0;
 
         const prevButton = document.createElement("button");
@@ -2586,6 +2626,12 @@
     function applyLanguage(lang) {
       state.lang = lang;
       document.documentElement.lang = lang;
+
+      try {
+        localStorage.setItem("cj-lang", lang);
+      } catch (error) {
+        // Ignore storage failures (private mode, disabled storage).
+      }
 
       translatableNodes.forEach((node) => {
         const text = node.dataset[lang === "es" ? "i18nEs" : "i18nEn"];
@@ -2755,28 +2801,85 @@
             "Notes: " + (note || "None")
           ];
 
+      const bookingToast = document.getElementById("bookingToast");
+
       window.open(
         "https://wa.me/529166880081?text=" + encodeURIComponent(intro + "\n\n" + lines.join("\n")),
         "_blank",
         "noopener"
       );
+
+      bookingToast.classList.add("is-visible");
+      setTimeout(() => bookingToast.classList.remove("is-visible"), 3000);
     });
 
     languageButtons.forEach((button) => {
       button.addEventListener("click", () => applyLanguage(button.dataset.lang));
     });
 
+    const mobileFocusable = mobilePanel
+      ? Array.from(mobilePanel.querySelectorAll("a, button"))
+      : [];
+    let lastFocused = null;
+
+    function setMobileMenu(open) {
+      mobileToggle.classList.toggle("is-open", open);
+      mobilePanel.classList.toggle("is-open", open);
+      mobileToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      mobileToggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+
+      if (open) {
+        lastFocused = document.activeElement;
+        if (mobileFocusable.length) {
+          // Defer focus until the panel is visible.
+          requestAnimationFrame(() => mobileFocusable[0].focus());
+        }
+      } else if (lastFocused) {
+        lastFocused.focus();
+        lastFocused = null;
+      }
+    }
+
     mobileToggle.addEventListener("click", () => {
-      mobileToggle.classList.toggle("is-open");
-      mobilePanel.classList.toggle("is-open");
+      setMobileMenu(!mobileToggle.classList.contains("is-open"));
     });
 
     navLinks.forEach((link) => {
       link.addEventListener("click", () => {
-        mobileToggle.classList.remove("is-open");
-        mobilePanel.classList.remove("is-open");
+        setMobileMenu(false);
       });
     });
+
+    // Escape closes the menu and returns focus to the toggle.
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && mobileToggle.classList.contains("is-open")) {
+        setMobileMenu(false);
+      }
+    });
+
+    // Focus trap: keep Tab cycling inside the open panel.
+    if (mobilePanel) {
+      mobilePanel.addEventListener("keydown", (event) => {
+        if (event.key !== "Tab" || !mobileToggle.classList.contains("is-open")) {
+          return;
+        }
+        if (mobileFocusable.length < 2) {
+          event.preventDefault();
+          mobileFocusable[0].focus();
+          return;
+        }
+        const first = mobileFocusable[0];
+        const last = mobileFocusable[mobileFocusable.length - 1];
+        const active = document.activeElement;
+        if (event.shiftKey && active === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && active === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      });
+    }
 
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -2811,7 +2914,14 @@
     bookingDate.max = today.getFullYear() + "-12-31";
     setQuickDate("today");
     initMenuMediaCarousels();
-    applyLanguage("es");
+
+    let savedLang = "es";
+    try {
+      savedLang = localStorage.getItem("cj-lang") === "en" ? "en" : "es";
+    } catch (error) {
+      // Ignore storage failures (private mode, disabled storage).
+    }
+    applyLanguage(savedLang);
   </script>
 
   <!-- Visual Editor Script (Only runs in local dev) -->
