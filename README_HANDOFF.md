@@ -20,9 +20,7 @@ Welcome, incoming agent! This document serves as a comprehensive handoff guide t
 ## 2. Key Directories & File Structure
 *   [index.html](file:///D:/CajeJade/index.html) - The core entry point containing all markup, styles (including variables in `:root`), translations (bilingüe), and the Javascript dev editor.
 *   [FOTOS JADE/](file:///D:/CajeJade/FOTOS%20JADE) - Raw high-resolution customer photos. **CRITICAL:** These are tracked in Git so they serve directly on the static host without distortion or arbitrary cropping.
-*   [scripts/](file:///D:/CajeJade/scripts) - Python utilities:
-    *   `design_server.py`: The local backend that runs on port `5000` to serve the site and persist browser visual edits back to `index.html` on disk.
-    *   `optimize_all.py` / `optimize_photos.py`: Image optimization scripts (currently optional, as raw photos are embedded directly to preserve real dimensions).
+*   Local helper scripts are not required for production. Hostinger should deploy the static files from GitHub directly into `/public_html`.
 *   [Show-Dashboard.ps1](file:///D:/CajeJade/Show-Dashboard.ps1) - A PowerShell CLI progress dashboard showing task completion. Works in offline mode by default.
 
 ---
@@ -31,11 +29,7 @@ Welcome, incoming agent! This document serves as a comprehensive handoff guide t
 To allow real-time layout edits and image reframing directly from the browser, we built a visual editor panel.
 
 ### How it works:
-1.  **Running the Server:** Start the server locally:
-    ```powershell
-    python scripts/design_server.py
-    ```
-    Open your browser at [http://localhost:5000](http://localhost:5000). The editor panel (`#cjed-panel`) is visible locally but remains completely hidden in production (via hostname check).
+1.  **Running locally:** Serve the project with any static server. The editor panel (`#cjed-panel`) is visible on localhost/ports but remains completely hidden in production hostnames.
 2.  **Activation:** Press `Ctrl + Shift + E` or click the floating gold gear icon in the bottom-right corner to toggle the panel. Click **"Activar Modo Encuadre"** to edit card images and background alignments.
 3.  **Reframing Card Images:**
     *   **Translate:** Drag and drop images inside the card borders.

@@ -80,15 +80,14 @@ Tareas:
 
 ## Fase 7: Primer commit y publicacion
 
-Estado: pendiente.
+Estado: completada parcialmente; falta conectar Hostinger.
 
 Tareas:
 
-- Revisar `git status`.
-- Confirmar que no haya secretos.
-- Crear primer commit.
-- Conectar repositorio remoto.
-- Hacer push.
+- Revisar `git status` antes de cada publicacion.
+- Confirmar que no haya secretos antes de cada push.
+- Mantener `main` actualizado en GitHub.
+- Usar Vercel como demo vigente mientras Hostinger queda listo.
 - Configurar Hostinger Git deployment.
 
 ## Decision pendiente

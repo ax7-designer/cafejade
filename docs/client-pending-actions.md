@@ -21,7 +21,7 @@ Fecha: 2026-06-12
 
 Si el cliente quiere cambiar precios, imagenes, nombres, promociones, combos o descuentos con frecuencia, se recomienda definir uno de estos caminos:
 
-1. Mantener cambios manuales por version: editar HTML, hacer commit y publicar en Netlify.
+1. Mantener cambios manuales por version: editar HTML, hacer commit y publicar en Vercel/Hostinger.
 2. Usar una fuente editable tipo hoja de calculo: el sitio consume o se genera desde una tabla aprobada.
 3. Agregar un CMS ligero: panel privado para que el cliente edite menu, eventos y promociones sin tocar codigo.
 
@@ -35,5 +35,5 @@ Para este prototipo estatico, la opcion 1 es suficiente. Para operacion frecuent
 
 ## SEO y GEO
 
-- Pendiente operativo: cuando exista dominio final, reemplazar la URL de Netlify en `canonical`, Open Graph y datos estructurados.
+- Pendiente operativo: cuando exista dominio final, reemplazar la URL de demo Vercel en `canonical`, Open Graph y datos estructurados.
 - Pendiente comercial: confirmar horarios, telefono oficial, dominio final, correo final y menu completo para enriquecer buscadores tradicionales y respuestas de modelos de lenguaje.
