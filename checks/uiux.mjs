@@ -29,9 +29,22 @@ if (!/\.visually-hidden\s*\{[\s\S]*?clip:\s*rect\(0 0 0 0\)/.test(html)) {
   fail("Missing visually-hidden utility for accessible hidden heading.");
 }
 
-if (!/<h1 class="visually-hidden"[^>]*>Cafe Jade Palenque<\/h1>/.test(html)) {
-  fail("Hero heading must be hidden visually while remaining accessible.");
+if (!/<h1 class="visually-hidden"[^>]*>Café Jade Palenque<\/h1>/.test(html)) {
+  fail("Hero heading must use the accented official brand name while remaining accessible.");
 }
+
+[
+  "<title>Café Jade Palenque",
+  'content="Café Jade Palenque: restaurante',
+  'property="og:title" content="Café Jade Palenque"',
+  'property="og:site_name" content="Café Jade Palenque"',
+  '"name": "Café Jade Palenque"',
+  'alt="Café Jade Palenque"'
+].forEach((snippet) => {
+  if (!html.includes(snippet)) {
+    fail(`Expected accented official brand metadata/accessibility copy: ${snippet}`);
+  }
+});
 
 if (!/\.hero-brand-logo\s*\{[\s\S]*?width:\s*min\(84vw,\s*380px\)/.test(html)) {
   fail("Hero logo size was not increased to the expected maximum.");

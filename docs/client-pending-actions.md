@@ -6,9 +6,9 @@ Fecha: 2026-06-12
 
 - Resuelto en prototipo: se integraron los logotipos vectoriales oficiales en navegacion fija, hero y footer.
 - Assets publicados:
-  - `assets/images/brand/logo-cj-horizontal-blanco.svg`
-  - `assets/images/brand/logo-cj-horizontal-verde.svg`
-  - `assets/images/brand/logo-cj-simbolo-original.svg`
+  - `assets/images/brand/LogoCJ_Horizontal_Blanco.svg`
+  - `assets/images/brand/LogoCJ_Horizontal_Verde.svg`
+  - `assets/images/brand/LogoCJ_Simbolo Original.svg`
 - Pendiente opcional: validar con el cliente si la version blanca horizontal debe mantenerse como uso principal en fondos oscuros.
 
 ## Menu completo
