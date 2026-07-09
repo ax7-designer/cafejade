@@ -135,6 +135,8 @@ if (!/slides\.length\s*<\s*2/.test(html)) {
 const currentPublicUrl = "https://cafejade.mx/";
 const previousVercelUrl = "https://cafe-jade-palenque.vercel.app/";
 const legacyNetlifyUrl = "https://luxury-syrniki-73ec68.netlify.app/";
+const currentContactEmail = "contacto@cafejade.mx";
+const previousContactEmail = "cafejadepalenque@hotmail.com";
 if (html.includes(legacyNetlifyUrl)) {
   fail("Legacy Netlify URL is still present in public metadata.");
 }
@@ -143,6 +145,12 @@ if (html.includes(previousVercelUrl)) {
 }
 if (!html.includes(currentPublicUrl)) {
   fail("Production domain is missing from public metadata.");
+}
+if (!html.includes(currentContactEmail)) {
+  fail("Current contact email is missing from public contact copy.");
+}
+if (html.includes(previousContactEmail)) {
+  fail("Previous Hotmail contact email is still present.");
 }
 // --- Iteration 2 locks: reveal animations, image perf, mobile a11y, booking feedback, favicon ---
 
