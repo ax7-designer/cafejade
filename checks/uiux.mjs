@@ -132,13 +132,17 @@ if (!/slides\.length\s*<\s*2/.test(html)) {
   }
 });
 
-const currentPublicUrl = "https://cafe-jade-palenque.vercel.app/";
+const currentPublicUrl = "https://cafejade.mx/";
+const previousVercelUrl = "https://cafe-jade-palenque.vercel.app/";
 const legacyNetlifyUrl = "https://luxury-syrniki-73ec68.netlify.app/";
 if (html.includes(legacyNetlifyUrl)) {
   fail("Legacy Netlify URL is still present in public metadata.");
 }
+if (html.includes(previousVercelUrl)) {
+  fail("Previous Vercel URL is still present in public metadata.");
+}
 if (!html.includes(currentPublicUrl)) {
-  fail("Current public demo URL is missing from public metadata.");
+  fail("Production domain is missing from public metadata.");
 }
 // --- Iteration 2 locks: reveal animations, image perf, mobile a11y, booking feedback, favicon ---
 
