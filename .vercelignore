@@ -1,0 +1,17 @@
+.git/
+.gemini/
+.playwright-cli/
+.env*
+README*.md
+Show-Dashboard.ps1
+brief.html
+checks/
+docs/
+scripts/
+output/
+temp_thumbnails/
+FOTOS JADE/
+Logotipos Vectoriales/
+Logotipos Vectoriales.rar
+LOGO JADE.png
+LogoBlanco-03.svg
