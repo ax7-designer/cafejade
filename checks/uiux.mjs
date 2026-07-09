@@ -161,6 +161,10 @@ if (!footer.includes(`tel:+${currentWhatsAppNumber}`) || !footer.includes("+52 9
 if (html.includes(previousWhatsAppNumber)) {
   fail("Previous WhatsApp number is still present.");
 }
+const mapSrc = html.match(/<iframe[\s\S]*?src="([^"]+)"/)?.[1] || "";
+if (mapSrc !== "https://www.google.com/maps?q=17.509475,-91.986831&z=17&output=embed") {
+  fail("Google Maps iframe is not using the current embeddable URL.");
+}
 
 if (!existsSync("vercel.json")) {
   fail("vercel.json is missing the production security and cache headers.");
@@ -174,6 +178,10 @@ if (!existsSync("vercel.json")) {
         fail(`Missing production security header: ${key}.`);
       }
     });
+    const csp = headers.find((entry) => entry.key === "Content-Security-Policy")?.value || "";
+    if (!csp.includes("frame-src https://www.google.com")) {
+      fail("Content-Security-Policy does not allow the current Google Maps embed origin.");
+    }
     if (!headers.some((entry) => entry.key === "Cache-Control" && /immutable/.test(entry.value || ""))) {
       fail("Static assets are missing immutable cache policy.");
     }
