@@ -137,6 +137,8 @@ const previousVercelUrl = "https://cafe-jade-palenque.vercel.app/";
 const legacyNetlifyUrl = "https://luxury-syrniki-73ec68.netlify.app/";
 const currentContactEmail = "contacto@cafejade.mx";
 const previousContactEmail = "cafejadepalenque@hotmail.com";
+const currentWhatsAppNumber = "529161283706";
+const previousWhatsAppNumber = "529166880081";
 if (html.includes(legacyNetlifyUrl)) {
   fail("Legacy Netlify URL is still present in public metadata.");
 }
@@ -151,6 +153,33 @@ if (!html.includes(currentContactEmail)) {
 }
 if (html.includes(previousContactEmail)) {
   fail("Previous Hotmail contact email is still present.");
+}
+const footer = html.match(/<footer class="site-footer">([\s\S]*?)<\/footer>/)?.[1] || "";
+if (!footer.includes(`tel:+${currentWhatsAppNumber}`) || !footer.includes("+52 916 128 3706")) {
+  fail("Footer is missing the current contact phone number.");
+}
+if (html.includes(previousWhatsAppNumber)) {
+  fail("Previous WhatsApp number is still present.");
+}
+
+if (!existsSync("vercel.json")) {
+  fail("vercel.json is missing the production security and cache headers.");
+} else {
+  try {
+    const vercelConfig = JSON.parse(readFileSync("vercel.json", "utf8"));
+    const headers = vercelConfig.headers?.flatMap((entry) => entry.headers || []) || [];
+    const headerKeys = new Set(headers.map((entry) => entry.key));
+    ["Strict-Transport-Security", "X-Content-Type-Options", "Referrer-Policy", "Permissions-Policy", "Content-Security-Policy"].forEach((key) => {
+      if (!headerKeys.has(key)) {
+        fail(`Missing production security header: ${key}.`);
+      }
+    });
+    if (!headers.some((entry) => entry.key === "Cache-Control" && /immutable/.test(entry.value || ""))) {
+      fail("Static assets are missing immutable cache policy.");
+    }
+  } catch (error) {
+    fail(`vercel.json is not valid JSON: ${error.message}`);
+  }
 }
 // --- Iteration 2 locks: reveal animations, image perf, mobile a11y, booking feedback, favicon ---
 
