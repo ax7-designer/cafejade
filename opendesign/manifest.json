@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-17T13:00:00-06:00",
+  "generated": "2026-07-17T18:35:46.6087607-06:00",
   "sections": [
     {
       "id": "mockups",
@@ -8,8 +8,10 @@
         {
           "slug": "mundial-final-argentina-espana",
           "files": [
-            { "label": "Carrusel 4x5 · Overview", "path": "mockups/mundial-final-argentina-espana/index.html" },
-            { "label": "Opciones fotográficas", "path": "mockups/mundial-final-argentina-espana/photo-options.html" }
+            {
+              "label": "Carrusel panorámico 4:5",
+              "path": "mockups/mundial-final-argentina-espana/index.html"
+            }
           ]
         }
       ]
@@ -21,12 +23,30 @@
         {
           "slug": "cafe-jade-campaigns",
           "files": [
-            { "label": "README", "path": "design-systems/cafe-jade-campaigns/README.md" },
-            { "label": "Skill", "path": "design-systems/cafe-jade-campaigns/SKILL.md" },
-            { "label": "Colors and type", "path": "design-systems/cafe-jade-campaigns/tokens/colors_and_type.css" },
-            { "label": "Voice and tone", "path": "design-systems/cafe-jade-campaigns/brand/voice-and-tone.md" },
-            { "label": "Style notes", "path": "design-systems/cafe-jade-campaigns/brand/style-notes.md" },
-            { "label": "Official white logo", "path": "design-systems/cafe-jade-campaigns/assets/logos/LogoCJ_Horizontal_Blanco.svg" }
+            {
+              "label": "README",
+              "path": "design-systems/cafe-jade-campaigns/README.md"
+            },
+            {
+              "label": "Skill",
+              "path": "design-systems/cafe-jade-campaigns/SKILL.md"
+            },
+            {
+              "label": "Colors and type",
+              "path": "design-systems/cafe-jade-campaigns/tokens/colors_and_type.css"
+            },
+            {
+              "label": "Voice and tone",
+              "path": "design-systems/cafe-jade-campaigns/brand/voice-and-tone.md"
+            },
+            {
+              "label": "Style notes",
+              "path": "design-systems/cafe-jade-campaigns/brand/style-notes.md"
+            },
+            {
+              "label": "Official white logo",
+              "path": "design-systems/cafe-jade-campaigns/assets/logos/LogoCJ_Horizontal_Blanco.svg"
+            }
           ]
         }
       ]

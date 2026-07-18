@@ -1,28 +1,41 @@
-# Spec — Final del Mundial 2026
+# Café Jade · Final del Mundial 2026
 
-## Objective
+## Format
 
-Create a modern Instagram 4:5 carousel for Café Jade announcing Argentina vs España on Sunday 19 July 2026 at 1:00 p. m. local Chiapas time.
+- One continuous 3240 × 1350 px panorama.
+- Three exact 1080 × 1350 px Instagram posts.
+- Every individual post remains legible in 4:5.
+- The overview is presented without gaps between panels.
 
-## Deliverables
+## Narrative system
 
-- One overview containing three 1080×1350 artboards.
-- Slide 1: anticipation and event identification.
-- Slide 2: matchup, date and time.
-- Slide 3: venue invitation and one reservation CTA.
-- One structural HTML template with switchable tone options, not three visual directions.
-- Official Café Jade horizontal white logo.
-- Final fallback treatment: opposing anonymous silhouettes derived from the approved face-off cutout, using Argentina blue and Café Jade terracotta.
+- Preserve the hierarchy of the approved first slide across all three panels: centered logo, kicker, condensed headline, handwritten gesture, and short support line.
+- Panel 1 opens the invitation.
+- Panel 2 reveals Argentina vs España and the date/time.
+- Panel 3 closes with the venue and reservation CTA.
+- Panels 1 and 2 include a nonverbal rightward continuation cue.
 
-## Type translation
+## Panoramic art direction
 
-Use a condensed heavy grotesk for factual hierarchy and a dry-brush display face for one short emotional phrase. Do not copy the original poster’s copy, player arrangement or monochrome rendering.
+- Use the Café Jade jade, cream and gold palette, with Argentina blue and Spain red/yellow/terracotta accents.
+- Place a generated Argentina water football across the first 1080 px cut.
+- Place a generated Spain fire football across the second 1080 px cut.
+- Generate each ball as a centered subject over a controlled chroma-key color, remove the background, and use the transparent PNG in the composition.
+- Give both generated subjects a solid 10 px white contour so they read as premium paper stickers.
+- Add only the start and end nodes of a diagonal electrical axis, from the upper-left corner to the lower-right corner; do not draw the full path.
+- Do not use players, fabricated identities, player names, or WhatsApp numbers.
 
-## Acceptance checks
+## Typography
 
-- Exactly three `.slide` artboards with 1080:1350 ratio.
-- Overview and single-slide viewing modes.
-- Three copy tone choices that update the same design.
-- No WhatsApp number printed in the artwork.
-- Date, local time, countries and Café Jade branding are present.
-- Artwork uses no fabricated player identity or printed player name.
+- Heavy condensed uppercase: Barlow Condensed.
+- One short handwritten gesture per panel: Knewave.
+- Supporting copy: DM Sans.
+- Keep text positions and relative scale consistent across all three panels.
+
+## Acceptance
+
+- Official Café Jade logo is present in all three panels.
+- No copy or logo crosses a panel cut.
+- Both generated balls visibly cross a panel cut.
+- The panoramic diagonal reads through its endpoint nodes and composition, without a literal connecting line.
+- Final exports include the 3240 × 1350 overview plus three 1080 × 1350 PNG files.
