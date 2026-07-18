@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Café Jade — Selección fotográfica</title>
+  <link rel="icon" type="image/svg+xml" href="../../../favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../design-systems/cafe-jade-campaigns/tokens/colors_and_type.css" />
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; color: var(--cream-100); background: #0d1511; font-family: var(--font-body); }
+    header { display: flex; align-items: center; justify-content: space-between; gap: 32px; padding: 24px 3vw; border-bottom: 1px solid rgba(234, 214, 166, 0.2); background: var(--jade-950); }
+    header img { width: 180px; height: auto; }
+    header div { text-align: right; }
+    h1 { margin: 0; font: 900 clamp(34px, 4vw, 66px)/0.9 var(--font-display); letter-spacing: 0; text-transform: uppercase; }
+    header p { margin: 8px 0 0; color: #aebcb4; font-size: 14px; }
+    main { display: grid; grid-template-columns: repeat(3, minmax(260px, 1fr)); gap: 24px; max-width: 1500px; margin: 0 auto; padding: 34px 3vw 48px; }
+    .photo-option { min-width: 0; }
+    figure { position: relative; width: 100%; aspect-ratio: 4 / 5; margin: 0; overflow: hidden; background: var(--jade-900); border: 1px solid rgba(234, 214, 166, 0.22); }
+    figure::before { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(117, 170, 219, 0.15), transparent 35%, rgba(208, 166, 93, 0.12) 70%, rgba(170, 21, 27, 0.16)); }
+    figure::after { content: ""; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E"); opacity: 0.18; mix-blend-mode: soft-light; pointer-events: none; }
+    figure img { position: relative; z-index: 2; width: 100%; height: 100%; object-fit: contain; object-position: center bottom; filter: drop-shadow(0 24px 28px rgba(0, 0, 0, 0.34)); }
+    .option-number { position: absolute; top: 20px; left: 20px; z-index: 4; display: grid; place-items: center; width: 54px; height: 54px; color: var(--jade-950); background: var(--gold-500); font: 900 30px/1 var(--font-display); }
+    .option-label { display: flex; justify-content: space-between; gap: 20px; padding: 16px 2px 0; }
+    .option-label strong { font: 800 28px/1 var(--font-display); text-transform: uppercase; }
+    .option-label span { max-width: 58%; color: #aebcb4; font-size: 13px; line-height: 1.35; text-align: right; }
+    @media (max-width: 900px) {
+      header { align-items: flex-start; flex-direction: column; }
+      header div { text-align: left; }
+      main { grid-template-columns: 1fr; max-width: 620px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="../../design-systems/cafe-jade-campaigns/assets/logos/LogoCJ_Horizontal_Blanco.svg" alt="Café Jade Restaurant" />
+    <div>
+      <h1>Selección fotográfica</h1>
+      <p>Final del Mundial · Argentina vs España · Voz A aprobada</p>
+    </div>
+  </header>
+  <main>
+    <article class="photo-option">
+      <figure>
+        <span class="option-number">1</span>
+        <img src="assets/photo-options/option-01-faceoff-cutout.png" alt="Dos futbolistas ficticios de perfil frente a frente" />
+      </figure>
+      <div class="option-label"><strong>Duelo directo</strong><span>Mayor tensión y cercanía con la referencia tipográfica.</span></div>
+    </article>
+    <article class="photo-option">
+      <figure>
+        <span class="option-number">2</span>
+        <img src="assets/photo-options/option-02-confident-cutout.png" alt="Dos futbolistas ficticios frente a cámara" />
+      </figure>
+      <div class="option-label"><strong>Confianza</strong><span>Más cálida y editorial; ambos equipos comparten protagonismo.</span></div>
+    </article>
+    <article class="photo-option">
+      <figure>
+        <span class="option-number">3</span>
+        <img src="assets/photo-options/option-03-fullbody-cutout.png" alt="Dos futbolistas ficticios de cuerpo completo antes del partido" />
+      </figure>
+      <div class="option-label"><strong>Antes del silbatazo</strong><span>Más aire, cuerpo completo y máxima flexibilidad de recorte.</span></div>
+    </article>
+  </main>
+</body>
+</html>

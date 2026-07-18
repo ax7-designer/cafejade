@@ -1,0 +1,30 @@
+:root {
+  --jade-950: #10251f;
+  --jade-900: #173229;
+  --jade-700: #265241;
+  --jade-500: #3f735d;
+  --cream-100: #f8f2e8;
+  --paper-50: #fffaf4;
+  --gold-500: #d0a65d;
+  --gold-300: #ead6a6;
+  --terracotta-500: #c56c43;
+  --ink-950: #141a16;
+  --argentina-blue: #75aadb;
+  --spain-red: #aa151b;
+  --spain-yellow: #f1bf00;
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-gesture: "Knewave", "Arial Black", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+  --weight-heavy: 900;
+  --weight-bold: 700;
+  --surface-primary: var(--jade-950);
+  --surface-paper: var(--cream-100);
+  --text-primary: var(--paper-50);
+  --text-dark: var(--ink-950);
+  --accent-primary: var(--gold-500);
+  --accent-warm: var(--terracotta-500);
+  --h1: 9.5rem/0.82 var(--font-display);
+  --h2: 5.5rem/0.9 var(--font-display);
+  --body: 2rem/1.25 var(--font-body);
+  --caption: 1.35rem/1.2 var(--font-body);
+}
